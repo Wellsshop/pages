@@ -33,5 +33,12 @@
     "precio": 300,
     "descripcion": "Reloj Tag Heuer Formula 1 Amarillo",
     "categoria": "relojes"
+  },
+  {
+    "imagen": "cartera_rosa_1790000733585.jpg",
+    "nombre": "Cartera Rosa",
+    "precio": 200,
+    "descripcion": "Cartera Dama Rosa",
+    "categoria": "carteras"
   }
 ]
