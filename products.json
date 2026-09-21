@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "imagen": "tag_heuer_f1_1789994371254.jpeg",
+    "nombre": "Tag Heuer F1",
+    "precio": "$300.000",
+    "descripcion": "Reloj Tag Heuer Formula 1 Amarillo",
+    "categoria": "relojes"
+  }
+]
