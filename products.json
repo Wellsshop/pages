@@ -47,5 +47,12 @@
     "precio": 250,
     "descripcion": "Cartera negra con correa de metal",
     "categoria": "carteras"
+  },
+  {
+    "imagen": "cartera_beige_1790021777729.jpg",
+    "nombre": "Cartera beige",
+    "precio": 300,
+    "descripcion": "Cartera Beige Larga",
+    "categoria": "carteras"
   }
 ]
