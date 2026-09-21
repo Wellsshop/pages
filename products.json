@@ -26,5 +26,12 @@
     "precio": 200,
     "descripcion": "Cartera Dama Rosa",
     "categoria": "carteras"
+  },
+  {
+    "imagen": "reloj_1_1790012543136.jpeg",
+    "nombre": "Reloj 1",
+    "precio": 500000,
+    "descripcion": "reloj 123456",
+    "categoria": "relojes"
   }
 ]
