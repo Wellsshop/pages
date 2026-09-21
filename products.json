@@ -33,5 +33,12 @@
     "precio": 300,
     "descripcion": "Reloj 1 malla metal",
     "categoria": "relojes"
+  },
+  {
+    "imagen": "reloj_2_1790021641990.jpeg",
+    "nombre": "Reloj 2",
+    "precio": 400,
+    "descripcion": "Reloj 2 Malla cuero",
+    "categoria": "relojes"
   }
 ]
