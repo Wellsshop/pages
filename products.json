@@ -26,5 +26,12 @@
     "precio": 150,
     "descripcion": "Cargador Arrancador Bateria Auto Inflador Portatil Usb 12v",
     "categoria": "gadgets"
+  },
+  {
+    "imagen": "tag_heuer_f1_1790000698313.jpeg",
+    "nombre": "Tag Heuer F1",
+    "precio": 300,
+    "descripcion": "Reloj Tag Heuer Formula 1 Amarillo",
+    "categoria": "relojes"
   }
 ]
