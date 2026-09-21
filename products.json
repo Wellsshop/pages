@@ -12,5 +12,12 @@
     "precio": "$200.000",
     "descripcion": "Cartera Dama Rosa",
     "categoria": "carteras"
+  },
+  {
+    "imagen": "lentes_pepito_1790000587227.jpg",
+    "nombre": "Lentes Pepito",
+    "precio": 120000,
+    "descripcion": "Lentes pepito filtro UV",
+    "categoria": "lentes"
   }
 ]
