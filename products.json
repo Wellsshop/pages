@@ -19,5 +19,12 @@
     "precio": 120000,
     "descripcion": "Lentes pepito filtro UV",
     "categoria": "lentes"
+  },
+  {
+    "imagen": "arrancador_bateria_auto_1790000643990.jpg",
+    "nombre": "Arrancador Bateria Auto",
+    "precio": 150,
+    "descripcion": "Cargador Arrancador Bateria Auto Inflador Portatil Usb 12v",
+    "categoria": "gadgets"
   }
 ]
