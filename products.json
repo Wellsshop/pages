@@ -1,0 +1,68 @@
+[
+  {
+    "imagen": "Prod1.jpeg",
+    "nombre": "Audemars Piguet Green",
+    "precio": 300000,
+    "descripcion": "Reloj Audemars Piguet Malla Verde"
+  },
+  {
+    "imagen": "Prod2.jpeg",
+    "nombre": "Hublot Geneve Maradona ",
+    "precio": 300000,
+    "descripcion": "Reloj Hublot Geneve Maradona Negro / Celeste"
+  },
+  {
+    "imagen": "Prod3.jpeg",
+    "nombre": "Audemars Piguet Black",
+    "precio": 300000,
+    "descripcion": "Reloj Audemars Piguet Total black"
+  },
+  {
+    "imagen": "Prod4.jpeg",
+    "nombre": "Hublot Maradona Black",
+    "precio": 300000,
+    "descripcion": "Reloj Hublot Geneve Maradona Negro / Plateado"
+  },
+  {
+    "imagen": "Prod5.jpeg",
+    "nombre": "Hublot Maradona Blue",
+    "precio": 300000,
+    "descripcion": "Reloj Hublot Geneve Maradona Azul / Negro"
+  },
+  {
+    "imagen": "Prod6.jpeg",
+    "nombre": "Omega Seamaster",
+    "precio": 300000,
+    "descripcion": "Reloj Omega Seamaster Total Blue"
+  },
+  {
+    "imagen": "Prod7.jpeg",
+    "nombre": "Omega Seamaster Pro",
+    "precio": 300000,
+    "descripcion": "Reloj Omega Seamaster Pro Black"
+  },
+  {
+    "imagen": "Prod8.jpeg",
+    "nombre": "Hublot Maradona Blue",
+    "precio": 300000,
+    "descripcion": "Reloj Hublot Geneve Maradona Azul / Negro"
+  },
+  {
+    "imagen": "Prod9.jpeg",
+    "nombre": "Tag Heuer Formula 1 Red",
+    "precio": 300000,
+    "descripcion": "Reloj Tag Heuer Formula 1 Malla Roja"
+  },
+  {
+    "imagen": "Prod10.jpeg",
+    "nombre": "Tag Heuer Formula 1 Green",
+    "precio": 300000,
+    "descripcion": "Reloj Tag Heuer Formula 1 Green Malla metal"
+  },
+  {
+    "imagen": "tag_heuer_f1_1789589867.jpeg",
+    "nombre": "TAG HEUER F1",
+    "precio": 300000,
+    "descripcion": "Reloj Tag Heuer F1 Yellow"
+  }
+]
