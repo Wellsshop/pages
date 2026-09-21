@@ -54,5 +54,12 @@
     "precio": 300,
     "descripcion": "Cartera Beige Larga",
     "categoria": "carteras"
+  },
+  {
+    "imagen": "lentes_mujer_1790021819064.jpg",
+    "nombre": "Lentes mujer",
+    "precio": 200,
+    "descripcion": "Lentes de mujer grandes",
+    "categoria": "lentes"
   }
 ]
