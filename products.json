@@ -9,56 +9,56 @@
   {
     "imagen": "arrancador_bateria_auto_1790000643990.jpg",
     "nombre": "Arrancador Bateria Auto",
-    "precio": 150,
+    "precio": 150000,
     "descripcion": "Cargador Arrancador Bateria Auto Inflador Portatil Usb 12v",
     "categoria": "gadgets"
   },
   {
     "imagen": "tag_heuer_f1_1790000698313.jpeg",
     "nombre": "Tag Heuer F1",
-    "precio": 300,
+    "precio": 300000,
     "descripcion": "Reloj Tag Heuer Formula 1 Amarillo",
     "categoria": "relojes"
   },
   {
     "imagen": "cartera_rosa_1790000733585.jpg",
     "nombre": "Cartera Rosa",
-    "precio": 200,
+    "precio": 200000,
     "descripcion": "Cartera Dama Rosa",
     "categoria": "carteras"
   },
   {
     "imagen": "reloj_1_1790021619937.jpeg",
     "nombre": "Reloj 1",
-    "precio": 300,
+    "precio": 300000,
     "descripcion": "Reloj 1 malla metal",
     "categoria": "relojes"
   },
   {
     "imagen": "reloj_2_1790021641990.jpeg",
     "nombre": "Reloj 2",
-    "precio": 400,
+    "precio": 400000,
     "descripcion": "Reloj 2 Malla cuero",
     "categoria": "relojes"
   },
   {
     "imagen": "cartera_negra_1790021739227.jpg",
     "nombre": "Cartera negra",
-    "precio": 250,
+    "precio": 250000,
     "descripcion": "Cartera negra con correa de metal",
     "categoria": "carteras"
   },
   {
     "imagen": "cartera_beige_1790021777729.jpg",
     "nombre": "Cartera beige",
-    "precio": 300,
+    "precio": 300000,
     "descripcion": "Cartera Beige Larga",
     "categoria": "carteras"
   },
   {
     "imagen": "lentes_mujer_1790021819064.jpg",
     "nombre": "Lentes mujer",
-    "precio": 200,
+    "precio": 200000,
     "descripcion": "Lentes de mujer grandes",
     "categoria": "lentes"
   }
