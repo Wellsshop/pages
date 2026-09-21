@@ -26,5 +26,12 @@
     "precio": 200,
     "descripcion": "Cartera Dama Rosa",
     "categoria": "carteras"
+  },
+  {
+    "imagen": "reloj_1_1790021619937.jpeg",
+    "nombre": "Reloj 1",
+    "precio": 300,
+    "descripcion": "Reloj 1 malla metal",
+    "categoria": "relojes"
   }
 ]
