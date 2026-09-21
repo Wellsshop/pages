@@ -61,5 +61,12 @@
     "precio": 200000,
     "descripcion": "Lentes de mujer grandes",
     "categoria": "lentes"
+  },
+  {
+    "imagen": "caca_1790022269486.jpg",
+    "nombre": "CACA",
+    "precio": 1213213213,
+    "descripcion": "CACA",
+    "categoria": "relojes"
   }
 ]
