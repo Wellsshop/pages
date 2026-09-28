@@ -1,1 +1,15 @@
-[]
+[
+  {
+    "id": "reloj_tag_heuer_1790608524720_0.jpg",
+    "imagen": "reloj_tag_heuer_1790608524720_0.jpg",
+    "imagenes": [
+      "reloj_tag_heuer_1790608524720_0.jpg",
+      "reloj_tag_heuer_1790608526250_1.jpg",
+      "reloj_tag_heuer_1790608527732_2.jpg"
+    ],
+    "nombre": "Reloj Tag Heuer",
+    "precio": 300000,
+    "descripcion": "Reloj Tag Hehuer Maradona Azul",
+    "categoria": "relojes"
+  }
+]
