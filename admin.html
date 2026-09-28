@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Administrar Catálogo | Wellsshop</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --text: #0f172a;
+    --muted: #64748b;
+    --accent: #1e293b;
+    --green: #10b981;
+    --green-dark: #059669;
+    --red: #ef4444;
+    --border: #e2e8f0;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 0 0 60px;
+  }
+  header {
+    background: var(--accent);
+    color: white;
+    padding: 28px 20px;
+    text-align: center;
+  }
+  header h1 { margin: 0; font-size: 1.5rem; font-weight: 700; }
+  header p { margin: 6px 0 0; color: #94a3b8; font-size: 0.9rem; }
+
+  .wrap { max-width: 640px; margin: 0 auto; padding: 24px 18px; }
+
+  /* --- Pantalla de clave --- */
+  #loginBox {
+    max-width: 360px; margin: 80px auto; text-align: center;
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 36px 28px;
+  }
+  #loginBox h2 { margin: 0 0 6px; font-size: 1.2rem; }
+  #loginBox p { color: var(--muted); font-size: 0.9rem; margin: 0 0 20px; }
+
+  input, textarea, select {
+    width: 100%; font-family: inherit; font-size: 1rem;
+    padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px;
+    background: var(--card); color: var(--text);
+  }
+  input:focus, textarea:focus, select:focus { outline: 2px solid var(--green); outline-offset: 1px; }
+
+  button {
+    font-family: inherit; font-weight: 600; font-size: 1rem;
+    border: none; border-radius: 10px; cursor: pointer;
+    padding: 13px 18px; width: 100%;
+  }
+  .btn-primary { background: var(--green); color: white; }
+  .btn-primary:hover { background: var(--green-dark); }
+  .btn-primary:disabled { background: #a7f3d0; cursor: not-allowed; }
+  .btn-danger { background: #fee2e2; color: #991b1b; width: auto; padding: 8px 14px; font-size: 0.85rem; }
+  .btn-danger:hover { background: #fecaca; }
+  .btn-no {
+    background: #f1f5f9; color: var(--muted); width: auto;
+    padding: 8px 14px; font-size: 0.85rem;
+  }
+  .btn-no:hover { background: #e2e8f0; }
+  .acciones { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .confirmar-texto { font-size: 0.85rem; color: var(--muted); white-space: nowrap; }
+  #avisoLista { font-size: 0.9rem; padding: 0; border-radius: 8px; margin-bottom: 12px; }
+  #avisoLista.ok { background: #d1fae5; color: #065f46; padding: 10px 12px; }
+  #avisoLista.error { background: #fee2e2; color: #991b1b; padding: 10px 12px; }
+
+  section.card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 22px; margin-bottom: 22px;
+  }
+  section.card h2 { margin: 0 0 16px; font-size: 1.05rem; }
+
+  .field { margin-bottom: 14px; }
+  .field label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--muted); margin-bottom: 6px; }
+
+  #estadoAgregar { margin-top: 12px; font-size: 0.9rem; display: none; padding: 10px 12px; border-radius: 8px; }
+  .ok { background: #d1fae5; color: #065f46; display: block !important; }
+  .error { background: #fee2e2; color: #991b1b; display: block !important; }
+
+  .producto-row {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 0; border-bottom: 1px solid var(--border);
+  }
+  .producto-row:last-child { border-bottom: none; }
+  .producto-row img {
+    width: 56px; height: 56px; object-fit: contain; background: #f1f5f9;
+    border-radius: 8px; flex-shrink: 0;
+  }
+  .producto-info { flex-grow: 1; min-width: 0; }
+  .producto-info .nombre { font-weight: 600; font-size: 0.95rem; }
+  .producto-info .precio { color: var(--green-dark); font-size: 0.85rem; font-weight: 600; }
+
+  .chk-producto, .chk-todos {
+    width: 22px; height: 22px; flex-shrink: 0; cursor: pointer; accent-color: var(--green);
+  }
+
+  .barra-seleccion {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; margin-bottom: 6px; padding-bottom: 10px; border-bottom: 1px solid var(--border);
+  }
+  .barra-seleccion label {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 0.85rem; color: var(--muted); font-weight: 600; margin: 0;
+  }
+  #btnEliminarSeleccion {
+    width: auto; background: var(--red); color: white;
+    padding: 9px 16px; font-size: 0.85rem;
+  }
+  #btnEliminarSeleccion:hover { background: #dc2626; }
+  #btnEliminarSeleccion:disabled { background: #fca5a5; cursor: not-allowed; }
+
+  #listaEstado { color: var(--muted); font-size: 0.9rem; }
+  .fotos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 8px; margin-bottom: 8px; }
+  .foto-item { position: relative; aspect-ratio: 1; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: #f1f5f9; }
+  .foto-item img { width: 100%; height: 100%; object-fit: contain; }
+  .foto-item .badge { position: absolute; top: 4px; left: 4px; background: var(--green); color: #fff; font-size: 0.65rem; font-weight: 700; padding: 2px 6px; border-radius: 999px; }
+  .foto-acc { position: absolute; bottom: 0; left: 0; right: 0; display: flex; background: rgba(15,23,42,0.7); }
+  .foto-acc button { flex: 1; width: auto; padding: 5px 0; font-size: 0.8rem; background: none; color: #fff; border-radius: 0; }
+  .btn-foto { background: #f1f5f9; color: var(--text); border: 1px dashed var(--muted); }
+  .btn-editar { margin-left: auto; }
+  .modal-edit { display: none; position: fixed; inset: 0; z-index: 100; background: rgba(15,23,42,0.6); align-items: flex-start; justify-content: center; overflow-y: auto; padding: 24px 14px; }
+  .modal-box { background: var(--card); border-radius: 14px; padding: 22px; width: 100%; max-width: 560px; }
+  .modal-box h2 { margin: 0 0 16px; font-size: 1.1rem; }
+  .modal-box .botones { display: flex; gap: 10px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Administrar Catálogo</h1>
+  <p>Wellsshop — agregar, editar y eliminar productos</p>
+</header>
+
+<div id="loginBox">
+  <h2>Ingresá la clave</h2>
+  <p>Es la misma que te dio tu hijo.</p>
+  <div class="field">
+    <input type="password" id="passwordInput" placeholder="Clave">
+  </div>
+  <button class="btn-primary" id="btnEntrar">Entrar</button>
+  <div id="loginError" style="color:#991b1b; font-size:0.85rem; margin-top:10px;"></div>
+</div>
+
+<div class="wrap" id="panel" style="display:none;">
+
+  <div style="text-align:right; margin-bottom:10px;">
+    <button id="btnSalir" style="width:auto; background:none; color:var(--muted); font-size:0.85rem; padding:6px 10px; text-decoration:underline;">Cerrar sesión</button>
+  </div>
+
+  <section class="card">
+    <h2>➕ Agregar producto nuevo</h2>
+    <div class="field">
+      <label for="nombre">Marca y modelo</label>
+      <input type="text" id="nombre" placeholder="Ej: Rolex Submariner">
+    </div>
+    <div class="field">
+      <label for="precio">Precio</label>
+      <input type="text" id="precio" placeholder="Ej: 300000 o Consultar">
+    </div>
+    <div class="field">
+      <label for="descripcion">Descripción</label>
+      <textarea id="descripcion" rows="2" placeholder="Ej: Reloj Rolex Submariner Negro"></textarea>
+    </div>
+    <div class="field">
+      <label for="categoria">Categoría</label>
+      <select id="categoria">
+        <option value="relojes">Relojes</option>
+        <option value="carteras">Carteras</option>
+        <option value="lentes">Lentes</option>
+        <option value="gadgets">Gadgets</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Fotos del producto (la primera es la principal)</label>
+      <div id="fotosAgregar"></div>
+    </div>
+    <button class="btn-primary" id="btnAgregar">Guardar y publicar</button>
+    <div id="estadoAgregar"></div>
+  </section>
+
+  <section class="card">
+    <h2>🗑️ Productos actuales</h2>
+    <div id="avisoLista"></div>
+    <div id="listaEstado">Cargando...</div>
+    <div class="barra-seleccion" id="barraSeleccion" style="display:none;">
+      <label><input type="checkbox" class="chk-todos" id="chkTodos"> Seleccionar todos</label>
+      <button id="btnEliminarSeleccion" disabled>Eliminar seleccionados</button>
+    </div>
+    <div id="listaProductos"></div>
+  </section>
+
+</div>
+
+<div id="editModal" class="modal-edit">
+  <div class="modal-box">
+    <h2>✏️ Editar producto</h2>
+    <div class="field"><label for="e_nombre">Marca y modelo</label><input type="text" id="e_nombre"></div>
+    <div class="field"><label for="e_precio">Precio</label><input type="text" id="e_precio"></div>
+    <div class="field"><label for="e_descripcion">Descripción</label><textarea id="e_descripcion" rows="3"></textarea></div>
+    <div class="field"><label for="e_categoria">Categoría</label><select id="e_categoria"></select></div>
+    <div class="field"><label>Fotos (la primera es la principal)</label><div id="e_fotos"></div></div>
+    <div id="estadoEditar" style="display:none; margin-bottom:12px; font-size:0.9rem; padding:10px 12px; border-radius:8px;"></div>
+    <div class="botones"><button class="btn-no" id="btnCancelarEdicion" style="padding:13px 18px; font-size:1rem;">Cancelar</button><button class="btn-primary" id="btnGuardarEdicion">Guardar cambios</button></div>
+  </div>
+</div>
+
+<script>
+  // ⚠️ Pegá aquí la URL de tu Worker de Cloudflare (paso 5 de las instrucciones)
+  const WORKER_URL = "https://wellsshop-api.relojesoscar-ok.workers.dev";
+
+  const CATALOGO_URL = "../products.json"; // products.json vive un nivel arriba (raíz del sitio)
+  const IMG_BASE = "../img/";
+
+  let clave = "";
+  const CLAVE_GUARDADA = "wellsshop_admin_clave";
+
+  const loginBox = document.getElementById("loginBox");
+  const panel = document.getElementById("panel");
+  const passwordInput = document.getElementById("passwordInput");
+  const loginError = document.getElementById("loginError");
+  const btnEntrar = document.getElementById("btnEntrar");
+
+  async function verificarClave(intento) {
+    try {
+      const resp = await fetch(WORKER_URL + "/verificar", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password: intento }),
+      });
+      return resp.ok;
+    } catch (e) {
+      loginError.textContent = "No se pudo conectar con el servidor. Revisá tu conexión.";
+      return false;
+    }
+  }
+
+  function entrarAlPanel() {
+    loginBox.style.display = "none";
+    panel.style.display = "block";
+    cargarProductos();
+  }
+
+  async function intentarEntrar() {
+    const intento = passwordInput.value.trim();
+    if (!intento) { loginError.textContent = "Escribí la clave."; return; }
+    loginError.textContent = "";
+    btnEntrar.disabled = true;
+    btnEntrar.textContent = "Verificando...";
+
+    const ok = await verificarClave(intento);
+
+    btnEntrar.disabled = false;
+    btnEntrar.textContent = "Entrar";
+
+    if (!ok) {
+      loginError.textContent = "Clave incorrecta.";
+      return;
+    }
+    clave = intento;
+    localStorage.setItem(CLAVE_GUARDADA, clave);
+    entrarAlPanel();
+  }
+
+  btnEntrar.onclick = intentarEntrar;
+  passwordInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") intentarEntrar();
+  });
+
+  document.getElementById("btnSalir").onclick = () => {
+    localStorage.removeItem(CLAVE_GUARDADA);
+    clave = "";
+    passwordInput.value = "";
+    panel.style.display = "none";
+    loginBox.style.display = "block";
+  };
+
+  // Si ya habíamos guardado la clave en este dispositivo, entramos directo
+  (async () => {
+    const guardada = localStorage.getItem(CLAVE_GUARDADA);
+    if (guardada) {
+      const ok = await verificarClave(guardada);
+      if (ok) {
+        clave = guardada;
+        entrarAlPanel();
+      } else {
+        localStorage.removeItem(CLAVE_GUARDADA);
+      }
+    }
+  })();
+
+  const $ = (id) => document.getElementById(id);
+  const esc = (t) => String(t ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const fotosDe = (p) => (Array.isArray(p.imagenes) && p.imagenes.length ? p.imagenes : p.imagen ? [p.imagen] : []);
+
+  // Achica la foto (máx. 1600px) antes de subirla: más rápido y evita fotos de celular gigantes
+  async function comprimir(file) {
+    const bmp = await createImageBitmap(file);
+    const esc2 = Math.min(1, 1600 / Math.max(bmp.width, bmp.height));
+    const c = document.createElement("canvas");
+    c.width = Math.round(bmp.width * esc2); c.height = Math.round(bmp.height * esc2);
+    const ctx = c.getContext("2d");
+    ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, c.width, c.height);
+    ctx.drawImage(bmp, 0, 0, c.width, c.height);
+    const url = c.toDataURL("image/jpeg", 0.85);
+    return { base64: url.split(",")[1], ext: "jpg", preview: url };
+  }
+
+  // Selector de fotos: agregar varias, mover, quitar. La primera es la principal.
+  function crearGestor(cont, max = 8) {
+    const items = [];
+    const input = document.createElement("input");
+    input.type = "file"; input.accept = "image/*"; input.multiple = true; input.style.display = "none";
+    function render() {
+      cont.innerHTML = "";
+      const grid = document.createElement("div"); grid.className = "fotos-grid";
+      items.forEach((it, i) => {
+        const d = document.createElement("div"); d.className = "foto-item";
+        const src = it.tipo === "existente" ? IMG_BASE + it.nombre : it.preview;
+        d.innerHTML = `<img src="${src}">${i === 0 ? '<span class="badge">Principal</span>' : ""}
+          <div class="foto-acc"><button type="button" data-a="izq">◀</button><button type="button" data-a="der">▶</button><button type="button" data-a="del">✕</button></div>`;
+        d.querySelectorAll("button").forEach((b) => (b.onclick = () => {
+          const a = b.dataset.a;
+          if (a === "del") items.splice(i, 1);
+          else { const j = a === "izq" ? i - 1 : i + 1; if (j >= 0 && j < items.length) [items[i], items[j]] = [items[j], items[i]]; }
+          render();
+        }));
+        grid.appendChild(d);
+      });
+      cont.appendChild(grid);
+      if (items.length < max) {
+        const b = document.createElement("button");
+        b.type = "button"; b.className = "btn-foto";
+        b.textContent = items.length ? "+ Agregar más fotos" : "+ Elegir fotos";
+        b.onclick = () => input.click();
+        cont.appendChild(b);
+      }
+      cont.appendChild(input);
+    }
+    input.onchange = async () => {
+      for (const f of [...input.files]) {
+        if (items.length >= max) break;
+        try { items.push({ tipo: "nueva", ...(await comprimir(f)) }); }
+        catch (e) { alert("No se pudo leer la foto " + f.name + " (probá con JPG o PNG)."); }
+      }
+      input.value = ""; render();
+    };
+    render();
+    return {
+      count: () => items.length,
+      set(nombres) { items.length = 0; nombres.forEach((n) => items.push({ tipo: "existente", nombre: n })); render(); },
+      payload() {
+        let k = 0;
+        return {
+          orden: items.map((it) => (it.tipo === "existente" ? it.nombre : "nuevo:" + k++)),
+          fotosNuevas: items.filter((i) => i.tipo === "nueva").map((i) => ({ base64: i.base64, ext: i.ext })),
+        };
+      },
+    };
+  }
+
+  const gestorAgregar = crearGestor($("fotosAgregar"));
+
+  $("btnAgregar").onclick = async () => {
+    const nombre = $("nombre").value.trim();
+    const precio = $("precio").value.trim();
+    const descripcion = $("descripcion").value.trim();
+    const categoria = $("categoria").value;
+    const estado = $("estadoAgregar");
+    const boton = $("btnAgregar");
+
+    estado.className = ""; estado.style.display = "none";
+
+    if (!nombre || !precio || gestorAgregar.count() === 0) {
+      estado.textContent = "Completá marca/modelo, precio y elegí al menos una foto.";
+      estado.className = "error";
+      return;
+    }
+
+    boton.disabled = true;
+    boton.textContent = "Guardando...";
+
+    try {
+      const resp = await fetch(WORKER_URL + "/agregar", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password: clave, nombre, precio, descripcion, categoria, fotos: gestorAgregar.payload().fotosNuevas }),
+      });
+      const data = await resp.json();
+      if (!resp.ok) throw new Error(data.error || "Error desconocido");
+
+      estado.textContent = "¡Producto agregado y publicado! Puede demorar 1 minuto en verse en la web.";
+      estado.className = "ok";
+      $("nombre").value = ""; $("precio").value = ""; $("descripcion").value = "";
+      gestorAgregar.set([]);
+      cargarProductos();
+    } catch (e) {
+      estado.textContent = "No se pudo guardar: " + e.message;
+      estado.className = "error";
+    } finally {
+      boton.disabled = false;
+      boton.textContent = "Guardar y publicar";
+    }
+  };
+
+  const seleccionados = new Set();
+  const barraSeleccion = document.getElementById("barraSeleccion");
+  const chkTodos = document.getElementById("chkTodos");
+  const btnEliminarSeleccion = document.getElementById("btnEliminarSeleccion");
+
+  function actualizarBarraSeleccion(totalFilas) {
+    btnEliminarSeleccion.disabled = seleccionados.size === 0;
+    btnEliminarSeleccion.textContent = seleccionados.size > 0
+      ? `Eliminar seleccionados (${seleccionados.size})`
+      : "Eliminar seleccionados";
+    chkTodos.checked = totalFilas > 0 && seleccionados.size === totalFilas;
+    chkTodos.indeterminate = seleccionados.size > 0 && seleccionados.size < totalFilas;
+  }
+
+  let productosActuales = [];
+
+  async function cargarProductos() {
+    const listaEstado = $("listaEstado");
+    const listaProductos = $("listaProductos");
+    listaEstado.textContent = "Cargando...";
+    mostrarAvisoLista("", "");
+    listaProductos.innerHTML = "";
+    seleccionados.clear();
+    barraSeleccion.style.display = "none";
+
+    try {
+      let productos;
+      try {
+        // Directo desde GitHub (vía Worker): siempre actualizado, sin esperar a la web
+        const r = await fetch(WORKER_URL + "/productos?t=" + Date.now(), { cache: "no-store" });
+        if (!r.ok) throw new Error();
+        productos = await r.json();
+      } catch (_) {
+        const r = await fetch(CATALOGO_URL + "?t=" + Date.now());
+        productos = await r.json();
+      }
+      productosActuales = productos;
+
+      if (productos.length === 0) {
+        listaEstado.textContent = "No hay productos cargados todavía.";
+        return;
+      }
+      listaEstado.textContent = "";
+      barraSeleccion.style.display = "flex";
+
+      productos.forEach((p) => {
+        const id = p.id || p.imagen;
+        const fotos = fotosDe(p);
+        const row = document.createElement("div");
+        row.className = "producto-row";
+
+        const precioTexto = String(p.precio ?? "").trim().startsWith("$")
+          ? String(p.precio).trim()
+          : "$" + String(p.precio ?? "");
+
+        row.innerHTML = `
+          <input type="checkbox" class="chk-producto">
+          <img src="${IMG_BASE}${esc(fotos[0])}" onerror="this.style.opacity=0.2">
+          <div class="producto-info">
+            <div class="nombre">${esc(p.nombre)} <span style="color:var(--muted); font-weight:400; font-size:0.8rem;">(${esc(p.categoria || "sin categoría")}${fotos.length > 1 ? " · " + fotos.length + " fotos" : ""})</span></div>
+            <div class="precio">${esc(precioTexto)}</div>
+          </div>
+          <button class="btn-no btn-editar">✏️ Editar</button>
+        `;
+
+        const chk = row.querySelector(".chk-producto");
+        chk.onchange = () => {
+          if (chk.checked) seleccionados.add(id);
+          else seleccionados.delete(id);
+          actualizarBarraSeleccion(listaProductos.querySelectorAll(".chk-producto").length);
+        };
+        row.querySelector(".btn-editar").onclick = () => abrirEdicion(p);
+
+        row.dataset.imagen = id;
+        listaProductos.appendChild(row);
+      });
+
+      actualizarBarraSeleccion(productos.length);
+    } catch (e) {
+      listaEstado.textContent = "No se pudo cargar el catálogo: " + e.message;
+    }
+  }
+
+  // ---------- Edición ----------
+  $("e_categoria").innerHTML = $("categoria").innerHTML;
+  const gestorEditar = crearGestor($("e_fotos"));
+  let editandoId = null;
+
+  function abrirEdicion(p) {
+    editandoId = p.id || p.imagen;
+    $("e_nombre").value = p.nombre || "";
+    $("e_precio").value = p.precio ?? "";
+    $("e_descripcion").value = p.descripcion || "";
+    const sel = $("e_categoria");
+    const cat = p.categoria || sel.options[0].value;
+    if (![...sel.options].some((o) => o.value === cat)) sel.add(new Option(cat, cat));
+    sel.value = cat;
+    gestorEditar.set(fotosDe(p));
+    $("estadoEditar").className = ""; $("estadoEditar").style.display = "none";
+    $("editModal").style.display = "flex";
+  }
+
+  const cerrarEdicion = () => { $("editModal").style.display = "none"; };
+  $("btnCancelarEdicion").onclick = cerrarEdicion;
+
+  $("btnGuardarEdicion").onclick = async () => {
+    const estado = $("estadoEditar");
+    const boton = $("btnGuardarEdicion");
+    const nombre = $("e_nombre").value.trim();
+    const precio = $("e_precio").value.trim();
+    estado.className = ""; estado.style.display = "none";
+
+    if (!nombre || !precio || gestorEditar.count() === 0) {
+      estado.textContent = "Completá nombre, precio y dejá al menos una foto.";
+      estado.className = "error";
+      return;
+    }
+    boton.disabled = true; boton.textContent = "Guardando...";
+    try {
+      const resp = await fetch(WORKER_URL + "/editar", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          password: clave, id: editandoId, nombre, precio,
+          descripcion: $("e_descripcion").value.trim(),
+          categoria: $("e_categoria").value,
+          ...gestorEditar.payload(),
+        }),
+      });
+      const data = await resp.json();
+      if (!resp.ok) throw new Error(data.error || "Error desconocido");
+      cerrarEdicion();
+      cargarProductos();
+      mostrarAvisoLista("Cambios guardados. La web puede tardar hasta 1 minuto en actualizarse.", "ok");
+    } catch (e) {
+      estado.textContent = "No se pudo guardar: " + e.message;
+      estado.className = "error";
+    } finally {
+      boton.disabled = false; boton.textContent = "Guardar cambios";
+    }
+  };
+
+  chkTodos.onchange = () => {
+    const filas = document.querySelectorAll("#listaProductos .producto-row");
+    filas.forEach((row) => {
+      const chk = row.querySelector(".chk-producto");
+      chk.checked = chkTodos.checked;
+      if (chkTodos.checked) seleccionados.add(row.dataset.imagen);
+      else seleccionados.delete(row.dataset.imagen);
+    });
+    actualizarBarraSeleccion(filas.length);
+  };
+
+  btnEliminarSeleccion.onclick = () => {
+    if (seleccionados.size === 0) return;
+
+    if (btnEliminarSeleccion.textContent.startsWith("¿Seguro")) {
+      eliminarSeleccionados();
+      return;
+    }
+
+    // Confirmación dentro de la página, en el propio botón: evita que quede
+    // "colgado" si el diálogo del navegador está bloqueado.
+    const cantidadOriginal = seleccionados.size;
+    btnEliminarSeleccion.textContent = `¿Seguro? Tocá de nuevo para eliminar ${cantidadOriginal}`;
+    setTimeout(() => {
+      // si en 4 segundos no confirmó, volvemos al texto normal
+      if (btnEliminarSeleccion.textContent.startsWith("¿Seguro")) {
+        actualizarBarraSeleccion(document.querySelectorAll("#listaProductos .producto-row").length);
+      }
+    }, 4000);
+  };
+
+  async function eliminarSeleccionados() {
+    const imagenes = [...seleccionados];
+    btnEliminarSeleccion.disabled = true;
+    chkTodos.disabled = true;
+
+    let hechos = 0;
+    let fallidos = [];
+
+    for (const imagen of imagenes) {
+      btnEliminarSeleccion.textContent = `Eliminando ${hechos + 1} de ${imagenes.length}...`;
+      try {
+        const controlador = new AbortController();
+        const corte = setTimeout(() => controlador.abort(), 20000);
+
+        const resp = await fetch(WORKER_URL + "/eliminar", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ password: clave, id: imagen }),
+          signal: controlador.signal,
+        });
+        clearTimeout(corte);
+
+        let data = {};
+        try { data = await resp.json(); } catch (_) {}
+        if (!resp.ok) throw new Error(data.error || ("El servidor respondió " + resp.status));
+
+        const fila = document.querySelector(`#listaProductos .producto-row[data-imagen="${CSS.escape(imagen)}"]`);
+        if (fila) fila.remove();
+        seleccionados.delete(imagen);
+        hechos++;
+      } catch (e) {
+        const motivo = e.name === "AbortError" ? "el servidor tardó demasiado" : e.message;
+        fallidos.push(motivo);
+      }
+    }
+
+    chkTodos.disabled = false;
+
+    if (fallidos.length === 0) {
+      mostrarAvisoLista(`${hechos} producto(s) eliminado(s). La web puede tardar hasta 1 minuto en actualizarse.`, "ok");
+    } else {
+      mostrarAvisoLista(`Se eliminaron ${hechos}. Hubo ${fallidos.length} error(es): ${fallidos[0]}`, "error");
+    }
+
+    const filasRestantes = document.querySelectorAll("#listaProductos .producto-row").length;
+    if (filasRestantes === 0) {
+      barraSeleccion.style.display = "none";
+      document.getElementById("listaEstado").textContent = "No hay productos cargados todavía.";
+    } else {
+      actualizarBarraSeleccion(filasRestantes);
+    }
+  }
+
+  function mostrarAvisoLista(texto, tipo) {
+    const aviso = document.getElementById("avisoLista");
+    aviso.textContent = texto;
+    aviso.className = tipo;
+  }
+
+</script>
+
+</body>
+</html>

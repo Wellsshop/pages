@@ -109,26 +109,52 @@ function checkPassword(env, password) {
   return password && password === env.ADMIN_PASSWORD;
 }
 
+const MAX_FOTOS = 8;
+const idDe = (p) => p.id || p.imagen;
+const fotosDe = (p) => (Array.isArray(p.imagenes) && p.imagenes.length ? p.imagenes : p.imagen ? [p.imagen] : []);
+
+async function subirFotos(env, nombre, fotos) {
+  const nombres = [];
+  for (let i = 0; i < fotos.length; i++) {
+    const ext = String(fotos[i].ext || "jpg").replace(".", "").toLowerCase();
+    const archivo = `${limpiarTexto(nombre)}_${Date.now()}_${i}.${ext}`;
+    await putFile(env, `img/${archivo}`, fotos[i].base64, `Sube foto: ${nombre}`, null);
+    nombres.push(archivo);
+  }
+  return nombres;
+}
+
+async function borrarFotos(env, archivos) {
+  for (const a of archivos) {
+    try {
+      const f = await getFile(env, `img/${a}`);
+      if (f.exists) await deleteFile(env, `img/${a}`, f.sha, `Elimina foto: ${a}`);
+    } catch (_) {}
+  }
+}
+
+async function handleProductos(env) {
+  const { productos } = await leerProductos(env);
+  return jsonResponse(productos);
+}
+
 async function handleAgregar(request, env) {
   const body = await request.json();
-  const { password, nombre, precio, descripcion, categoria, imagenBase64, imagenExt } = body;
+  const { password, nombre, precio, descripcion, categoria } = body;
+  const fotos = Array.isArray(body.fotos) ? body.fotos : body.imagenBase64 ? [{ base64: body.imagenBase64, ext: body.imagenExt }] : [];
 
   if (!checkPassword(env, password)) return jsonResponse({ error: "Clave incorrecta" }, 401);
-  if (!nombre || !precio || !imagenBase64) {
-    return jsonResponse({ error: "Faltan datos (nombre, precio o imagen)" }, 400);
-  }
+  if (!nombre || !precio || fotos.length === 0) return jsonResponse({ error: "Faltan datos (nombre, precio o fotos)" }, 400);
+  if (fotos.length > MAX_FOTOS) return jsonResponse({ error: `Máximo ${MAX_FOTOS} fotos por producto` }, 400);
 
-  const ext = (imagenExt || "jpg").replace(".", "");
-  const nombreArchivo = `${limpiarTexto(nombre)}_${Date.now()}.${ext}`;
+  const nombres = await subirFotos(env, nombre, fotos);
 
-  // 1) Subir la imagen (archivo nuevo siempre => nunca hay conflicto)
-  await putFile(env, `img/${nombreArchivo}`, imagenBase64, `Sube foto: ${nombre}`, null);
-
-  // 2) Agregar la entrada al products.json (con un reintento si alguien más escribió justo antes)
   for (let intento = 0; intento < 2; intento++) {
     const { productos, sha } = await leerProductos(env);
     productos.push({
-      imagen: nombreArchivo,
+      id: nombres[0],
+      imagen: nombres[0],
+      imagenes: nombres,
       nombre: String(nombre).trim(),
       precio: isNaN(Number(precio)) ? String(precio) : Number(precio),
       descripcion: String(descripcion || "").trim(),
@@ -136,34 +162,81 @@ async function handleAgregar(request, env) {
     });
     try {
       await guardarProductos(env, productos, sha, `Agregado producto: ${nombre}`);
-      return jsonResponse({ ok: true, imagen: nombreArchivo });
+      return jsonResponse({ ok: true, imagen: nombres[0] });
     } catch (e) {
       if (intento === 1) return jsonResponse({ error: "No se pudo guardar el producto: " + e.message }, 500);
-      // si falló por sha desactualizado, reintenta leyendo de nuevo
     }
   }
 }
 
-async function handleEliminar(request, env) {
+async function handleEditar(request, env) {
   const body = await request.json();
-  const { password, imagen } = body;
+  const { password, id, nombre, precio, descripcion, categoria, orden } = body;
+  const fotosNuevas = Array.isArray(body.fotosNuevas) ? body.fotosNuevas : [];
 
   if (!checkPassword(env, password)) return jsonResponse({ error: "Clave incorrecta" }, 401);
-  if (!imagen) return jsonResponse({ error: "Falta indicar qué producto eliminar" }, 400);
+  if (!id || !nombre || !precio) return jsonResponse({ error: "Faltan datos (nombre o precio)" }, 400);
+  if (!Array.isArray(orden) || orden.length === 0) return jsonResponse({ error: "El producto necesita al menos una foto" }, 400);
+  if (orden.length > MAX_FOTOS) return jsonResponse({ error: `Máximo ${MAX_FOTOS} fotos por producto` }, 400);
+
+  const nuevas = await subirFotos(env, nombre, fotosNuevas);
 
   for (let intento = 0; intento < 2; intento++) {
     const { productos, sha } = await leerProductos(env);
-    const nuevaLista = productos.filter((p) => p.imagen !== imagen);
-    if (nuevaLista.length === productos.length) {
-      return jsonResponse({ error: "No se encontró ese producto" }, 404);
-    }
+    const i = productos.findIndex((p) => idDe(p) === id);
+    if (i < 0) return jsonResponse({ error: "No se encontró ese producto" }, 404);
+
+    const p = productos[i];
+    const actuales = fotosDe(p);
+    // "orden" mezcla fotos existentes (nombre de archivo) y nuevas ("nuevo:0", "nuevo:1"...)
+    const finales = orden
+      .map((o) => (String(o).startsWith("nuevo:") ? nuevas[Number(o.slice(6))] : actuales.includes(o) ? o : null))
+      .filter(Boolean);
+    if (finales.length === 0) return jsonResponse({ error: "El producto necesita al menos una foto" }, 400);
+
+    productos[i] = {
+      ...p,
+      id: idDe(p),
+      imagen: finales[0],
+      imagenes: finales,
+      nombre: String(nombre).trim(),
+      precio: isNaN(Number(precio)) ? String(precio) : Number(precio),
+      descripcion: String(descripcion || "").trim(),
+      categoria: String(categoria || p.categoria || "sin-categoria").trim().toLowerCase(),
+    };
     try {
-      await guardarProductos(env, nuevaLista, sha, `Eliminado producto (${imagen})`);
-      // borramos también la foto para no acumular archivos sueltos
-      const archivoImg = await getFile(env, `img/${imagen}`);
-      if (archivoImg.exists) {
-        await deleteFile(env, `img/${imagen}`, archivoImg.sha, `Elimina foto: ${imagen}`);
-      }
+      await guardarProductos(env, productos, sha, `Editado producto: ${nombre}`);
+      await borrarFotos(env, actuales.filter((f) => !finales.includes(f)));
+      return jsonResponse({ ok: true });
+    } catch (e) {
+      if (intento === 1) return jsonResponse({ error: "No se pudo guardar los cambios: " + e.message }, 500);
+    }
+  }
+}
+
+async function handleVerificar(request, env) {
+  const body = await request.json();
+  const { password } = body;
+  if (!checkPassword(env, password)) return jsonResponse({ error: "Clave incorrecta" }, 401);
+  return jsonResponse({ ok: true });
+}
+
+async function handleEliminar(request, env) {
+  const body = await request.json();
+  const { password } = body;
+  const id = body.id || body.imagen;
+
+  if (!checkPassword(env, password)) return jsonResponse({ error: "Clave incorrecta" }, 401);
+  if (!id) return jsonResponse({ error: "Falta indicar qué producto eliminar" }, 400);
+
+  for (let intento = 0; intento < 2; intento++) {
+    const { productos, sha } = await leerProductos(env);
+    const borrado = productos.find((p) => idDe(p) === id || p.imagen === id);
+    if (!borrado) return jsonResponse({ error: "No se encontró ese producto" }, 404);
+    const nuevaLista = productos.filter((p) => p !== borrado);
+    try {
+      await guardarProductos(env, nuevaLista, sha, `Eliminado producto (${id})`);
+      await borrarFotos(env, fotosDe(borrado));
       return jsonResponse({ ok: true });
     } catch (e) {
       if (intento === 1) return jsonResponse({ error: "No se pudo eliminar: " + e.message }, 500);
@@ -180,8 +253,17 @@ export default {
     const url = new URL(request.url);
 
     try {
+      if (request.method === "POST" && url.pathname === "/verificar") {
+        return await handleVerificar(request, env);
+      }
       if (request.method === "POST" && url.pathname === "/agregar") {
         return await handleAgregar(request, env);
+      }
+      if (request.method === "POST" && url.pathname === "/editar") {
+        return await handleEditar(request, env);
+      }
+      if (request.method === "GET" && url.pathname === "/productos") {
+        return await handleProductos(env);
       }
       if (request.method === "POST" && url.pathname === "/eliminar") {
         return await handleEliminar(request, env);

@@ -305,6 +305,17 @@
         .close-btn:hover {
             background: rgba(255, 255, 255, 0.2);
         }
+        .nav { position: absolute; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; border: none; border-radius: 50%; background: rgba(255,255,255,0.9); color: var(--text-main); font-size: 20px; line-height: 1; cursor: pointer; box-shadow: 0 1px 4px rgba(0,0,0,0.2); opacity: 0; transition: opacity 0.2s; }
+        .nav.prev { left: 8px; } .nav.next { right: 8px; }
+        .card-image-wrapper:hover .nav, .card-image-wrapper:focus-within .nav { opacity: 1; }
+        @media (hover: none) { .nav { opacity: 1; } }
+        .dots { position: absolute; bottom: 8px; left: 0; right: 0; display: flex; justify-content: center; gap: 5px; pointer-events: none; }
+        .dots span { width: 7px; height: 7px; border-radius: 50%; background: rgba(15,23,42,0.25); }
+        .dots span.on { background: var(--cobre); }
+        .modal-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 46px; height: 46px; border: none; border-radius: 50%; background: rgba(255,255,255,0.15); color: #fff; font-size: 28px; cursor: pointer; display: none; align-items: center; justify-content: center; }
+        .modal-nav:hover { background: rgba(255,255,255,0.3); }
+        #modalPrev { left: 20px; } #modalNext { right: 20px; }
+        #modalCount { position: absolute; bottom: 22px; left: 0; right: 0; text-align: center; color: #fff; font-size: 0.9rem; }
     </style>
 </head>
 <body>
@@ -330,7 +341,10 @@
     <!-- MODAL -->
     <div id="imageModal" class="modal">
         <span class="close-btn" id="closeModal">&times;</span>
+        <button class="modal-nav" id="modalPrev" type="button">‹</button>
         <img class="modal-content" id="modalImg" alt="Imagen ampliada">
+        <button class="modal-nav" id="modalNext" type="button">›</button>
+        <div id="modalCount"></div>
     </div>
 
     <script>
@@ -450,6 +464,7 @@
                     const imagen = String(prod.imagen).trim();
                     if (imagen === "" || imagen.toLowerCase() === "undefined" || imagen.toLowerCase() === "null") return;
 
+                    const fotos = (Array.isArray(prod.imagenes) && prod.imagenes.length ? prod.imagenes : [imagen]).map(f => String(f).trim()).filter(Boolean);
                     const nombre = prod.nombre ? String(prod.nombre).trim() : 'Producto';
                     let precio = prod.precio !== undefined ? prod.precio : 'Consultar';
 
@@ -461,14 +476,15 @@
 
                     const descripcion = prod.descripcion ? String(prod.descripcion).trim() : '';
 
-                    const urlFoto = `${window.location.origin}${window.location.pathname.replace(/\/$/, '')}/img/${imagen}`;
+                    const urlFoto = new URL('img/' + fotos[0], window.location.href).href;
                     const textoMensaje = encodeURIComponent(`Hola! Me interesa este producto:\n\n*${nombre}*\nPrecio: ${precio}\nFoto: ${urlFoto}`);
 
                     const card = document.createElement("div");
                     card.className = "card";
                     card.innerHTML = `
-                        <div class="card-image-wrapper" onclick="abrirModal('img/${imagen}')" title="Ampliar imagen">
-                            <img src="img/${imagen}" alt="${nombre}" onerror="this.closest('.card').remove();">
+                        <div class="card-image-wrapper" title="Ampliar imagen">
+                            <img src="img/${fotos[0]}" alt="${nombre}">
+                            ${fotos.length > 1 ? `<button class="nav prev" type="button">‹</button><button class="nav next" type="button">›</button><div class="dots">${fotos.map((_, i) => `<span class="${i === 0 ? 'on' : ''}"></span>`).join('')}</div>` : ''}
                         </div>
                         <h3>${nombre}</h3>
                         <div class="price">${precio}</div>
@@ -478,6 +494,19 @@
                             Consultar por WhatsApp
                         </a>
                     `;
+                    let idx = 0;
+                    const img = card.querySelector("img");
+                    const puntos = card.querySelectorAll(".dots span");
+                    img.onerror = () => { if (idx === 0) card.remove(); };
+                    const ir = (d) => {
+                        idx = (idx + d + fotos.length) % fotos.length;
+                        img.src = "img/" + fotos[idx];
+                        puntos.forEach((p, i) => p.classList.toggle("on", i === idx));
+                    };
+                    const prev = card.querySelector(".prev"), next = card.querySelector(".next");
+                    if (prev) prev.onclick = (e) => { e.stopPropagation(); ir(-1); };
+                    if (next) next.onclick = (e) => { e.stopPropagation(); ir(1); };
+                    card.querySelector(".card-image-wrapper").onclick = () => abrirModal(fotos.map(f => "img/" + f), idx);
                     contenedor.appendChild(card);
                 });
             }
@@ -538,7 +567,7 @@
                         logo.classList.add("visible");
                         // El logo ya trae el nombre "Wellsshop" escrito, así que
                         // no lo repetimos con el título de texto.
-                        document.getElementById("titulo-texto").classList.add("oculto");
+                        const t = document.getElementById("titulo-texto"); if (t) t.classList.add("oculto");
                     };
                     logo.onerror = () => { i++; probar(); };
                     logo.src = candidatos[i];
@@ -571,10 +600,40 @@
         const modalImg = document.getElementById("modalImg");
         const closeModal = document.getElementById("closeModal");
 
-        function abrirModal(rutaImagen) {
-            modal.style.display = "flex";
-            modalImg.src = rutaImagen;
+        let galeria = [], gi = 0;
+        function mostrarModal() {
+            modalImg.src = galeria[gi];
+            const varias = galeria.length > 1;
+            document.getElementById("modalPrev").style.display = varias ? "flex" : "none";
+            document.getElementById("modalNext").style.display = varias ? "flex" : "none";
+            document.getElementById("modalCount").textContent = varias ? `${gi + 1} / ${galeria.length}` : "";
         }
+        function abrirModal(fotos, i = 0) {
+            galeria = Array.isArray(fotos) ? fotos : [fotos];
+            gi = i;
+            modal.style.display = "flex";
+            mostrarModal();
+        }
+        function moverModal(d) {
+            gi = (gi + d + galeria.length) % galeria.length;
+            mostrarModal();
+        }
+        document.getElementById("modalPrev").onclick = (e) => { e.stopPropagation(); moverModal(-1); };
+        document.getElementById("modalNext").onclick = (e) => { e.stopPropagation(); moverModal(1); };
+        document.addEventListener("keydown", (e) => {
+            if (modal.style.display !== "flex") return;
+            if (e.key === "Escape") modal.style.display = "none";
+            if (e.key === "ArrowLeft") moverModal(-1);
+            if (e.key === "ArrowRight") moverModal(1);
+        });
+        let toqueX = null;
+        modal.addEventListener("touchstart", (e) => { toqueX = e.touches[0].clientX; }, { passive: true });
+        modal.addEventListener("touchend", (e) => {
+            if (toqueX === null || galeria.length < 2) return;
+            const dx = e.changedTouches[0].clientX - toqueX;
+            if (Math.abs(dx) > 50) moverModal(dx < 0 ? 1 : -1);
+            toqueX = null;
+        });
 
         closeModal.onclick = function() {
             modal.style.display = "none";
