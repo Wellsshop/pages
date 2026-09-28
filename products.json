@@ -1,14 +1,1 @@
-[
-  {
-    "id": "reloj_1_1790607755767_0.jpeg",
-    "imagen": "reloj_1_1790607755767_0.jpeg",
-    "imagenes": [
-      "reloj_1_1790607755767_0.jpeg",
-      "reloj_1_1790608100720_0.jpg"
-    ],
-    "nombre": "Reloj 1",
-    "precio": 300000,
-    "descripcion": "Reloj 1 descripcion",
-    "categoria": "relojes"
-  }
-]
+[]
