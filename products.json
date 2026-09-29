@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "id": "the_tote_bag_bymarc_jacobb_1790716796796_0.jpg",
+    "imagen": "the_tote_bag_bymarc_jacobb_1790716796796_0.jpg",
+    "imagenes": [
+      "the_tote_bag_bymarc_jacobb_1790716796796_0.jpg",
+      "the_tote_bag_bymarc_jacobb_1790716798389_1.jpg",
+      "the_tote_bag_bymarc_jacobb_1790716800236_2.jpg",
+      "the_tote_bag_bymarc_jacobb_1790716801816_3.jpg",
+      "the_tote_bag_bymarc_jacobb_1790716803351_4.jpg"
+    ],
+    "nombre": "THE TOTE BAG - ByMarc Jacobb",
+    "precio": 350000,
+    "descripcion": "Con mini cartera, color gris, negra, marrón y beige",
+    "categoria": "carteras"
+  }
+]
