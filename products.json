@@ -13,5 +13,17 @@
     "precio": 350000,
     "descripcion": "Con mini cartera, color gris, negra, marrón y beige",
     "categoria": "carteras"
+  },
+  {
+    "id": "neverfull_by_louis_vuitton_1790717181175_0.jpg",
+    "imagen": "neverfull_by_louis_vuitton_1790717181175_0.jpg",
+    "imagenes": [
+      "neverfull_by_louis_vuitton_1790717181175_0.jpg",
+      "neverfull_by_louis_vuitton_1790717182476_1.jpg"
+    ],
+    "nombre": "NEVERFULL by Louis Vuitton",
+    "precio": 350000,
+    "descripcion": "Modelo Mediano \nMonedero extraible con cierre",
+    "categoria": "carteras"
   }
 ]
