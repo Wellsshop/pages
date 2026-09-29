@@ -47,5 +47,16 @@
     "precio": 300000,
     "descripcion": "Con monedero redondo  extraible y llavero",
     "categoria": "carteras"
+  },
+  {
+    "id": "milano_baul_1790719369271_0.jpg",
+    "imagen": "milano_baul_1790719369271_0.jpg",
+    "imagenes": [
+      "milano_baul_1790719369271_0.jpg"
+    ],
+    "nombre": "MILANO Baul",
+    "precio": 250000,
+    "descripcion": "Baulito con llavero de rosa",
+    "categoria": "carteras"
   }
 ]
