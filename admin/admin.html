@@ -16,6 +16,8 @@
     --green-dark: #059669;
     --red: #ef4444;
     --border: #e2e8f0;
+    --soft: #f1f5f9;
+    --soft-hover: #e2e8f0;
   }
   * { box-sizing: border-box; }
   body {
@@ -63,10 +65,10 @@
   .btn-danger { background: #fee2e2; color: #991b1b; width: auto; padding: 8px 14px; font-size: 0.85rem; }
   .btn-danger:hover { background: #fecaca; }
   .btn-no {
-    background: #f1f5f9; color: var(--muted); width: auto;
+    background: var(--soft); color: var(--muted); width: auto;
     padding: 8px 14px; font-size: 0.85rem;
   }
-  .btn-no:hover { background: #e2e8f0; }
+  .btn-no:hover { background: var(--soft-hover); }
   .acciones { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
   .confirmar-texto { font-size: 0.85rem; color: var(--muted); white-space: nowrap; }
   #avisoLista { font-size: 0.9rem; padding: 0; border-radius: 8px; margin-bottom: 12px; }
@@ -92,7 +94,7 @@
   }
   .producto-row:last-child { border-bottom: none; }
   .producto-row img {
-    width: 56px; height: 56px; object-fit: contain; background: #f1f5f9;
+    width: 56px; height: 56px; object-fit: contain; background: var(--soft);
     border-radius: 8px; flex-shrink: 0;
   }
   .producto-info { flex-grow: 1; min-width: 0; }
@@ -120,17 +122,31 @@
 
   #listaEstado { color: var(--muted); font-size: 0.9rem; }
   .fotos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 8px; margin-bottom: 8px; }
-  .foto-item { position: relative; aspect-ratio: 1; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: #f1f5f9; }
+  .foto-item { position: relative; aspect-ratio: 1; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--soft); }
   .foto-item img { width: 100%; height: 100%; object-fit: contain; }
   .foto-item .badge { position: absolute; top: 4px; left: 4px; background: var(--green); color: #fff; font-size: 0.65rem; font-weight: 700; padding: 2px 6px; border-radius: 999px; }
   .foto-acc { position: absolute; bottom: 0; left: 0; right: 0; display: flex; background: rgba(15,23,42,0.7); }
   .foto-acc button { flex: 1; width: auto; padding: 5px 0; font-size: 0.8rem; background: none; color: #fff; border-radius: 0; }
-  .btn-foto { background: #f1f5f9; color: var(--text); border: 1px dashed var(--muted); }
+  .btn-foto { background: var(--soft); color: var(--text); border: 1px dashed var(--muted); }
+  .btn-foto:hover { background: var(--soft-hover); }
+  .foto-acc button:hover { background: rgba(255,255,255,0.2); }
   .btn-editar { margin-left: auto; }
   .modal-edit { display: none; position: fixed; inset: 0; z-index: 100; background: rgba(15,23,42,0.6); align-items: flex-start; justify-content: center; overflow-y: auto; padding: 24px 14px; }
   .modal-box { background: var(--card); border-radius: 14px; padding: 22px; width: 100%; max-width: 560px; }
   .modal-box h2 { margin: 0 0 16px; font-size: 1.1rem; }
   .modal-box .botones { display: flex; gap: 10px; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #0b1220; --card: #111827; --text: #e5e7eb; --muted: #94a3b8; --accent: #020617; --border: #263244; --soft: #1f2937; --soft-hover: #2b3648; }
+    .btn-danger { background: #451a1a; color: #fca5a5; }
+    .btn-danger:hover { background: #5b2020; }
+    .btn-primary:disabled { background: #14532d; color: #86efac; }
+    .ok, #avisoLista.ok { background: #064e3b; color: #a7f3d0; }
+    .error, #avisoLista.error { background: #451a1a; color: #fca5a5; }
+    .foto-acc { background: rgba(0,0,0,0.75); }
+    .foto-item .badge { background: var(--green-dark); }
+    .modal-edit { background: rgba(0,0,0,0.75); }
+    input, select, textarea { color-scheme: dark; }
+  }
 </style>
 </head>
 <body>
