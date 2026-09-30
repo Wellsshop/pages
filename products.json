@@ -166,5 +166,16 @@
     "precio": 160000,
     "descripcion": "",
     "categoria": "lentes"
+  },
+  {
+    "id": "miu_miu_sunglasses_geometric_1790730970630_0.jpg",
+    "imagen": "miu_miu_sunglasses_geometric_1790730970630_0.jpg",
+    "imagenes": [
+      "miu_miu_sunglasses_geometric_1790730970630_0.jpg"
+    ],
+    "nombre": "Miu Miu Sunglasses Geometric",
+    "precio": 160000,
+    "descripcion": "",
+    "categoria": "lentes"
   }
 ]
