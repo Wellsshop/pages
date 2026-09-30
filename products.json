@@ -143,5 +143,17 @@
     "precio": 160000,
     "descripcion": "",
     "categoria": "lentes"
+  },
+  {
+    "id": "chanel_5171_mademoiselle_chain_1790730282226_0.jpg",
+    "imagen": "chanel_5171_mademoiselle_chain_1790730282226_0.jpg",
+    "imagenes": [
+      "chanel_5171_mademoiselle_chain_1790730282226_0.jpg",
+      "chanel_5171_mademoiselle_chain_1790730283612_1.jpg"
+    ],
+    "nombre": "Chanel 5171 Mademoiselle Chain",
+    "precio": 160000,
+    "descripcion": "",
+    "categoria": "lentes"
   }
 ]
