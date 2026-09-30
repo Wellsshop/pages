@@ -69,5 +69,16 @@
     "precio": 200000,
     "descripcion": "Cartera grande borravino",
     "categoria": "carteras"
+  },
+  {
+    "id": "tote_croco_vintage_1790728967253_0.jpg",
+    "imagen": "tote_croco_vintage_1790728967253_0.jpg",
+    "imagenes": [
+      "tote_croco_vintage_1790728967253_0.jpg"
+    ],
+    "nombre": "Tote Croco Vintage",
+    "precio": 200000,
+    "descripcion": "Croco Vintage Charolado",
+    "categoria": "carteras"
   }
 ]
