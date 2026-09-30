@@ -129,5 +129,19 @@
     "precio": 160000,
     "descripcion": "",
     "categoria": "lentes"
+  },
+  {
+    "id": "chanel_oversized_1790729770854_0.jpg",
+    "imagen": "chanel_oversized_1790729770854_0.jpg",
+    "imagenes": [
+      "chanel_oversized_1790729770854_0.jpg",
+      "chanel_oversized_1790729772228_1.jpg",
+      "chanel_oversized_1790729773885_2.jpg",
+      "chanel_oversized_1790729775474_3.jpg"
+    ],
+    "nombre": "Chanel Oversized",
+    "precio": 160000,
+    "descripcion": "",
+    "categoria": "lentes"
   }
 ]
