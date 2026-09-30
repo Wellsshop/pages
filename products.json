@@ -91,5 +91,17 @@
     "precio": 160000,
     "descripcion": "",
     "categoria": "lentes"
+  },
+  {
+    "id": "prada_shield_1790729398436_0.jpg",
+    "imagen": "prada_shield_1790729398436_0.jpg",
+    "imagenes": [
+      "prada_shield_1790729398436_0.jpg",
+      "prada_shield_1790729399788_1.jpg"
+    ],
+    "nombre": "Prada Shield",
+    "precio": 160000,
+    "descripcion": "",
+    "categoria": "lentes"
   }
 ]
