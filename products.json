@@ -80,5 +80,16 @@
     "precio": 200000,
     "descripcion": "Croco Vintage Charolado",
     "categoria": "carteras"
+  },
+  {
+    "id": "cartier_clasic_c_1790729096923_0.jpg",
+    "imagen": "cartier_clasic_c_1790729096923_0.jpg",
+    "imagenes": [
+      "cartier_clasic_c_1790729096923_0.jpg"
+    ],
+    "nombre": "Cartier Clasic C",
+    "precio": 160000,
+    "descripcion": "",
+    "categoria": "lentes"
   }
 ]
