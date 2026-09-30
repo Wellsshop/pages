@@ -155,5 +155,16 @@
     "precio": 160000,
     "descripcion": "",
     "categoria": "lentes"
+  },
+  {
+    "id": "miu_miu_logo_rimless_oval_1790730464120_0.jpg",
+    "imagen": "miu_miu_logo_rimless_oval_1790730464120_0.jpg",
+    "imagenes": [
+      "miu_miu_logo_rimless_oval_1790730464120_0.jpg"
+    ],
+    "nombre": "Miu Miu Logo Rimless Oval",
+    "precio": 160000,
+    "descripcion": "",
+    "categoria": "lentes"
   }
 ]
