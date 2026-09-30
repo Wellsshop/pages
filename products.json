@@ -188,5 +188,16 @@
     "precio": 160000,
     "descripcion": "",
     "categoria": "lentes"
+  },
+  {
+    "id": "miu_miu_gold_bridge_rectangular_1790731274477_0.jpg",
+    "imagen": "miu_miu_gold_bridge_rectangular_1790731274477_0.jpg",
+    "imagenes": [
+      "miu_miu_gold_bridge_rectangular_1790731274477_0.jpg"
+    ],
+    "nombre": "Miu Miu Gold-Bridge Rectangular",
+    "precio": 160000,
+    "descripcion": "",
+    "categoria": "lentes"
   }
 ]
