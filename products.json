@@ -58,5 +58,16 @@
     "precio": 250000,
     "descripcion": "Baulito negro con llavero de en forma de rosa",
     "categoria": "carteras"
+  },
+  {
+    "id": "kangaroo_bag_1790728820891_0.jpg",
+    "imagen": "kangaroo_bag_1790728820891_0.jpg",
+    "imagenes": [
+      "kangaroo_bag_1790728820891_0.jpg"
+    ],
+    "nombre": "Kangaroo bag",
+    "precio": 200000,
+    "descripcion": "Cartera grande borravino",
+    "categoria": "carteras"
   }
 ]
