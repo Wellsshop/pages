@@ -125,6 +125,10 @@
   .foto-item { position: relative; aspect-ratio: 1; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--soft); }
   .foto-item img { width: 100%; height: 100%; object-fit: contain; }
   .foto-item .badge { position: absolute; top: 4px; left: 4px; background: var(--green); color: #fff; font-size: 0.65rem; font-weight: 700; padding: 2px 6px; border-radius: 999px; }
+  .lista-tabs { display: none; flex-wrap: nowrap; gap: 8px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 12px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .lista-tabs::-webkit-scrollbar { display: none; }
+  .tab-btn { flex: 0 0 auto; font-family: inherit; font-weight: 600; font-size: 0.82rem; padding: 7px 14px; border-radius: 999px; border: 1px solid var(--border); background: var(--soft); color: var(--muted); cursor: pointer; }
+  .tab-btn.activo { background: var(--accent); color: #fff; border-color: var(--accent); }
   .foto-acc { position: absolute; bottom: 0; left: 0; right: 0; display: flex; background: rgba(15,23,42,0.7); }
   .foto-acc button { flex: 1; width: auto; padding: 5px 0; font-size: 0.8rem; background: none; color: #fff; border-radius: 0; }
   .btn-foto { background: var(--soft); color: var(--text); border: 1px dashed var(--muted); }
@@ -211,6 +215,7 @@
     <h2>🗑️ Productos actuales</h2>
     <div id="avisoLista"></div>
     <div id="listaEstado">Cargando...</div>
+    <div class="lista-tabs" id="listaTabs"></div>
     <div class="barra-seleccion" id="barraSeleccion" style="display:none;">
       <label><input type="checkbox" class="chk-todos" id="chkTodos"> Seleccionar todos</label>
       <button id="btnEliminarSeleccion" disabled>Eliminar seleccionados</button>
@@ -433,6 +438,9 @@
   };
 
   const seleccionados = new Set();
+  let categoriaListaActiva = "todas";
+  const listaTabs = document.getElementById("listaTabs");
+  const NOMBRES_CAT_LISTA = { relojes: "Relojes", carteras: "Carteras", lentes: "Lentes", gadgets: "Gadgets" };
   const barraSeleccion = document.getElementById("barraSeleccion");
   const chkTodos = document.getElementById("chkTodos");
   const btnEliminarSeleccion = document.getElementById("btnEliminarSeleccion");
@@ -476,6 +484,7 @@
       }
       listaEstado.textContent = "";
       barraSeleccion.style.display = "flex";
+      pintarTabsLista(productos);
 
       productos.forEach((p) => {
         const id = p.id || p.imagen;
@@ -506,13 +515,57 @@
         row.querySelector(".btn-editar").onclick = () => abrirEdicion(p);
 
         row.dataset.imagen = id;
+        row.dataset.categoria = (p.categoria || "sin-categoria").trim().toLowerCase();
         listaProductos.appendChild(row);
       });
 
-      actualizarBarraSeleccion(productos.length);
+      aplicarFiltroLista();
     } catch (e) {
       listaEstado.textContent = "No se pudo cargar el catálogo: " + e.message;
     }
+  }
+
+  function pintarTabsLista(productos) {
+    const presentes = [...new Set(productos.map((p) => (p.categoria || "sin-categoria").trim().toLowerCase()))];
+    const orden = ["relojes", "carteras", "lentes", "gadgets"];
+    const ordenadas = [...orden.filter((c) => presentes.includes(c)), ...presentes.filter((c) => !orden.includes(c)).sort()];
+
+    if (ordenadas.length <= 1) {
+      listaTabs.style.display = "none";
+      categoriaListaActiva = "todas";
+      return;
+    }
+
+    if (categoriaListaActiva !== "todas" && !ordenadas.includes(categoriaListaActiva)) categoriaListaActiva = "todas";
+
+    listaTabs.style.display = "flex";
+    listaTabs.innerHTML = "";
+    ["todas", ...ordenadas].forEach((cat) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "tab-btn" + (cat === categoriaListaActiva ? " activo" : "");
+      btn.textContent = cat === "todas" ? "Todas" : (NOMBRES_CAT_LISTA[cat] || (cat.charAt(0).toUpperCase() + cat.slice(1)));
+      btn.onclick = () => {
+        categoriaListaActiva = cat;
+        [...listaTabs.children].forEach((b) => b.classList.remove("activo"));
+        btn.classList.add("activo");
+        aplicarFiltroLista();
+      };
+      listaTabs.appendChild(btn);
+    });
+  }
+
+  function aplicarFiltroLista() {
+    const filas = [...document.querySelectorAll("#listaProductos .producto-row")];
+    filas.forEach((row) => {
+      const visible = categoriaListaActiva === "todas" || row.dataset.categoria === categoriaListaActiva;
+      row.style.display = visible ? "" : "none";
+      if (!visible && seleccionados.has(row.dataset.imagen)) {
+        seleccionados.delete(row.dataset.imagen);
+        row.querySelector(".chk-producto").checked = false;
+      }
+    });
+    actualizarBarraSeleccion(filas.filter((f) => f.style.display !== "none").length);
   }
 
   // ---------- Edición ----------
@@ -577,7 +630,7 @@
   };
 
   chkTodos.onchange = () => {
-    const filas = document.querySelectorAll("#listaProductos .producto-row");
+    const filas = [...document.querySelectorAll("#listaProductos .producto-row")].filter((f) => f.style.display !== "none");
     filas.forEach((row) => {
       const chk = row.querySelector(".chk-producto");
       chk.checked = chkTodos.checked;
@@ -602,7 +655,7 @@
     setTimeout(() => {
       // si en 4 segundos no confirmó, volvemos al texto normal
       if (btnEliminarSeleccion.textContent.startsWith("¿Seguro")) {
-        actualizarBarraSeleccion(document.querySelectorAll("#listaProductos .producto-row").length);
+        actualizarBarraSeleccion([...document.querySelectorAll("#listaProductos .producto-row")].filter((f) => f.style.display !== "none").length);
       }
     }, 4000);
   };
@@ -651,12 +704,14 @@
       mostrarAvisoLista(`Se eliminaron ${hechos}. Hubo ${fallidos.length} error(es): ${fallidos[0]}`, "error");
     }
 
-    const filasRestantes = document.querySelectorAll("#listaProductos .producto-row").length;
-    if (filasRestantes === 0) {
+    const todasLasFilas = document.querySelectorAll("#listaProductos .producto-row");
+    if (todasLasFilas.length === 0) {
       barraSeleccion.style.display = "none";
+      listaTabs.style.display = "none";
       document.getElementById("listaEstado").textContent = "No hay productos cargados todavía.";
     } else {
-      actualizarBarraSeleccion(filasRestantes);
+      const visibles = [...todasLasFilas].filter((f) => f.style.display !== "none").length;
+      actualizarBarraSeleccion(visibles);
     }
   }
 
