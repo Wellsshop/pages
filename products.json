@@ -236,5 +236,17 @@
     "descripcion": "Malla metal fondo azul",
     "categoria": "relojes",
     "marca": "Hublot"
+  },
+  {
+    "id": "rolex_chrono_1791143170817_0.jpg",
+    "imagen": "rolex_chrono_1791143170817_0.jpg",
+    "imagenes": [
+      "rolex_chrono_1791143170817_0.jpg"
+    ],
+    "nombre": "Rolex Chrono",
+    "precio": 300000,
+    "descripcion": "Roles Chronometer",
+    "categoria": "relojes",
+    "marca": "Rolex"
   }
 ]
