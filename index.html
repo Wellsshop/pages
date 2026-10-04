@@ -193,44 +193,6 @@
             font-weight: 600;
         }
 
-        /* CONTROL DE ORDEN */
-        .orden-wrap {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            max-width: 1200px;
-            margin: 0 auto 30px;
-            padding: 0 20px;
-        }
-
-        .orden-wrap label {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-muted);
-        }
-
-        .orden-wrap select {
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            font-size: 0.9rem;
-            padding: 8px 32px 8px 16px;
-            border-radius: 999px;
-            border: 1px solid var(--border-color);
-            background: var(--card-bg) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%2364748b"><path d="M5.5 7.5l4.5 4.5 4.5-4.5" stroke="%2364748b" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat right 12px center;
-            background-size: 14px;
-            color: var(--text-main);
-            cursor: pointer;
-            appearance: none;
-            -webkit-appearance: none;
-        }
-
-        .orden-wrap select:hover,
-        .orden-wrap select:focus {
-            border-color: var(--accent-color);
-            outline: none;
-        }
-
         /* GRILLA DE PRODUCTOS */
         .grid { 
             display: grid; 
@@ -412,9 +374,6 @@
             .marca-toggle { padding: 8px 14px; font-size: 0.82rem; }
             .marca-menu { left: 16px; right: 16px; min-width: 0; }
 
-            .orden-wrap { justify-content: flex-end; margin: 0 auto 14px; padding: 0 16px; gap: 6px; }
-            .orden-wrap label { display: none; }
-            .orden-wrap select { padding: 6px 26px 6px 12px; font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -424,8 +383,8 @@
         <img id="logo" alt="Wellsshop">
     </header>
 
-
-
+    <div class="categorias" id="barra-categorias"></div>
+    <div class="marcas" id="barra-marcas"></div>
     <div id="error-msg"></div>
     <div class="grid" id="catalogo-productos"></div>
 
@@ -467,32 +426,6 @@
 
             let categoriaActiva = "relojes";
             let marcaActiva = "todas";
-            let ordenActivo = "defecto";
-
-            // Saca el número de un precio, sea numérico ("300000") o texto ("Consultar").
-            // Si no se puede leer como número, devuelve null para mandarlo siempre al final.
-            function valorPrecio(prod) {
-                const n = typeof prod.precio === "number"
-                    ? prod.precio
-                    : parseFloat(String(prod.precio).replace(/[^\d.-]/g, ""));
-                return isNaN(n) ? null : n;
-            }
-
-            function ordenarLista(lista) {
-                const copia = [...lista];
-                if (ordenActivo === "nombre-asc") {
-                    copia.sort((a, b) => (a.nombre || "").localeCompare(b.nombre || "", "es", { sensitivity: "base" }));
-                } else if (ordenActivo === "precio-asc" || ordenActivo === "precio-desc") {
-                    copia.sort((a, b) => {
-                        const va = valorPrecio(a), vb = valorPrecio(b);
-                        if (va === null && vb === null) return 0;
-                        if (va === null) return 1;  // sin precio, siempre al final
-                        if (vb === null) return -1;
-                        return ordenActivo === "precio-asc" ? va - vb : vb - va;
-                    });
-                }
-                return copia;
-            }
 
             // Probamos varias ubicaciones y formas de escribir el nombre, así funciona
             // tanto si las fotos están en la raíz como dentro de img/ o fondos/,
@@ -548,7 +481,7 @@
                 if (marcaActiva !== "todas") {
                     filtrados = filtrados.filter(p => (p.marca || "").trim().toLowerCase() === marcaActiva);
                 }
-                const visibles = ordenarLista(filtrados);
+                const visibles = filtrados;
 
                 if (visibles.length === 0) {
                     contenedor.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--text-muted);">No hay productos en esta categoría todavía.</p>';
@@ -749,10 +682,6 @@
                     pintarBotonesCategoria(productos);
                     pintarBotonesMarca(productos);
                     pintarProductos(productos);
-                    document.getElementById("orden-select").onchange = (e) => {
-                        ordenActivo = e.target.value;
-                        pintarProductos(productos);
-                    };
                 })
                 .catch(error => {
                     console.error(error);
