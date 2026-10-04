@@ -223,5 +223,18 @@
     "descripcion": "Malla cuero amarilla",
     "categoria": "relojes",
     "marca": "Tag heuer"
+  },
+  {
+    "id": "hublot_maradona_1791141896445_0.jpg",
+    "imagen": "hublot_maradona_1791141896445_0.jpg",
+    "imagenes": [
+      "hublot_maradona_1791141896445_0.jpg",
+      "hublot_maradona_1791141897894_1.jpg"
+    ],
+    "nombre": "Hublot Maradona",
+    "precio": 300000,
+    "descripcion": "Malla metal fondo azul",
+    "categoria": "relojes",
+    "marca": "Hublot"
   }
 ]
