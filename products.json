@@ -210,5 +210,18 @@
     "precio": 160000,
     "descripcion": "",
     "categoria": "lentes"
+  },
+  {
+    "id": "tag_heuer_f1_1791141795008_0.jpg",
+    "imagen": "tag_heuer_f1_1791141795008_0.jpg",
+    "imagenes": [
+      "tag_heuer_f1_1791141795008_0.jpg",
+      "tag_heuer_f1_1791141796237_1.jpg"
+    ],
+    "nombre": "Tag Heuer F1",
+    "precio": 300000,
+    "descripcion": "Malla cuero amarilla",
+    "categoria": "relojes",
+    "marca": "Tag heuer"
   }
 ]
