@@ -248,5 +248,17 @@
     "descripcion": "Roles Chronometer",
     "categoria": "relojes",
     "marca": "Rolex"
+  },
+  {
+    "id": "audemars_piguet_1791143242615_0.jpg",
+    "imagen": "audemars_piguet_1791143242615_0.jpg",
+    "imagenes": [
+      "audemars_piguet_1791143242615_0.jpg"
+    ],
+    "nombre": "Audemars Piguet",
+    "precio": 300000,
+    "descripcion": "Audemars Negro",
+    "categoria": "relojes",
+    "marca": "Audemars"
   }
 ]
