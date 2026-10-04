@@ -260,5 +260,17 @@
     "descripcion": "Audemars Negro",
     "categoria": "relojes",
     "marca": "Audemars"
+  },
+  {
+    "id": "cargados_12_v_1791144262385_0.jpg",
+    "imagen": "cargados_12_v_1791144262385_0.jpg",
+    "imagenes": [
+      "cargados_12_v_1791144262385_0.jpg"
+    ],
+    "nombre": "Cargados 12 v",
+    "precio": 120000,
+    "descripcion": "Cargador de baterias y arrancador",
+    "categoria": "gadgets",
+    "marca": "Generico"
   }
 ]
