@@ -140,7 +140,7 @@ async function handleProductos(env) {
 
 async function handleAgregar(request, env) {
   const body = await request.json();
-  const { password, nombre, precio, descripcion, categoria } = body;
+  const { password, nombre, precio, descripcion, categoria, marca } = body;
   const fotos = Array.isArray(body.fotos) ? body.fotos : body.imagenBase64 ? [{ base64: body.imagenBase64, ext: body.imagenExt }] : [];
 
   if (!checkPassword(env, password)) return jsonResponse({ error: "Clave incorrecta" }, 401);
@@ -159,6 +159,7 @@ async function handleAgregar(request, env) {
       precio: isNaN(Number(precio)) ? String(precio) : Number(precio),
       descripcion: String(descripcion || "").trim(),
       categoria: String(categoria || "sin-categoria").trim().toLowerCase(),
+      marca: String(marca || "").trim(),
     });
     try {
       await guardarProductos(env, productos, sha, `Agregado producto: ${nombre}`);
@@ -171,7 +172,7 @@ async function handleAgregar(request, env) {
 
 async function handleEditar(request, env) {
   const body = await request.json();
-  const { password, id, nombre, precio, descripcion, categoria, orden } = body;
+  const { password, id, nombre, precio, descripcion, categoria, marca, orden } = body;
   const fotosNuevas = Array.isArray(body.fotosNuevas) ? body.fotosNuevas : [];
 
   if (!checkPassword(env, password)) return jsonResponse({ error: "Clave incorrecta" }, 401);
@@ -203,6 +204,7 @@ async function handleEditar(request, env) {
       precio: isNaN(Number(precio)) ? String(precio) : Number(precio),
       descripcion: String(descripcion || "").trim(),
       categoria: String(categoria || p.categoria || "sin-categoria").trim().toLowerCase(),
+      marca: String(marca ?? p.marca ?? "").trim(),
     };
     try {
       await guardarProductos(env, productos, sha, `Editado producto: ${nombre}`);

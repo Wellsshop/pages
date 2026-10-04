@@ -120,6 +120,40 @@
             border-color: var(--accent-color);
         }
 
+        .marcas {
+            display: none;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            max-width: 1200px;
+            margin: -16px auto 30px;
+            padding: 0 20px;
+        }
+
+        .marca-btn {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.78rem;
+            padding: 6px 14px;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            background: transparent;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .marca-btn:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .marca-btn.activo {
+            background: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+
         /* CONTROL DE ORDEN */
         .orden-wrap {
             display: flex;
@@ -325,6 +359,7 @@
     </header>
 
     <div class="categorias" id="barra-categorias"></div>
+    <div class="marcas" id="barra-marcas"></div>
     <div class="orden-wrap" id="orden-wrap">
         <label for="orden-select">Ordenar por</label>
         <select id="orden-select">
@@ -352,6 +387,7 @@
             const numeroWhatsApp = "5491159828985";
             const contenedor = document.getElementById("catalogo-productos");
             const barraCategorias = document.getElementById("barra-categorias");
+            const barraMarcas = document.getElementById("barra-marcas");
 
             // Nombres lindos para mostrar en los botones (agregá acá si sumás categorías nuevas)
             const NOMBRES_CATEGORIA = {
@@ -374,6 +410,7 @@
             const ORDEN_CATEGORIAS = ["relojes", "carteras", "lentes", "gadgets"];
 
             let categoriaActiva = "relojes";
+            let marcaActiva = "todas";
             let ordenActivo = "defecto";
 
             // Saca el número de un precio, sea numérico ("300000") o texto ("Consultar").
@@ -449,9 +486,12 @@
 
             function pintarProductos(productos) {
                 contenedor.innerHTML = "";
-                const filtrados = categoriaActiva === "todos"
+                let filtrados = categoriaActiva === "todos"
                     ? productos
                     : productos.filter(p => (p.categoria || "").toLowerCase() === categoriaActiva);
+                if (marcaActiva !== "todas") {
+                    filtrados = filtrados.filter(p => (p.marca || "").trim().toLowerCase() === marcaActiva);
+                }
                 const visibles = ordenarLista(filtrados);
 
                 if (visibles.length === 0) {
@@ -511,6 +551,41 @@
                 });
             }
 
+            function pintarBotonesMarca(productos) {
+                // Marcas presentes dentro de la categoría activa (o de todo el catálogo si "todos")
+                const enCategoria = categoriaActiva === "todos"
+                    ? productos
+                    : productos.filter(p => (p.categoria || "").toLowerCase() === categoriaActiva);
+                const marcas = [...new Set(
+                    enCategoria.map(p => (p.marca || "").trim()).filter(Boolean)
+                )].sort((a, b) => a.localeCompare(b, "es", { sensitivity: "base" }));
+
+                if (marcas.length === 0) {
+                    barraMarcas.style.display = "none";
+                    marcaActiva = "todas";
+                    return;
+                }
+
+                if (!marcas.some(m => m.toLowerCase() === marcaActiva)) marcaActiva = "todas";
+
+                barraMarcas.style.display = "flex";
+                barraMarcas.innerHTML = "";
+                const todas = ["todas", ...marcas];
+                todas.forEach((m) => {
+                    const valor = m === "todas" ? "todas" : m.toLowerCase();
+                    const btn = document.createElement("button");
+                    btn.className = "marca-btn" + (valor === marcaActiva ? " activo" : "");
+                    btn.textContent = m === "todas" ? "Todas las marcas" : m;
+                    btn.onclick = () => {
+                        marcaActiva = valor;
+                        [...barraMarcas.children].forEach(b => b.classList.remove("activo"));
+                        btn.classList.add("activo");
+                        pintarProductos(productos);
+                    };
+                    barraMarcas.appendChild(btn);
+                });
+            }
+
             function pintarBotonesCategoria(productos) {
                 // Solo mostramos botones de las categorías que realmente tienen productos
                 const presentes = [...new Set(productos.map(p => (p.categoria || "").toLowerCase()).filter(Boolean))];
@@ -542,9 +617,11 @@
                     btn.textContent = cat === "todos" ? "Todos" : (NOMBRES_CATEGORIA[cat] || cat);
                     btn.onclick = () => {
                         categoriaActiva = cat;
+                        marcaActiva = "todas";
                         [...barraCategorias.children].forEach(b => b.classList.remove("activo"));
                         btn.classList.add("activo");
                         aplicarFondo(cat);
+                        pintarBotonesMarca(productos);
                         pintarProductos(productos);
                     };
                     barraCategorias.appendChild(btn);
@@ -582,6 +659,7 @@
                 })
                 .then(productos => {
                     pintarBotonesCategoria(productos);
+                    pintarBotonesMarca(productos);
                     pintarProductos(productos);
                     document.getElementById("orden-select").onchange = (e) => {
                         ordenActivo = e.target.value;
