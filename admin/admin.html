@@ -179,6 +179,10 @@
       <input type="text" id="nombre" placeholder="Ej: Rolex Submariner">
     </div>
     <div class="field">
+      <label for="marca">Marca (para el botón de filtro)</label>
+      <input type="text" id="marca" placeholder="Ej: Tag Heuer, Hublot, Rolex...">
+    </div>
+    <div class="field">
       <label for="precio">Precio</label>
       <input type="text" id="precio" placeholder="Ej: 300000 o Consultar">
     </div>
@@ -220,6 +224,7 @@
   <div class="modal-box">
     <h2>✏️ Editar producto</h2>
     <div class="field"><label for="e_nombre">Marca y modelo</label><input type="text" id="e_nombre"></div>
+    <div class="field"><label for="e_marca">Marca (para el botón de filtro)</label><input type="text" id="e_marca" placeholder="Ej: Tag Heuer, Hublot, Rolex..."></div>
     <div class="field"><label for="e_precio">Precio</label><input type="text" id="e_precio"></div>
     <div class="field"><label for="e_descripcion">Descripción</label><textarea id="e_descripcion" rows="3"></textarea></div>
     <div class="field"><label for="e_categoria">Categoría</label><select id="e_categoria"></select></div>
@@ -408,14 +413,14 @@
       const resp = await fetch(WORKER_URL + "/agregar", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password: clave, nombre, precio, descripcion, categoria, fotos: gestorAgregar.payload().fotosNuevas }),
+        body: JSON.stringify({ password: clave, nombre, precio, descripcion, categoria, marca: $("marca").value.trim(), fotos: gestorAgregar.payload().fotosNuevas }),
       });
       const data = await resp.json();
       if (!resp.ok) throw new Error(data.error || "Error desconocido");
 
       estado.textContent = "¡Producto agregado y publicado! Puede demorar 1 minuto en verse en la web.";
       estado.className = "ok";
-      $("nombre").value = ""; $("precio").value = ""; $("descripcion").value = "";
+      $("nombre").value = ""; $("precio").value = ""; $("descripcion").value = ""; $("marca").value = "";
       gestorAgregar.set([]);
       cargarProductos();
     } catch (e) {
@@ -520,6 +525,7 @@
     $("e_nombre").value = p.nombre || "";
     $("e_precio").value = p.precio ?? "";
     $("e_descripcion").value = p.descripcion || "";
+    $("e_marca").value = p.marca || "";
     const sel = $("e_categoria");
     const cat = p.categoria || sel.options[0].value;
     if (![...sel.options].some((o) => o.value === cat)) sel.add(new Option(cat, cat));
@@ -553,6 +559,7 @@
           password: clave, id: editandoId, nombre, precio,
           descripcion: $("e_descripcion").value.trim(),
           categoria: $("e_categoria").value,
+          marca: $("e_marca").value.trim(),
           ...gestorEditar.payload(),
         }),
       });
