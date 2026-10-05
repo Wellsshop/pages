@@ -97,7 +97,8 @@
     "nombre": "Cartier Clasic C",
     "precio": 160000,
     "descripcion": "",
-    "categoria": "lentes"
+    "categoria": "lentes",
+    "marca": "Cartier"
   },
   {
     "id": "prada_shield_1790729398436_0.jpg",
