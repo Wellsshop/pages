@@ -73,7 +73,8 @@
     "nombre": "Kangaroo bag",
     "precio": 200000,
     "descripcion": "Cartera grande borravino",
-    "categoria": "carteras"
+    "categoria": "carteras",
+    "marca": "Otros"
   },
   {
     "id": "tote_croco_vintage_1790728967253_0.jpg",
