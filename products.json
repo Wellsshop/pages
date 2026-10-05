@@ -34,10 +34,11 @@
     "imagenes": [
       "neverfull_by_louis_vuitton_1790785717048_0.jpg"
     ],
-    "nombre": "NEVERFULL by Louis Vuitton",
+    "nombre": "Louis Vuitton - Neverfull",
     "precio": 250000,
     "descripcion": "Multicolor fondo negro\nCon neceser extraible",
-    "categoria": "carteras"
+    "categoria": "carteras",
+    "marca": "Louis Vuitton"
   },
   {
     "id": "cherry_by_louis_vuitton_1790717535712_0.jpg",
