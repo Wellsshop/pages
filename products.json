@@ -136,7 +136,8 @@
     "nombre": "Tom Ford Rimless",
     "precio": 160000,
     "descripcion": "",
-    "categoria": "lentes"
+    "categoria": "lentes",
+    "marca": "Tom Ford"
   },
   {
     "id": "chanel_oversized_1790729770854_0.jpg",
