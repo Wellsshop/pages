@@ -58,10 +58,11 @@
     "imagenes": [
       "milano_baul_negro_1790787252753_0.jpg"
     ],
-    "nombre": "MILANO Baul negro",
+    "nombre": "Milano - Baul negro",
     "precio": 250000,
     "descripcion": "Baulito negro con llavero de en forma de rosa",
-    "categoria": "carteras"
+    "categoria": "carteras",
+    "marca": "Otros"
   },
   {
     "id": "kangaroo_bag_1790728820891_0.jpg",
