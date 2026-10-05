@@ -427,6 +427,15 @@
             let categoriaActiva = "relojes";
             let marcaActiva = "todas";
 
+            // La marca para filtrar: si el producto tiene el campo "marca" cargado a mano, se
+            // usa ese. Si no, se toma automáticamente la primera palabra del nombre, así no
+            // hace falta completar nada aparte para que el filtro funcione.
+            function marcaDe(prod) {
+                if (prod.marca && String(prod.marca).trim()) return String(prod.marca).trim();
+                const primera = String(prod.nombre || "").trim().split(/\s+/)[0];
+                return primera || "";
+            }
+
             // Probamos varias ubicaciones y formas de escribir el nombre, así funciona
             // tanto si las fotos están en la raíz como dentro de img/ o fondos/,
             // y tanto si el nombre lleva guión bajo como espacio.
@@ -479,7 +488,7 @@
                     ? productos
                     : productos.filter(p => (p.categoria || "").toLowerCase() === categoriaActiva);
                 if (marcaActiva !== "todas") {
-                    filtrados = filtrados.filter(p => (p.marca || "").trim().toLowerCase() === marcaActiva);
+                    filtrados = filtrados.filter(p => marcaDe(p).toLowerCase() === marcaActiva);
                 }
                 const visibles = filtrados;
 
@@ -546,7 +555,7 @@
                     ? productos
                     : productos.filter(p => (p.categoria || "").toLowerCase() === categoriaActiva);
                 const marcas = [...new Set(
-                    enCategoria.map(p => (p.marca || "").trim()).filter(Boolean)
+                    enCategoria.map(p => marcaDe(p)).filter(Boolean)
                 )].sort((a, b) => a.localeCompare(b, "es", { sensitivity: "base" }));
 
                 if (marcas.length === 0) {
