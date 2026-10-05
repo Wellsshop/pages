@@ -46,10 +46,11 @@
     "imagenes": [
       "cherry_by_louis_vuitton_1790717535712_0.jpg"
     ],
-    "nombre": "CHERRY by Louis Vuitton",
+    "nombre": "Louis Vuitton - Cherry",
     "precio": 250000,
     "descripcion": "Con monedero redondo  extraible y llavero",
-    "categoria": "carteras"
+    "categoria": "carteras",
+    "marca": "Louis Vuitton"
   },
   {
     "id": "milano_baul_1790719369271_0.jpg",
