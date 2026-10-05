@@ -9,10 +9,11 @@
       "the_tote_bag_bymarc_jacobb_1790716801816_3.jpg",
       "the_tote_bag_bymarc_jacobb_1790716803351_4.jpg"
     ],
-    "nombre": "THE TOTE BAG - By Marc Jacobb",
+    "nombre": "Marc Jacobb - THE TOTE BAG",
     "precio": 250000,
     "descripcion": "Con mini cartera, color gris, negra, marrón y beige",
-    "categoria": "carteras"
+    "categoria": "carteras",
+    "marca": "Marc Jacobb"
   },
   {
     "id": "neverfull_by_louis_vuitton_1790717181175_0.jpg",
