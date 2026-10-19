@@ -298,5 +298,17 @@
     "descripcion": "Cuero con grabado de cocodrilo en color negro con herrajes plateados",
     "categoria": "carteras",
     "marca": "Saint Laurent"
+  },
+  {
+    "id": "sunset_shoulder_bag_1792430261300_0.jpg",
+    "imagen": "sunset_shoulder_bag_1792430261300_0.jpg",
+    "imagenes": [
+      "sunset_shoulder_bag_1792430261300_0.jpg"
+    ],
+    "nombre": "Sunset Shoulder Bag",
+    "precio": 0,
+    "descripcion": "Cuero con grabado de cocodrilo en color negro con herrajes dorados",
+    "categoria": "carteras",
+    "marca": "Saint Laurent"
   }
 ]
