@@ -289,13 +289,16 @@
   },
   {
     "id": "sunset_shoulder_bag_1792430078670_0.jpg",
-    "imagen": "sunset_shoulder_bag_1792430686411_0.jpg",
+    "imagen": "sunset_shoulder_bag_1792432361470_0.jpg",
     "imagenes": [
-      "sunset_shoulder_bag_1792430686411_0.jpg"
+      "sunset_shoulder_bag_1792432361470_0.jpg",
+      "sunset_shoulder_bag_1792432363239_1.jpg",
+      "sunset_shoulder_bag_1792432364613_2.jpg",
+      "sunset_shoulder_bag_1792432365873_3.jpg"
     ],
     "nombre": "Sunset Shoulder Bag",
     "precio": 0,
-    "descripcion": "Cuero con grabado de cocodrilo en color negro con herrajes plateados",
+    "descripcion": "Cuero con grabado de cocodrilo negro con herrajes plateados.\n22 cm de ancho x 16 cm de alto x 6,5 cm de profundidad",
     "categoria": "carteras",
     "marca": "Saint Laurent"
   },
