@@ -449,5 +449,17 @@
     "descripcion": "Formula 1 Chronograph (Special Green & Red Edition)\nCaja de acero inoxidable satinado y pulido, bisel taquimétrico color verde.\nFondo verde oscuro con anillo interno rojo, detalles en amarillo e índices arábigos plateados.\nMalla de acero inoxidable.",
     "categoria": "relojes",
     "marca": "TAG Heuer"
+  },
+  {
+    "id": "tag_heuer_1792528523682_0.jpg",
+    "imagen": "tag_heuer_1792528523682_0.jpg",
+    "imagenes": [
+      "tag_heuer_1792528523682_0.jpg"
+    ],
+    "nombre": "TAG Heuer",
+    "precio": 0,
+    "descripcion": "Formula 1 Chronograph (Special Blue & Red Edition)\nCaja de acero inoxidable satinado y pulido con bisel taquimétrico en color azul marino.\nFondo azul eléctrico,anillo interno rojo, detalles en amarillo e índices arábigos plateados.\nMalla de acero inoxidable.",
+    "categoria": "relojes",
+    "marca": "TAG Heuer"
   }
 ]
