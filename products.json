@@ -317,5 +317,17 @@
     "descripcion": "Cuero con grabado de cocodrilo en color negro con herrajes dorados",
     "categoria": "carteras",
     "marca": "Saint Laurent"
+  },
+  {
+    "id": "gucci_duffle_1792507453696_0.jpg",
+    "imagen": "gucci_duffle_1792507453696_0.jpg",
+    "imagenes": [
+      "gucci_duffle_1792507453696_0.jpg"
+    ],
+    "nombre": "Gucci Duffle",
+    "precio": 0,
+    "descripcion": "Color Gris con detalles negros y monograma en gris",
+    "categoria": "carteras",
+    "marca": "Gucci"
   }
 ]
