@@ -424,8 +424,35 @@
             // Orden en que aparecen los botones. "todos" siempre va al final.
             const ORDEN_CATEGORIAS = ["relojes", "carteras", "lentes", "gadgets"];
 
-            let categoriaActiva = "relojes";
-            let marcaActiva = "todas";
+            // Guardamos dónde estaba la persona (categoría, marca y scroll) para que al
+            // actualizar la página vuelva exactamente al mismo lugar.
+            const CLAVE_ESTADO = "wellsshop_estado";
+            function leerEstado() {
+                try { return JSON.parse(sessionStorage.getItem(CLAVE_ESTADO)) || {}; } catch (e) { return {}; }
+            }
+            function guardarEstado(parcial) {
+                try { sessionStorage.setItem(CLAVE_ESTADO, JSON.stringify({ ...leerEstado(), ...parcial })); } catch (e) {}
+            }
+            const estadoInicial = leerEstado();
+
+            let categoriaActiva = estadoInicial.cat || "relojes";
+            let marcaActiva = estadoInicial.marca || "todas";
+
+            // El navegador no puede restaurar el scroll solo porque el catálogo se carga después
+            if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+            let guardandoScroll = false;
+            window.addEventListener("scroll", () => { if (guardandoScroll) guardarEstado({ y: window.scrollY }); }, { passive: true });
+            window.addEventListener("pagehide", () => { if (guardandoScroll) guardarEstado({ y: window.scrollY }); });
+
+            function restaurarScroll() {
+                const y = Number(estadoInicial.y) || 0;
+                const ir = () => window.scrollTo(0, y);
+                ir();
+                // Las fotos terminan de cargar después y cambian el alto de la página: reintentamos
+                window.addEventListener("load", ir, { once: true });
+                setTimeout(ir, 300);
+                setTimeout(() => { ir(); guardandoScroll = true; }, 800);
+            }
 
             // La marca para filtrar: si el producto tiene el campo "marca" cargado a mano, se
             // usa ese. Si no, se toma automáticamente la primera palabra del nombre, así no
@@ -490,7 +517,10 @@
                 if (marcaActiva !== "todas") {
                     filtrados = filtrados.filter(p => marcaDe(p).toLowerCase() === marcaActiva);
                 }
-                const visibles = filtrados;
+                // Orden alfabético por nombre (ignora mayúsculas y acentos, y ordena bien los números)
+                const visibles = [...filtrados].sort((a, b) =>
+                    String(a.nombre || "").trim().localeCompare(String(b.nombre || "").trim(), "es", { sensitivity: "base", numeric: true })
+                );
 
                 if (visibles.length === 0) {
                     contenedor.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--text-muted);">No hay productos en esta categoría todavía.</p>';
@@ -576,6 +606,7 @@
                     opt.textContent = m === "todas" ? "Todas las marcas" : m;
                     opt.onclick = () => {
                         marcaActiva = valor;
+                        guardarEstado({ marca: valor });
                         [...menu.children].forEach(b => b.classList.remove("activo"));
                         opt.classList.add("activo");
                         menu.hidden = true;
@@ -639,6 +670,7 @@
                     btn.onclick = () => {
                         categoriaActiva = cat;
                         marcaActiva = "todas";
+                        guardarEstado({ cat: cat, marca: "todas", y: 0 });
                         [...barraCategorias.children].forEach(b => b.classList.remove("activo"));
                         btn.classList.add("activo");
                         aplicarFondo(cat);
@@ -682,6 +714,7 @@
                     pintarBotonesCategoria(productos);
                     pintarBotonesMarca(productos);
                     pintarProductos(productos);
+                    restaurarScroll();
                 })
                 .catch(error => {
                     console.error(error);
