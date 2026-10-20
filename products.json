@@ -353,5 +353,17 @@
     "descripcion": "Total black - Acolchado en rombos",
     "categoria": "carteras",
     "marca": "Saint Laurent"
+  },
+  {
+    "id": "louis_vuitton_takashi_murakami_1792518415419_0.jpg",
+    "imagen": "louis_vuitton_takashi_murakami_1792518415419_0.jpg",
+    "imagenes": [
+      "louis_vuitton_takashi_murakami_1792518415419_0.jpg"
+    ],
+    "nombre": "Louis Vuitton Takashi Murakami",
+    "precio": 0,
+    "descripcion": "Cherry Blossom de Takashi Murakami",
+    "categoria": "carteras",
+    "marca": "Louis Vuitton"
   }
 ]
