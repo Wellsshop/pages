@@ -365,5 +365,17 @@
     "descripcion": "Cherry Blossom de Takashi Murakami",
     "categoria": "carteras",
     "marca": "Louis Vuitton"
+  },
+  {
+    "id": "saint_laurent_icare_maxi_shopping_bag_1792518815176_0.jpg",
+    "imagen": "saint_laurent_icare_maxi_shopping_bag_1792518815176_0.jpg",
+    "imagenes": [
+      "saint_laurent_icare_maxi_shopping_bag_1792518815176_0.jpg"
+    ],
+    "nombre": "Saint Laurent Icare Maxi Shopping Bag",
+    "precio": 0,
+    "descripcion": "Azul petróleo claro - Acolchado en rombos",
+    "categoria": "relojes",
+    "marca": "Saint Laurent"
   }
 ]
