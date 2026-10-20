@@ -377,5 +377,17 @@
     "descripcion": "Azul petróleo claro - Acolchado en rombos",
     "categoria": "relojes",
     "marca": "Saint Laurent"
+  },
+  {
+    "id": "hublot_big_bang_maradona_limited_edition_1792519895039_0.jpg",
+    "imagen": "hublot_big_bang_maradona_limited_edition_1792519895039_0.jpg",
+    "imagenes": [
+      "hublot_big_bang_maradona_limited_edition_1792519895039_0.jpg"
+    ],
+    "nombre": "Hublot Big Bang Maradona Limited Edition",
+    "precio": 0,
+    "descripcion": "Caja de acero inoxidable satinado y pulido.\nFondo negro intenso con detalles en azul marino.\nCorrea negra con costuras decorativas en color celeste y blanco.",
+    "categoria": "relojes",
+    "marca": "Hublot"
   }
 ]
