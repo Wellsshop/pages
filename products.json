@@ -437,5 +437,17 @@
     "descripcion": "Chronograph (Indy 500 / Special Red Edition)\nCaja acero inoxidable satinado y pulido, bisel taquimétrico en color negro.\nFondo negro con anillo interno rojo, detalles amarillos, índices arábigos plateados.\nCorrea de caucho color rojo.",
     "categoria": "relojes",
     "marca": "TAG Heuer"
+  },
+  {
+    "id": "tag_heuer_formula_1_1792528399762_0.jpg",
+    "imagen": "tag_heuer_formula_1_1792528399762_0.jpg",
+    "imagenes": [
+      "tag_heuer_formula_1_1792528399762_0.jpg"
+    ],
+    "nombre": "TAG Heuer Formula 1",
+    "precio": 0,
+    "descripcion": "Formula 1 Chronograph (Special Green & Red Edition)\nCaja de acero inoxidable satinado y pulido, bisel taquimétrico color verde.\nFondo verde oscuro con anillo interno rojo, detalles en amarillo e índices arábigos plateados.\nMalla de acero inoxidable.",
+    "categoria": "relojes",
+    "marca": "TAG Heuer"
   }
 ]
