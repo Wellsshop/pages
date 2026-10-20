@@ -377,5 +377,17 @@
     "descripcion": "Caja de acero inoxidable negro con bisel de textura cepillada.\nFondo negro con detalles e índices en celeste.\nCorrea negra con costuras decorativas en color celeste y blanco.",
     "categoria": "relojes",
     "marca": "Hublot"
+  },
+  {
+    "id": "audemars_piguet_royal_oak_1792520241717_0.jpg",
+    "imagen": "audemars_piguet_royal_oak_1792520241717_0.jpg",
+    "imagenes": [
+      "audemars_piguet_royal_oak_1792520241717_0.jpg"
+    ],
+    "nombre": "Audemars Piguet Royal Oak",
+    "precio": 0,
+    "descripcion": "Royal Oak Offshore Tourbillon Chronograph\nCaja octogonal de acero inoxidable negro con bisel cepillado.\nFondo esqueletizado negro con bisel interno y detalles en verde lima.\nCorrea de caucho en color verde lima vibrante.",
+    "categoria": "relojes",
+    "marca": "Audemars Piguet"
   }
 ]
