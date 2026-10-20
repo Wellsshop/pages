@@ -413,5 +413,17 @@
     "descripcion": "Caja de acero inoxidable satinado y pulido.\nFondo azul marino con bisel taquimétrico azul e índices plateados.\nCorrea (brazalete) de acero inoxidable.",
     "categoria": "relojes",
     "marca": "Speedmaster Racing Co-Axial Master Chronometer"
+  },
+  {
+    "id": "omega_speedmaster_1792527976764_0.jpg",
+    "imagen": "omega_speedmaster_1792527976764_0.jpg",
+    "imagenes": [
+      "omega_speedmaster_1792527976764_0.jpg"
+    ],
+    "nombre": "Omega Speedmaster",
+    "precio": 0,
+    "descripcion": "Speedmaster Moonwatch Professional \"Dark Side of the Moon\"",
+    "categoria": "relojes",
+    "marca": "Omega"
   }
 ]
