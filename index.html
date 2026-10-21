@@ -517,9 +517,11 @@
                 if (marcaActiva !== "todas") {
                     filtrados = filtrados.filter(p => marcaDe(p).toLowerCase() === marcaActiva);
                 }
-                // Orden alfabético por nombre (ignora mayúsculas y acentos, y ordena bien los números)
+                // Orden alfabético: primero por marca y después por modelo (ignora mayúsculas y acentos)
+                const opt = { sensitivity: "base", numeric: true };
                 const visibles = [...filtrados].sort((a, b) =>
-                    String(a.nombre || "").trim().localeCompare(String(b.nombre || "").trim(), "es", { sensitivity: "base", numeric: true })
+                    marcaDe(a).localeCompare(marcaDe(b), "es", opt) ||
+                    String(a.nombre || "").trim().localeCompare(String(b.nombre || "").trim(), "es", opt)
                 );
 
                 if (visibles.length === 0) {
