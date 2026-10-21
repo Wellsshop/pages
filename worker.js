@@ -216,6 +216,52 @@ async function handleEditar(request, env) {
   }
 }
 
+// Edición masiva: actualiza muchos productos en UN solo guardado (un solo commit en GitHub).
+// Solo modifica datos de texto; las fotos no se tocan. No agrega ni borra productos.
+async function handleImportar(request, env) {
+  const body = await request.json();
+  const { password } = body;
+  const cambios = Array.isArray(body.cambios) ? body.cambios : [];
+
+  if (!checkPassword(env, password)) return jsonResponse({ error: "Clave incorrecta" }, 401);
+  if (cambios.length === 0) return jsonResponse({ error: "No hay cambios para aplicar" }, 400);
+  if (cambios.length > 1000) return jsonResponse({ error: "Demasiados cambios de una vez (máximo 1000)" }, 400);
+
+  for (let intento = 0; intento < 2; intento++) {
+    const { productos, sha } = await leerProductos(env);
+    const indicePorId = new Map(productos.map((p, i) => [idDe(p), i]));
+    let actualizados = 0;
+    const noEncontrados = [];
+
+    for (const c of cambios) {
+      const i = indicePorId.get(c.id);
+      if (i === undefined) { noEncontrados.push(c.id); continue; }
+      const nombre = String(c.nombre || "").trim();
+      if (!nombre) continue;
+      const p = productos[i];
+      const precio = String(c.precio ?? "").trim() || "Consultar";
+      productos[i] = {
+        ...p,
+        nombre,
+        marca: String(c.marca ?? p.marca ?? "").trim(),
+        precio: isNaN(Number(precio)) ? precio : Number(precio),
+        descripcion: String(c.descripcion ?? "").trim(),
+        categoria: String(c.categoria || p.categoria || "sin-categoria").trim().toLowerCase(),
+      };
+      actualizados++;
+    }
+
+    if (actualizados === 0) return jsonResponse({ error: "Ningún producto coincidió con el catálogo actual" }, 400);
+
+    try {
+      await guardarProductos(env, productos, sha, `Edición masiva: ${actualizados} productos`);
+      return jsonResponse({ ok: true, actualizados, noEncontrados });
+    } catch (e) {
+      if (intento === 1) return jsonResponse({ error: "No se pudo guardar los cambios: " + e.message }, 500);
+    }
+  }
+}
+
 async function handleVerificar(request, env) {
   const body = await request.json();
   const { password } = body;
@@ -263,6 +309,9 @@ export default {
       }
       if (request.method === "POST" && url.pathname === "/editar") {
         return await handleEditar(request, env);
+      }
+      if (request.method === "POST" && url.pathname === "/importar") {
+        return await handleImportar(request, env);
       }
       if (request.method === "GET" && url.pathname === "/productos") {
         return await handleProductos(env);
