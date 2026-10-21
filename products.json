@@ -108,9 +108,10 @@
       "prada_shield_1790729399788_1.jpg"
     ],
     "nombre": "Prada Shield",
-    "precio": 160000,
+    "precio": "Consultar",
     "descripcion": "",
-    "categoria": "lentes"
+    "categoria": "lentes",
+    "marca": "Prada"
   },
   {
     "id": "prada_cat_eye_1790729492201_0.jpg",
