@@ -120,9 +120,10 @@
       "prada_cat_eye_1790787824557_0.jpg"
     ],
     "nombre": "Prada Cat-Eye",
-    "precio": 160000,
+    "precio": "Consultar",
     "descripcion": "",
-    "categoria": "lentes"
+    "categoria": "lentes",
+    "marca": "Prada"
   },
   {
     "id": "tom_ford_rimless_1790729591493_0.jpg",
