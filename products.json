@@ -933,5 +933,17 @@
     "descripcion": "Lona revestida Monogram clásica con detalles y asas de piel natural.\nCierre con mosquetón interior y cordones laterales para ajustar la capacidad.\nDiseño tote amplio.",
     "categoria": "carteras",
     "marca": "Louis Vuitton"
+  },
+  {
+    "id": "saint_laurent_sunset_medium_shoulder_bag_1792593892110_0.jpg",
+    "imagen": "saint_laurent_sunset_medium_shoulder_bag_1792593892110_0.jpg",
+    "imagenes": [
+      "saint_laurent_sunset_medium_shoulder_bag_1792593892110_0.jpg"
+    ],
+    "nombre": "Saint Laurent Sunset Medium Shoulder Bag",
+    "precio": "Consultar",
+    "descripcion": "Cuero liso en tono rojo con herrajes metálicos plateados y monograma frontal.\nSolapa frontal con cierre magnético y cadena deslizante de eslabones plateados.",
+    "categoria": "carteras",
+    "marca": "Saint Laurent"
   }
 ]
