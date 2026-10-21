@@ -187,12 +187,12 @@
       <input type="text" id="nombre" placeholder="Ej: Submariner">
     </div>
     <div class="field">
-      <label for="precio">Precio</label>
-      <input type="text" id="precio" placeholder="Ej: 300000 o Consultar">
+      <label for="descripcion">Descripción</label>
+      <textarea id="descripcion" rows="4" placeholder="Ej: Reloj Rolex Submariner Negro&#10;(Cada Enter se respeta en la web)"></textarea>
     </div>
     <div class="field">
-      <label for="descripcion">Descripción</label>
-      <textarea id="descripcion" rows="2" placeholder="Ej: Reloj Rolex Submariner Negro"></textarea>
+      <label for="precio">Precio (opcional)</label>
+      <input type="text" id="precio" placeholder="Ej: 300000 (si lo dejás vacío queda como Consultar)">
     </div>
     <div class="field">
       <label for="categoria">Categoría</label>
@@ -230,8 +230,8 @@
     <h2>✏️ Editar producto</h2>
     <div class="field"><label for="e_marca">Marca</label><input type="text" id="e_marca" placeholder="Ej: Rolex"></div>
     <div class="field"><label for="e_nombre">Modelo</label><input type="text" id="e_nombre" placeholder="Ej: Submariner"></div>
-    <div class="field"><label for="e_precio">Precio</label><input type="text" id="e_precio"></div>
-    <div class="field"><label for="e_descripcion">Descripción</label><textarea id="e_descripcion" rows="3"></textarea></div>
+    <div class="field"><label for="e_descripcion">Descripción</label><textarea id="e_descripcion" rows="5"></textarea></div>
+    <div class="field"><label for="e_precio">Precio (opcional)</label><input type="text" id="e_precio" placeholder="Si lo dejás vacío queda como Consultar"></div>
     <div class="field"><label for="e_categoria">Categoría</label><select id="e_categoria"></select></div>
     <div class="field"><label>Fotos (la primera es la principal)</label><div id="e_fotos"></div></div>
     <div id="estadoEditar" style="display:none; margin-bottom:12px; font-size:0.9rem; padding:10px 12px; border-radius:8px;"></div>
@@ -418,7 +418,7 @@
     const marca = $("marca").value.trim();
     const modelo = $("nombre").value.trim();
     const nombre = unirNombre(marca, modelo);
-    const precio = $("precio").value.trim();
+    const precio = $("precio").value.trim() || "Consultar";
     const descripcion = $("descripcion").value.trim();
     const categoria = $("categoria").value;
     const estado = $("estadoAgregar");
@@ -426,8 +426,8 @@
 
     estado.className = ""; estado.style.display = "none";
 
-    if (!marca || !modelo || !precio || gestorAgregar.count() === 0) {
-      estado.textContent = "Completá marca, modelo, precio y elegí al menos una foto.";
+    if (!marca || !modelo || gestorAgregar.count() === 0) {
+      estado.textContent = "Completá marca, modelo y elegí al menos una foto.";
       estado.className = "error";
       return;
     }
@@ -513,9 +513,8 @@
         const row = document.createElement("div");
         row.className = "producto-row";
 
-        const precioTexto = String(p.precio ?? "").trim().startsWith("$")
-          ? String(p.precio).trim()
-          : "$" + String(p.precio ?? "");
+        const precioRaw = String(p.precio ?? "").trim();
+        const precioTexto = !precioRaw ? "Consultar" : (/^[\d.,\s]+$/.test(precioRaw) ? "$" + precioRaw : precioRaw);
 
         row.innerHTML = `
           <input type="checkbox" class="chk-producto">
@@ -599,7 +598,8 @@
     const sep = separarProducto(p);
     $("e_marca").value = sep.marca;
     $("e_nombre").value = sep.modelo;
-    $("e_precio").value = p.precio ?? "";
+    const pr = String(p.precio ?? "").trim();
+    $("e_precio").value = pr.toLowerCase() === "consultar" ? "" : pr;
     $("e_descripcion").value = p.descripcion || "";
     const sel = $("e_categoria");
     const cat = p.categoria || sel.options[0].value;
@@ -619,11 +619,11 @@
     const marca = $("e_marca").value.trim();
     const modelo = $("e_nombre").value.trim();
     const nombre = unirNombre(marca, modelo);
-    const precio = $("e_precio").value.trim();
+    const precio = $("e_precio").value.trim() || "Consultar";
     estado.className = ""; estado.style.display = "none";
 
-    if (!marca || !modelo || !precio || gestorEditar.count() === 0) {
-      estado.textContent = "Completá marca, modelo, precio y dejá al menos una foto.";
+    if (!marca || !modelo || gestorEditar.count() === 0) {
+      estado.textContent = "Completá marca, modelo y dejá al menos una foto.";
       estado.className = "error";
       return;
     }
