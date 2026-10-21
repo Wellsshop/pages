@@ -149,9 +149,10 @@
       "chanel_oversized_1790784917442_0.jpg"
     ],
     "nombre": "Chanel Oversized",
-    "precio": 160000,
+    "precio": "Consultar",
     "descripcion": "",
-    "categoria": "lentes"
+    "categoria": "lentes",
+    "marca": "Chanel"
   },
   {
     "id": "chanel_5171_mademoiselle_chain_1790730282226_0.jpg",
