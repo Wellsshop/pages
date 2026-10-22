@@ -11,7 +11,7 @@
     ],
     "nombre": "Marc Jacobb The Leather Tote Bag",
     "precio": "Consultar",
-    "descripcion": "Piel sintética texturizada (negro, gris, caramelo y beige) con la leyenda \"THE TOTE BAG\". \nDiseño de líneas limpias con asas superiores, correa de hombro ajustable con el logotipo.\nMini bolso accesorio a juego con cadena dorada.",
+    "descripcion": "Piel sintética texturizada (negro, gris, caramelo y beige) con la leyenda \"THE TOTE BAG\".\nAsas y correa de hombro ajustable.\nIncluye mini bolso con cadena dorada.",
     "categoria": "carteras",
     "marca": "Marc Jacobb"
   },
@@ -24,7 +24,7 @@
     ],
     "nombre": "Louis Vuitton Neverfull",
     "precio": "Consultar",
-    "descripcion": "Lona revestida Monogram clásica con detalles y asas finas de piel natural. \nDiseño amplio y versátil tipo tote con cordones laterales ajustables e interior con forro a juego y pouch con cremallera extraíble.",
+    "descripcion": "Lona Monogram con asas de cuero natural.\nEstilo tote amplio, con cordones laterales ajustables.\nIncluye pouch con cierre, extraíble.",
     "categoria": "carteras",
     "marca": "Louis Vuitton"
   },
@@ -36,7 +36,7 @@
     ],
     "nombre": "Louis Vuitton Neverfull",
     "precio": "Consultar",
-    "descripcion": "Lona revestida Monogram Multicolor clásica con detalles y asas finas de piel natural. \nDiseño amplio y versátil tipo tote con cordones laterales ajustables e interior con forro a juego y pouch con cremallera extraíble.",
+    "descripcion": "Lona Monogram Multicolor con asas de cuero natural.\nEstilo tote amplio, con cordones laterales ajustables.\nIncluye pouch con cierre, extraíble.",
     "categoria": "carteras",
     "marca": "Louis Vuitton"
   },
@@ -48,7 +48,7 @@
     ],
     "nombre": "Louis Vuitton Cherry",
     "precio": "Consultar",
-    "descripcion": "Lona revestida con estampado Monogram salpicado de cerezas y ribetes de cuero natural.\nCorrea ajustable\nMonedero redondo extraíble y llavero colgante de cerezas metálicas.",
+    "descripcion": "Lona Monogram con estampado de cerezas y detalles de cuero natural.\nCorrea ajustable.\nMonedero extraíble y llavero de cerezas.",
     "categoria": "carteras",
     "marca": "Louis Vuitton"
   },
@@ -60,7 +60,7 @@
     ],
     "nombre": "Otros Boston Bag con Dije de Rosa",
     "precio": "Consultar",
-    "descripcion": "Piel sintética en color negro, inscripción \"MILANO ITALY\" y   la bandera italiana. \nEstructura cilíndrica tipo bowling con cremalleras laterales, asas superiores oscuras, correa ajustable.\nDije colgante en forma de rosa tridimensional en tonos vino.",
+    "descripcion": "Piel sintética negra con inscripción \"MILANO ITALY\" y bandera italiana.\nEstilo bowling con cierres laterales, asas y correa ajustable.\nDije de rosa color vino.",
     "categoria": "carteras",
     "marca": "Otros"
   },
@@ -72,7 +72,7 @@
     ],
     "nombre": "Otros Kangaroo bag",
     "precio": "Consultar",
-    "descripcion": "Piel sintética texturizada en tono marrón con logotipo metálico en el frente y un diseño estructurado de líneas limpias. \nCuenta con asas superiores rígidas unidas por herrajes metálicos decorativos y una correa ajustable extraíble para el hombro.",
+    "descripcion": "Piel sintética texturizada marrón con logo metálico al frente.\nAsas rígidas y correa de hombro ajustable y extraíble.",
     "categoria": "carteras",
     "marca": "Otros"
   },
@@ -84,7 +84,7 @@
     ],
     "nombre": "Saint Laurent Sac de Jour Structured Tote",
     "precio": "Consultar",
-    "descripcion": "Piel brillante con acabado en relieve cocodrilo en  tono rojo burdeos.\nSutiles herrajes metálicos dorados. \nDiseño estructurado con asas superiores reforzadas, placa frontal grabada\nCorrea ajustable y extraíble para el hombro.",
+    "descripcion": "Piel brillante rojo burdeos con relieve cocodrilo y herrajes dorados.\nAsas reforzadas y placa frontal grabada.\nCorrea de hombro ajustable y extraíble.",
     "categoria": "carteras",
     "marca": "Saint Laurent"
   },
@@ -96,7 +96,7 @@
     ],
     "nombre": "Cartier Clasic C",
     "precio": "Consultar",
-    "descripcion": "Montura de metal acabado en tono dorado con varillas delgadas, terminales negros y lentes degradadas sin montura en tonalidad rosada.",
+    "descripcion": "Montura metálica dorada.\nLentes degradadas rosadas, sin marco.",
     "categoria": "lentes",
     "marca": "Cartier"
   },
@@ -109,7 +109,7 @@
     ],
     "nombre": "Prada Shield",
     "precio": "Consultar",
-    "descripcion": "Montura metálica de líneas envolventes en tono dorado con lentes oscuras degradadas y un llamativo puente central triangular de acetato negro que porta el logotipo y el emblema de la firma en relieve metálico.",
+    "descripcion": "Montura metálica dorada, envolvente.\nPuente central de acetato negro con logo.\nLentes oscuras degradadas.",
     "categoria": "lentes",
     "marca": "Prada"
   },
@@ -122,7 +122,7 @@
     ],
     "nombre": "Prada Cat-Eye",
     "precio": "Consultar",
-    "descripcion": "Montura metálica en tono dorado con una elegante silueta de inspiración ojo de gato (cat-eye), lentes degradadas en tonalidad marrón y varillas finas con terminales oscuros.",
+    "descripcion": "Montura metálica dorada, estilo ojo de gato.\nVarillas finas con terminales oscuros.\nLentes degradadas marrón.",
     "categoria": "lentes",
     "marca": "Prada"
   },
@@ -137,7 +137,7 @@
     ],
     "nombre": "Tom Ford Rimless",
     "precio": "Consultar",
-    "descripcion": "Lentes oscuras rectangulares de diseño al aire (rimless) con un elegante puente metálico en tono dorado, varillas oscuras con bisagras decorativas y su respectivo estuche rígido de la firma.",
+    "descripcion": "Lentes oscuras rectangulares, sin marco.\nPuente dorado y varillas oscuras.\nIncluye estuche rígido.",
     "categoria": "lentes",
     "marca": "Tom Ford"
   },
@@ -152,7 +152,7 @@
     ],
     "nombre": "Chanel Oversized",
     "precio": "Consultar",
-    "descripcion": "Montura metálica de líneas cuadradas con acabado en tono dorado, lentes oscuras degradadas y patillas adornadas con eslabones de cadena entrelazados y el icónico logotipo de la doble C.",
+    "descripcion": "Montura metálica dorada, cuadrada.\nPatillas con cadena y logo doble C.\nLentes oscuras degradadas.",
     "categoria": "lentes",
     "marca": "Chanel"
   },
@@ -165,7 +165,7 @@
     ],
     "nombre": "Chanel 5171 Mademoiselle Chain",
     "precio": "Consultar",
-    "descripcion": "Montura de acetato con un diseño ovalado en contraste blanco y negro, con patillas anchas adornadas con el icónico logotipo de la doble C entrelazada y lentes oscuras en tono degradado.",
+    "descripcion": "Montura de acetato blanco y negro, ovalada.\nPatillas anchas con logo doble C.\nLentes oscuras degradadas.",
     "categoria": "lentes",
     "marca": "Chanel"
   },
@@ -177,7 +177,7 @@
     ],
     "nombre": "Miu Miu Logo Rimless Oval",
     "precio": "Consultar",
-    "descripcion": "Montura metálica en tono dorado con diseño al aire (rimless), lentes degradadas en tonalidad oscura y varillas finas adornadas con el distintivo logotipo tridimensional de la firma",
+    "descripcion": "Montura metálica dorada, sin marco.\nVarillas finas con logo.\nLentes oscuras degradadas.",
     "categoria": "lentes",
     "marca": "Miu Miu"
   },
@@ -189,7 +189,7 @@
     ],
     "nombre": "Miu Miu Sunglasses Geometric",
     "precio": "Consultar",
-    "descripcion": "Lentes oscuras de diseño geométrico sin montura (rimless) unidas por un puente y estructura metálica dorada, complementadas con patillas anchas de acetato negro que destacan el logotipo vertical de la firma en contraste blanco.",
+    "descripcion": "Lentes oscuras geométricas, sin marco.\nPuente y estructura dorada.\nPatillas anchas de acetato negro con logo.",
     "categoria": "lentes",
     "marca": "Miu Miu"
   },
@@ -201,7 +201,7 @@
     ],
     "nombre": "Miu Miu Oversized Pilot",
     "precio": "Consultar",
-    "descripcion": "Montura metálica de diseño aviador en tono dorado con una elegante barra superior continua, lentes degradadas en tonos oscuros y finas varillas laterales decoradas con el distintivo emblema de la firma.",
+    "descripcion": "Montura metálica dorada, estilo aviador.\nVarillas finas con logo.\nLentes oscuras degradadas.",
     "categoria": "lentes",
     "marca": "Miu Miu"
   },
@@ -213,7 +213,7 @@
     ],
     "nombre": "Miu Miu Gold-Bridge Rectangular",
     "precio": "Consultar",
-    "descripcion": "Montura de acetato negro de líneas geométricas rectangulares con lentes oscuras degradadas y sofisticados detalles metálicos en tono dorado en el puente y las bisagras.",
+    "descripcion": "Montura de acetato negro, rectangular.\nDetalles dorados en puente y bisagras.\nLentes oscuras degradadas.",
     "categoria": "lentes",
     "marca": "Miu Miu"
   },
@@ -225,7 +225,7 @@
     ],
     "nombre": "Tiffany & Co Chain-Link Rimless",
     "precio": "Consultar",
-    "descripcion": "Lentes oscuras de diseño geométrico sin montura (rimless) con sutiles detalles metálicos en tono dorado en el puente y las esquinas exteriores, acompañadas de varillas finas y estuche rígido en el característico tono azul de la firma.",
+    "descripcion": "Lentes oscuras geométricas, sin marco.\nDetalles dorados en puente y esquinas.\nIncluye estuche rígido azul.",
     "categoria": "lentes",
     "marca": "Tiffany & Co"
   },
@@ -238,7 +238,7 @@
     ],
     "nombre": "Tag Heuer Formula 1 Chronograph (Yellow / Red Accents)",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable con recubrimiento negro y bisel taquimétrico en azul oscuro.\nFondo negro con anillo perimetral rojo, números arábigos, subdiales con detalles en amarillo/rojo y aguja central amarilla.\nMalla de caucho amarilla.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable negro.\nFondo negro con detalles rojos y amarillos.\nMalla de caucho amarillo.",
     "categoria": "relojes",
     "marca": "Tag Heuer"
   },
@@ -251,7 +251,7 @@
     ],
     "nombre": "Hublot Big Bang Maradona Limited Edition",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable satinado y pulido.\nFondo azul marino. \nMalla negra con costuras decorativas color celeste y blanco.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo azul marino.\nMalla negra con costuras celestes y blancas.",
     "categoria": "relojes",
     "marca": "Hublot"
   },
@@ -266,7 +266,7 @@
     ],
     "nombre": "Saint Laurent Sunset Shoulder Bag",
     "precio": "Consultar",
-    "descripcion": "Piel en relieve con acabado de imitación cocodrilo en color negro, realzadada con herrajes.\nCorrea de cadena metálica plateada con refuerzo de hombro en piel a juego. \nEstructura tipo bandolera con solapa frontal y el icónico monograma YSL entrelazado.",
+    "descripcion": "Piel negra en relieve tipo cocodrilo con herrajes.\nCadena plateada con refuerzo de hombro en piel.\nSolapa frontal con monograma YSL.",
     "categoria": "carteras",
     "marca": "Saint Laurent"
   },
@@ -282,7 +282,7 @@
     ],
     "nombre": "Saint Laurent Sunset Shoulder Bag",
     "precio": "Consultar",
-    "descripcion": "Piel en relieve con acabado de imitación cocodrilo en color negro, realzadada con herrajes.\nCorrea de cadena metálica dorada con refuerzo de hombro en piel a juego. \nEstructura tipo bandolera con solapa frontal y el icónico monograma YSL entrelazado.",
+    "descripcion": "Piel negra en relieve tipo cocodrilo con herrajes.\nCadena dorada con refuerzo de hombro en piel.\nSolapa frontal con monograma YSL.",
     "categoria": "carteras",
     "marca": "Saint Laurent"
   },
@@ -294,7 +294,7 @@
     ],
     "nombre": "Gucci Duffle",
     "precio": "Consultar",
-    "descripcion": "Lona GG Supreme en tonos grises y negros.\nCierre superior de doble cremallera y asas de mano reforzadas.",
+    "descripcion": "Lona GG Supreme gris y negra.\nDoble cierre superior y asas de mano reforzadas.",
     "categoria": "carteras",
     "marca": "Gucci"
   },
@@ -306,7 +306,7 @@
     ],
     "nombre": "Gucci Ophidia GG Supreme Queen Margaret",
     "precio": "Consultar",
-    "descripcion": "Lona GG Supreme con la clásica banda Web verde y roja, y ribetes de cuero marrón.\nSolapa frontal un cierre metálico en forma de abeja adornada con perlas y cristales.\nDiseño estructurado con asa superior y asa de mano.",
+    "descripcion": "Lona GG Supreme con banda verde y roja y detalles de cuero marrón.\nCierre de solapa metálico en forma de abeja.\nAsa superior y asa de mano.",
     "categoria": "carteras",
     "marca": "Gucci"
   },
@@ -318,7 +318,7 @@
     ],
     "nombre": "Saint Laurent Icare Maxi Shopping Bag",
     "precio": "Consultar",
-    "descripcion": "Piel suave con diseño acolchado en rombos matelassé en color negro y llamativos herrajes al tono. \nEstructura amplia y flexible con cómodas asas superiores y un práctico pouch con cremallera a juego conectado por una fina cadena.",
+    "descripcion": "Piel negra acolchada en rombos, con herrajes al tono.\nAsas superiores.\nIncluye pouch con cierre y cadena.",
     "categoria": "carteras",
     "marca": "Saint Laurent"
   },
@@ -330,7 +330,7 @@
     ],
     "nombre": "Louis Vuitton Speedy Bandoulière Monogram Cherry Blossom",
     "precio": "Consultar",
-    "descripcion": "Lona revestida blanca con el monograma clásico y estampado de cerezas diseñado por Takashi Murakami\nRibetes de cuero natural. \nEstructura estilo bowling con cremallera superior, candado dorado y asas superiores rígidas.",
+    "descripcion": "Lona blanca con monograma y cerezas, detalles de cuero natural.\nEstilo bowling con cierre superior y candado dorado.\nAsas superiores rígidas.",
     "categoria": "carteras",
     "marca": "Louis Vuitton"
   },
@@ -342,7 +342,7 @@
     ],
     "nombre": "Saint Laurent Icare Maxi Shopping Bag",
     "precio": "Consultar",
-    "descripcion": "Piel suave con diseño acolchado en rombos matelassé en tono azul turquesa y herrajes dorados. \nEstructura amplia y flexible con cómodas asas superiores y un diseño espacioso.",
+    "descripcion": "Piel acolchada en rombos, azul turquesa, con herrajes dorados.\nAsas superiores y diseño amplio.",
     "categoria": "carteras",
     "marca": "Saint Laurent"
   },
@@ -354,7 +354,7 @@
     ],
     "nombre": "Hublot Big Bang Maradona Limited Edition",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable satinado y pulido.\nFondo negro intenso con detalles azul marino.\nMalla negra con costuras decorativas color celeste y blanco.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo negro con detalles azul marino.\nMalla negra con costuras celestes y blancas.",
     "categoria": "relojes",
     "marca": "Hublot"
   },
@@ -366,7 +366,7 @@
     ],
     "nombre": "Hublot Big Bang Maradona Limited Edition",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable negro con bisel de textura cepillada.\nFondo negro con detalles e índices en celeste.\nMalla negra con costuras decorativas en color celeste y blanco.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable negro.\nFondo negro con detalles celestes.\nMalla negra con costuras celestes y blancas.",
     "categoria": "relojes",
     "marca": "Hublot"
   },
@@ -378,7 +378,7 @@
     ],
     "nombre": "Audemars Piguet Royal Oak Offshore Tourbillon Chronograph",
     "precio": "Consultar",
-    "descripcion": "Caja octogonal de acero inoxidable negro con bisel cepillado.\nFondo esqueletizado negro con bisel interno y detalles verde lima.\nMalla de caucho color verde lima.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable negro.\nFondo esqueletado negro con detalles verde lima.\nMalla de caucho verde lima.",
     "categoria": "relojes",
     "marca": "Audemars Piguet"
   },
@@ -390,7 +390,7 @@
     ],
     "nombre": "Audemars Piguet Royal Oak Offshore Tourbillon Chronograph (All Black)",
     "precio": "Consultar",
-    "descripcion": "Caja octogonal de acero inoxidable negro con bisel cepillado.\nFondo esqueletizado negro con detalles en rojo y plateado.\nMalla de caucho color negro mate.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable negro.\nFondo esqueletado negro con detalles rojos y plateados.\nMalla de caucho negro.",
     "categoria": "relojes",
     "marca": "Audemars Piguet"
   },
@@ -402,7 +402,7 @@
     ],
     "nombre": "Omega Speedmaster Racing Co-Axial Master Chronometer",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable satinado y pulido.\nFondo azul marino con bisel taquimétrico azul e índices plateados.\nMalla de acero inoxidable.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo azul marino.\nMalla de acero inoxidable.",
     "categoria": "relojes",
     "marca": "Omega"
   },
@@ -414,7 +414,7 @@
     ],
     "nombre": "Omega Speedmaster Moonwatch Professional \"Dark Side of the Moon\"",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable negro con bisel taquimétrico.\nFondo negro mate con subdiales e índices oscuros.\nMalla de acero color negro",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable negro.\nFondo negro mate.\nMalla de acero negro.",
     "categoria": "relojes",
     "marca": "Omega"
   },
@@ -426,7 +426,7 @@
     ],
     "nombre": "Tag Heuer Chronograph (Indy 500 / Special Red Edition)",
     "precio": "Consultar",
-    "descripcion": "Caja acero inoxidable satinado y pulido, bisel taquimétrico color negro.\nFondo negro con anillo interno rojo, detalles amarillos, índices arábigos plateados.\nMalla de caucho color rojo.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo negro con detalles rojos y amarillos.\nMalla de caucho rojo.",
     "categoria": "relojes",
     "marca": "Tag Heuer"
   },
@@ -438,7 +438,7 @@
     ],
     "nombre": "Tag Heuer Formula 1 Chronograph (Special Green & Red Edition)",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable satinado y pulido, bisel taquimétrico color verde.\nFondo verde oscuro con anillo interno rojo, detalles en amarillo e índices arábigos plateados.\nMalla de acero inoxidable.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo verde oscuro con detalles rojos y amarillos.\nMalla de acero inoxidable.",
     "categoria": "relojes",
     "marca": "Tag Heuer"
   },
@@ -450,7 +450,7 @@
     ],
     "nombre": "Tag Heuer Formula 1 Chronograph (Special Blue & Red Edition)",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable satinado y pulido con bisel taquimétrico en color azul marino.\nFondo azul eléctrico,anillo interno rojo, detalles en amarillo e índices arábigos plateados.\nMalla de acero inoxidable.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo azul eléctrico con detalles rojos y amarillos.\nMalla de acero inoxidable.",
     "categoria": "relojes",
     "marca": "Tag Heuer"
   },
@@ -462,7 +462,7 @@
     ],
     "nombre": "Tag Heuer Carrera Calibre Heuer 02 Automatic Chronograph",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable satinado y pulido con bisel taquimétrico en color negro y detalles color oro rosa.\nFondo blanco plateado con textura cepillada, subdiales al tono e índices aplicados color oro rosa.\nMalla de acero inoxidable.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo blanco plateado con detalles oro rosa.\nMalla de acero inoxidable.",
     "categoria": "relojes",
     "marca": "Tag Heuer"
   },
@@ -474,7 +474,7 @@
     ],
     "nombre": "Tag Heuer Formula 1 Chronograph (Yellow Dial)",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable negro con bisel taquimétrico color negro.\nFondo amarillo brillante con textura de sol, subdiales negros e índices plateados.\nMalla de acero inoxidable color negro.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable negro.\nFondo amarillo.\nMalla de acero negro.",
     "categoria": "relojes",
     "marca": "Tag Heuer"
   },
@@ -486,7 +486,7 @@
     ],
     "nombre": "Tag Heuer Formula 1 Calibre 16 Chronograph (Ayrton Senna Special Edition)",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable satinado y pulido con bisel color negro y grabado SENNA en rojo.\nFondo negro mate con detalles en rojo, logotipo Senna en subdial e índices plateados aplicados.\nMalla de caucho negra con detalles e inserciones color rojo.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo negro mate con detalles rojos.\nMalla de caucho negro con detalles rojos.",
     "categoria": "relojes",
     "marca": "Tag Heuer"
   },
@@ -498,7 +498,7 @@
     ],
     "nombre": "Tag Heuer Formula 1 Chronograph (Blue Dial / Black Steel)",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable negro con bisel taquimétrico color negro.\nFondo azul con subdiales al tono e índices plateados aplicados.\nMalla de acero inoxidable color negro.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable negro.\nFondo azul.\nMalla de acero negro.",
     "categoria": "relojes",
     "marca": "Tag Heuer"
   },
@@ -510,7 +510,7 @@
     ],
     "nombre": "Tag Heuer Formula 1 Chronograph (Black / Yellow Accents)",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable satinado y pulido con bisel taquimétrico color negro.\nFondo negro con bisel interno amarillo, detalles en amarillo e índices plateados aplicados.\nMalla de acero inoxidable.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo negro con detalles amarillos.\nMalla de acero inoxidable.",
     "categoria": "relojes",
     "marca": "Tag Heuer"
   },
@@ -522,7 +522,7 @@
     ],
     "nombre": "Tag Heuer Formula 1 Chronograph (Gulf Special Edition)",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable satinado y pulido con bisel taquimétrico color azul marino.\nFondo blanco con franjas verticales en celeste y naranja (colores Gulf), subdiales plateados e índices aplicados.\nMalla de acero inoxidable.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo blanco con franjas celestes y naranjas.\nMalla de acero inoxidable.",
     "categoria": "relojes",
     "marca": "Tag Heuer"
   },
@@ -534,7 +534,7 @@
     ],
     "nombre": "Tag Heuer Carrera Calibre Heuer 02 Automatic Chronograph (Black Dial)",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable satinado y pulido con bisel taquimétrico color negro.\nFondo negro mate con subdiales al tono e índices aplicados plateados.\nMalla de acero inoxidable",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo negro mate.\nMalla de acero inoxidable.",
     "categoria": "relojes",
     "marca": "Tag Heuer"
   },
@@ -546,7 +546,7 @@
     ],
     "nombre": "Tag Heuer Carrera Calibre Heuer 02 Automatic Chronograph (Green Dial)",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable satinado y pulido con bisel taquimétrico color negro.\nFondo verde esmeralda con efecto de rayo de sol, subdiales al tono e índices aplicados plateados.\nMalla de acero inoxidable.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo verde esmeralda.\nMalla de acero inoxidable.",
     "categoria": "relojes",
     "marca": "Tag Heuer"
   },
@@ -558,7 +558,7 @@
     ],
     "nombre": "Tag Heuer Formula 1 Chronograph (Black Dial / Silver Subdials)",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable satinado y pulido con bisel taquimétrico color negro.\nFondo negro con anillo interno blanco, subdiales plateados, aguja central en rojo e índices aplicados.\nMalla de acero inoxidable.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo negro con detalles blancos y rojos.\nMalla de acero inoxidable.",
     "categoria": "relojes",
     "marca": "Tag Heuer"
   },
@@ -570,7 +570,7 @@
     ],
     "nombre": "Tag Heuer Formula 1 Chronograph (Special Red & Blue Edition / Rubber Strap)",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable satinado y pulido con bisel taquimétrico color azul marino.\nFondo negro con anillo interno rojo, detalles en amarillo e índices arábigos plateados.\nMalla de caucho en color negro.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo negro con detalles rojos y amarillos.\nMalla de caucho negro.",
     "categoria": "relojes",
     "marca": "Tag Heuer"
   },
@@ -582,7 +582,7 @@
     ],
     "nombre": "Tag Heuer Formula 1 Chronograph (Special Edition / Green Rubber Strap)",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable satinado y pulido con bisel taquimétrico azul marino.\nFondo negro con anillo interno rojo, detalles en amarillo e índices arábigos plateados.\nMalla de caucho color verde.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo negro con detalles rojos y amarillos.\nMalla de caucho verde.",
     "categoria": "relojes",
     "marca": "Tag Heuer"
   },
@@ -594,7 +594,7 @@
     ],
     "nombre": "Tag Heuer Formula 1 Chronograph (Special Edition / Blue Rubber Strap)",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable satinado y pulido con bisel taquimétrico azul marino.\nFondo negro con anillo interno rojo, detalles en amarillo e índices arábigos plateados.\nMalla de caucho color azul marino.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo negro con detalles rojos y amarillos.\nMalla de caucho azul marino.",
     "categoria": "relojes",
     "marca": "Tag Heuer"
   },
@@ -606,7 +606,7 @@
     ],
     "nombre": "Tag Heuer Formula 1 Senna Special Edition Chronograph",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable con revestimiento PVD negro y bisel con grabado SENNA en rojo.\nFondo negro con franjas verticales rojas, logotipo Senna en subdial e índices aplicados luminosos.\nMalla de caucho color negro con detalles e inserciones en rojo.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable negro.\nFondo negro con franjas rojas.\nMalla de caucho negro con detalles rojos.",
     "categoria": "relojes",
     "marca": "Tag Heuer"
   },
@@ -618,7 +618,7 @@
     ],
     "nombre": "Tag Heuer Formula 1 Chronograph (Blue Dial / Silver Subdials)",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable satinado y pulido con bisel taquimétrico azul marino.\nFondo azul marino con subdiales plateados, aguja central en rojo e índices aplicados luminosos.\nMalla de acero inoxidable.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo azul marino con detalles rojos.\nMalla de acero inoxidable.",
     "categoria": "relojes",
     "marca": "Tag Heuer"
   },
@@ -630,7 +630,7 @@
     ],
     "nombre": "Tag Heuer Formula 1 Calibre 16 Chronograph (Ayrton Senna Special Edition / Leather-Rubber Strap)",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable satinado y pulido con bisel en color negro con grabado SENNA en rojo.\nFondo negro mate con subdiales al tono, detalle Senna e índices aplicados luminosos.\nMalla de caucho color negro.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo negro mate con detalles rojos.\nMalla de caucho negro.",
     "categoria": "relojes",
     "marca": "Tag Heuer"
   },
@@ -642,7 +642,7 @@
     ],
     "nombre": "Tag Heuer Formula 1 Chronograph (Gulf Edition / Steel Bezel)",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable satinado y pulido con bisel taquimétrico plateado.\nFondo beige con franjas verticales en celeste y naranja (colores Gulf), subdiales al tono e índices aplicados.\nMalla de acero inoxidable.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo beige con franjas celestes y naranjas.\nMalla de acero inoxidable.",
     "categoria": "relojes",
     "marca": "Tag Heuer"
   },
@@ -654,7 +654,7 @@
     ],
     "nombre": "Tag Heuer Carrera Calibre Heuer 02 Automatic Chronograph (Blue Dial)",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable satinado y pulido con bisel taquimétrico color azul.\nFondo azul marino con efecto de rayo de sol, subdiales al tono e índices aplicados plateados.\nMalla de acero inoxidable.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo azul marino.\nMalla de acero inoxidable.",
     "categoria": "relojes",
     "marca": "Tag Heuer"
   },
@@ -666,7 +666,7 @@
     ],
     "nombre": "Tag Heuer Formula 1 Chronograph (Gulf Special Edition / Yellow Rubber Strap)",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable satinado y pulido con bisel taquimétrico color azul marino.\nFondo blanco con franjas verticales en celeste y naranja (colores Gulf), subdiales plateados e índices aplicados.\nMalla de caucho color amarillo.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo blanco con franjas celestes y naranjas.\nMalla de caucho amarillo.",
     "categoria": "relojes",
     "marca": "Tag Heuer"
   },
@@ -678,7 +678,7 @@
     ],
     "nombre": "Tag Heuer Formula 1 Chronograph (Gulf Special Edition / Blue Bezel)",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable satinado y pulido con bisel taquimétrico azul marino.\nFondo azul marino con franjas verticales en celeste y naranja (colores Gulf), subdiales plateados e índices aplicados.\nMalla de acero inoxidable.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo azul marino con franjas celestes y naranjas.\nMalla de acero inoxidable.",
     "categoria": "relojes",
     "marca": "Tag Heuer"
   },
@@ -690,7 +690,7 @@
     ],
     "nombre": "Tag Heuer Formula 1 Chronograph (Black Dial / Steel Bezel)",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable satinado y pulido con bisel taquimétrico plateado.\nFondo negro mate con subdiales al tono, detalles en naranja e índices aplicados luminosos.\nMalla de acero inoxidable.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo negro mate con detalles naranjas.\nMalla de acero inoxidable.",
     "categoria": "relojes",
     "marca": "Tag Heuer"
   },
@@ -702,7 +702,7 @@
     ],
     "nombre": "Tag Heuer Formula 1 Chronograph (Gulf Edition / Leather Strap)",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable satinado y pulido con bisel taquimétrico plateado.\nFondo beige con franjas verticales en celeste y naranja (colores Gulf), subdiales al tono e índices aplicados.\nMalla de cuero café / suela.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo beige con franjas celestes y naranjas.\nMalla de cuero marrón.",
     "categoria": "relojes",
     "marca": "Tag Heuer"
   },
@@ -714,7 +714,7 @@
     ],
     "nombre": "Rolex Cosmograph Daytona \"Panda\"",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable con bisel Cerachrom negro y escala taquimétrica.\nFondo blanco con subdiales negros en contraste (efecto Panda) e índices aplicados luminosos.\nMalla de acero inoxidable.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo blanco con subdiales negros.\nMalla de acero inoxidable.",
     "categoria": "relojes",
     "marca": "Rolex"
   },
@@ -726,7 +726,7 @@
     ],
     "nombre": "Tag Heuer Formula 1 Chronograph (Gulf Edition / Steel Bezel)",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable satinado y pulido con bisel taquimétrico plateado.\nFondo beige con franjas verticales en celeste y naranja (colores Gulf), subdiales al tono e índices aplicados.\nMalla de acero inoxidable.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo beige con franjas celestes y naranjas.\nMalla de acero inoxidable.",
     "categoria": "relojes",
     "marca": "Tag Heuer"
   },
@@ -738,7 +738,7 @@
     ],
     "nombre": "Rolex Cosmograph Daytona (Blue Dial)",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable con bisel Cerachrom negro y escala taquimétrica.\nFondo azul vibrante con efecto de rayo de sol, subdiales al tono e índices aplicados luminosos.\nMalla de acero inoxidable.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo azul.\nMalla de acero inoxidable.",
     "categoria": "relojes",
     "marca": "Rolex"
   },
@@ -750,7 +750,7 @@
     ],
     "nombre": "Rolex Cosmograph Daytona (Black Dial)",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable con bisel Cerachrom en cerámica negra y escala taquimétrica.\nFondo negro mate con subdiales plateados e índices aplicados luminosos.\nMalla de acero inoxidable.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo negro mate.\nMalla de acero inoxidable.",
     "categoria": "relojes",
     "marca": "Rolex"
   },
@@ -762,7 +762,7 @@
     ],
     "nombre": "Omega Seamaster Professional Chronograph",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable satinado y pulido con bisel taquimétrico color azul.\nFondo azul oscuro con subdiales al tono e índices aplicados luminosos.\nMalla de acero inoxidable.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo azul oscuro.\nMalla de acero inoxidable.",
     "categoria": "relojes",
     "marca": "Omega"
   },
@@ -774,7 +774,7 @@
     ],
     "nombre": "Omega Seamaster Co-Axial Master Chronometer Chronograph",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable satinado y pulido con bisel taquimétrico negro.\nFondo gris con efecto de rayo de sol, subdiales al tono, fechador a las 6 e índices aplicados luminosos.\nMalla de acero inoxidable.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo gris.\nMalla de acero inoxidable.",
     "categoria": "relojes",
     "marca": "Omega"
   },
@@ -786,7 +786,7 @@
     ],
     "nombre": "Audemars Piguet Royal Oak Offshore Chronograph (Black Ceramic / Blue Dial)",
     "precio": "Consultar",
-    "descripcion": "Caja negra con bisel octogonal característico y tornillos hexagonales visibles.\nFondo azul con patrón \"Grande Tapisserie\", subdiales al tono y fechador entre las 4 y las 5.\nMalla negra integrada.",
+    "descripcion": "Categoria AAA.\nCaja de color negro.\nFondo azul.\nMalla negra.",
     "categoria": "relojes",
     "marca": "Audemars Piguet"
   },
@@ -798,7 +798,7 @@
     ],
     "nombre": "Omega Seamaster Professional Chronograph (Black Dial)",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable satinado y pulido con bisel taquimétrico negro.\nFondo negro con subdiales al tono e índices aplicados luminosos.\nMalla de acero inoxidable.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo negro.\nMalla de acero inoxidable.",
     "categoria": "relojes",
     "marca": "Omega"
   },
@@ -810,7 +810,7 @@
     ],
     "nombre": "Audemars Piguet Royal Oak Offshore Chronograph",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable satinado y pulido con bisel octogonal característico y tornillos hexagonales visibles.\nFondo azul oscuro con patrón \"Grande Tapisserie\", subdiales plateados e índices aplicados luminosos.\nMalla de caucho azul.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo azul oscuro.\nMalla de caucho azul.",
     "categoria": "relojes",
     "marca": "Audemars Piguet"
   },
@@ -822,7 +822,7 @@
     ],
     "nombre": "Audemars Piguet Royal Oak Offshore Chronograph (Black Ceramic / Green Accents)",
     "precio": "Consultar",
-    "descripcion": "Caja negra con bisel octogonal de acabado cepillado y tornillos hexagonales visibles.\nFondo esqueletado con detalles y escala de taquímetro en verde, subdiales al tono.\nMalla de caucho verde.",
+    "descripcion": "Categoria AAA.\nCaja de color negro.\nFondo esqueletado con detalles verdes.\nMalla de caucho verde.",
     "categoria": "relojes",
     "marca": "Audemars Piguet"
   },
@@ -834,7 +834,7 @@
     ],
     "nombre": "Omega Seamaster Co-Axial Master Chronometer Chronograph",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable satinado y pulido con bisel taquimétrico negro.\nFondo negro con subdiales al tono, fechador a las 6 e índices aplicados luminosos.\nMalla de acero inoxidable.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo negro.\nMalla de acero inoxidable.",
     "categoria": "relojes",
     "marca": "Omega"
   },
@@ -846,7 +846,7 @@
     ],
     "nombre": "Audemars Piguet Royal Oak Offshore Chronograph",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable satinado y pulido con bisel octogonal característico y tornillos hexagonales visibles.\nFondo verde con patrón \"Grande Tapisserie\", subdiales plateados e índices aplicados luminosos.\nMalla de caucho negra.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo verde.\nMalla de caucho negro.",
     "categoria": "relojes",
     "marca": "Audemars Piguet"
   },
@@ -858,7 +858,7 @@
     ],
     "nombre": "Omega Seamaster Professional Chronograph (White Dial)",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable satinado y pulido con bisel taquimétrico negro.\nFondo blanco con subdiales al tono e índices aplicados luminosos.\nMalla de acero inoxidable.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo blanco.\nMalla de acero inoxidable.",
     "categoria": "relojes",
     "marca": "Omega"
   },
@@ -870,7 +870,7 @@
     ],
     "nombre": "FORSINING Grand Complication Calendar Moonphase",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable bicolor (plateado y oro rosa) pulido.\nFondo color champán/oro rosa con indicadores de año, mes, día de la semana, indicador de 24 horas y fase lunar.\nMalla de cuero marrón con textura de cocodrilo.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable bicolor (plateado y oro rosa).\nFondo champán con calendario y fase lunar.\nMalla de cuero marrón.",
     "categoria": "relojes",
     "marca": "FORSINING"
   },
@@ -882,7 +882,7 @@
     ],
     "nombre": "NORTH EDGE Solar Drive Pilot Chronograph",
     "precio": "Consultar",
-    "descripcion": "Caja de acero inoxidable con acabado gris oscuro y bisel técnico con detalles anaranjados.\nFondo negro con escala interna, numeración arábiga , manecillas luminosas y segundero anaranjado.\nMalla de caucho negro.",
+    "descripcion": "Categoria AAA.\nCaja de acero inoxidable gris oscuro con detalles anaranjados.\nFondo negro con detalles anaranjados.\nMalla de caucho negro.",
     "categoria": "relojes",
     "marca": "NORTH EDGE"
   },
@@ -894,7 +894,7 @@
     ],
     "nombre": "Longchamp Le Pliage Neo Top Handle Bag (Black)",
     "precio": "Consultar",
-    "descripcion": "Bolso de mano negro de nailon satinado.\nSolapa frontal con cierre de botón a presión, asas superiores y correa ajustable de lona extraíble.\nBandolera ajustable y desmontable tono sobre tono.",
+    "descripcion": "Nailon negro.\nCierre de botón y asas superiores.\nBandolera ajustable y desmontable.",
     "categoria": "carteras",
     "marca": "Longchamp"
   },
@@ -906,7 +906,7 @@
     ],
     "nombre": "Louis Vuitton Speedy Bandoulière (Pink Monogram)",
     "precio": "Consultar",
-    "descripcion": "Lona rosa con monograma blanco y asas de cuero suela.\nCierre superior dorado y correa larga regulable.\nIncluye monedero/pouch pequeño colgante con cadena",
+    "descripcion": "Lona rosa con monograma blanco y asas de cuero.\nCierre superior dorado y correa larga regulable.\nIncluye monedero pequeño con cadena.",
     "categoria": "carteras",
     "marca": "Louis Vuitton"
   },
@@ -918,7 +918,7 @@
     ],
     "nombre": "Zadig & Voltaire Canvas Tote Bag Saint-Tropez",
     "precio": "Consultar",
-    "descripcion": "Lona de algodón negra con tipografía frontal en blanco.\nAsas dobles color suela con remaches metálicos.\nDiseño espacioso estilo tote de acabado limpio para hombro.",
+    "descripcion": "Lona de algodón negra con letras blancas al frente.\nAsas dobles color suela con remaches.\nEstilo tote espacioso para hombro.",
     "categoria": "carteras",
     "marca": "Zadig & Voltaire"
   },
@@ -930,7 +930,7 @@
     ],
     "nombre": "Louis Vuitton Neverfull MM Monogram",
     "precio": "Consultar",
-    "descripcion": "Lona revestida Monogram clásica con detalles y asas finas de piel natural. \nDiseño amplio y versátil tipo tote con cordones laterales ajustables e interior con forro a juego.",
+    "descripcion": "Lona Monogram con asas de cuero natural.\nEstilo tote amplio, con cordones laterales ajustables.",
     "categoria": "carteras",
     "marca": "Louis Vuitton"
   },
@@ -942,7 +942,7 @@
     ],
     "nombre": "Saint Laurent Sunset Medium Shoulder Bag",
     "precio": "Consultar",
-    "descripcion": "Cuero liso en tono rojo con herrajes metálicos plateados y monograma frontal.\nSolapa frontal con cierre magnético y cadena deslizante de eslabones plateados.",
+    "descripcion": "Cuero liso rojo con herrajes plateados y monograma.\nSolapa con cierre magnético y cadena plateada.",
     "categoria": "carteras",
     "marca": "Saint Laurent"
   }
