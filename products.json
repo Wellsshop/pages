@@ -945,5 +945,17 @@
     "descripcion": "Cuero liso rojo con herrajes plateados y monograma.\nSolapa con cierre magnético y cadena plateada.",
     "categoria": "carteras",
     "marca": "Saint Laurent"
+  },
+  {
+    "id": "louis_vuitton_speedy_bandoliere_20_1792782368774_0.jpg",
+    "imagen": "louis_vuitton_speedy_bandoliere_20_1792782368774_0.jpg",
+    "imagenes": [
+      "louis_vuitton_speedy_bandoliere_20_1792782368774_0.jpg"
+    ],
+    "nombre": "LOUIS VUITTON Speedy Bandoliere 20",
+    "precio": "Consultar",
+    "descripcion": "Mini Speedy. Medidas cm 20,5 largo x13,5 alto x12 ancho",
+    "categoria": "carteras",
+    "marca": "LOUIS VUITTON"
   }
 ]
