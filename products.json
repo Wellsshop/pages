@@ -982,5 +982,18 @@
     "descripcion": "Lona denim azul con monograma.\nAsas y detalles de cuero natural, herrajes dorados.\nEstilo tote amplio, con etiqueta de denim colgante.",
     "categoria": "carteras",
     "marca": "Louis Vuitton"
+  },
+  {
+    "id": "dior_30_montaigne_east_west_1792785744370_0.jpg",
+    "imagen": "dior_30_montaigne_east_west_1792785744370_0.jpg",
+    "imagenes": [
+      "dior_30_montaigne_east_west_1792785744370_0.jpg",
+      "dior_30_montaigne_east_west_1792785745679_1.jpg"
+    ],
+    "nombre": "Dior 30 Montaigne East-West",
+    "precio": "Consultar",
+    "descripcion": "Lona denim azul con estampado Oblique.\nSolapa con tira de cuero negro y cierre dorado “CD”.\nCadena dorada con correa de cuero, para hombro o cruzada.",
+    "categoria": "carteras",
+    "marca": "Dior"
   }
 ]
