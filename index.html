@@ -419,6 +419,7 @@
                 carteras: "Carteras",
                 lentes: "Lentes",
                 gadgets: "Gadgets",
+                billeteras: "Billeteras",
             };
 
             // Fondo de cada categoría (los archivos van en la raíz del sitio, junto al index.html)
@@ -427,6 +428,7 @@
                 carteras: "Fondo_Carteras.png",
                 lentes: "Fondo_Lentes.png",
                 gadgets: "Fondo_Gadgets.png",
+                billeteras: "Fondo_Billeteras.png",
                 todos: "Fondo_Varios.png",
             };
 
@@ -690,7 +692,7 @@
                 todas.forEach((cat) => {
                     const btn = document.createElement("button");
                     btn.className = "cat-btn" + (cat === categoriaActiva ? " activo" : "");
-                    btn.textContent = cat === "todos" ? "Todos" : (NOMBRES_CATEGORIA[cat] || cat);
+                    btn.textContent = cat === "todos" ? "Todos" : (NOMBRES_CATEGORIA[cat] || (cat.charAt(0).toUpperCase() + cat.slice(1)));
                     btn.onclick = () => {
                         categoriaActiva = cat;
                         marcaActiva = "todas";
