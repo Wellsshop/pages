@@ -1225,5 +1225,17 @@
     "descripcion": "Lona Monogram clásica con solapa curva.\nDetalle del logotipo LV en metal dorado.",
     "categoria": "carteras",
     "marca": "Louis Vuitton"
+  },
+  {
+    "id": "louis_vuitton_victorine_walle_1792850088777_0.jpg",
+    "imagen": "louis_vuitton_victorine_walle_1792850088777_0.jpg",
+    "imagenes": [
+      "louis_vuitton_victorine_walle_1792850088777_0.jpg"
+    ],
+    "nombre": "Louis Vuitton Victorine Walle",
+    "precio": "Consultar",
+    "descripcion": "Lona Damier Azur en tono crema y azul.\nSolapa curva con logotipo LV en metal dorado.",
+    "categoria": "carteras",
+    "marca": "Louis Vuitton"
   }
 ]
