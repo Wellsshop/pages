@@ -1057,5 +1057,17 @@
     "descripcion": "Billetera compacta con solapa y broche \"H\" (Cuero Granulado Blanco)",
     "categoria": "carteras",
     "marca": "Hermès"
+  },
+  {
+    "id": "hermes_cuero_blanco_1792845414871_0.jpg",
+    "imagen": "hermes_cuero_blanco_1792845414871_0.jpg",
+    "imagenes": [
+      "hermes_cuero_blanco_1792845414871_0.jpg"
+    ],
+    "nombre": "Hermès Cuero Blanco",
+    "precio": "Consultar",
+    "descripcion": "Billetera compacta con solapa y broche \"H\" (Cuero Granulado Suela)",
+    "categoria": "carteras",
+    "marca": "Hermès"
   }
 ]
