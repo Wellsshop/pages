@@ -1261,5 +1261,17 @@
     "descripcion": "Lona Monogram clásica con solapa curva.   \nDetalle del logotipo LV en metal dorado sobre fondo neutro.",
     "categoria": "carteras",
     "marca": "Louis Vuitton"
+  },
+  {
+    "id": "louis_vuitton_victorine_wallet_1792850271624_0.jpg",
+    "imagen": "louis_vuitton_victorine_wallet_1792850271624_0.jpg",
+    "imagenes": [
+      "louis_vuitton_victorine_wallet_1792850271624_0.jpg"
+    ],
+    "nombre": "Louis Vuitton Victorine Wallet",
+    "precio": "Consultar",
+    "descripcion": "Lona Damier Graphite en tonos gris y negro con solapa curva.   Detalle del logotipo LV en metal dorado.",
+    "categoria": "carteras",
+    "marca": "Louis Vuitton"
   }
 ]
