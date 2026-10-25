@@ -1345,5 +1345,18 @@
     "descripcion": "Eco cuero Monogram Empreinte grabada en color negro refinado.\nCorrea de hombro, cierre frontal con hebilla y herrajes dorados.",
     "categoria": "carteras",
     "marca": "Louis Vuitton"
+  },
+  {
+    "id": "hermes_birkin_35_1792961887892_0.jpg",
+    "imagen": "hermes_birkin_35_1792961887892_0.jpg",
+    "imagenes": [
+      "hermes_birkin_35_1792961887892_0.jpg",
+      "hermes_birkin_35_1792961889302_1.jpg"
+    ],
+    "nombre": "Hermès Birkin 35",
+    "precio": "Consultar",
+    "descripcion": "Eco Cuero de grano fino en un cálido tono Gold con costuras a contraste.\nAsas superiores, correas de ajuste e icónico cierre de giro en metal plateado.",
+    "categoria": "carteras",
+    "marca": "Hermès"
   }
 ]
