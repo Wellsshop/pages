@@ -6,7 +6,7 @@
 <title>Glam | Relojes, Carteras, Billeteras y Lentes</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0b0b0b;--panel:#141414;--line:#2b2519;--text:#f3ece0;--muted:#9c9484;--gold:#c9a96e;--serif:'Playfair Display',Georgia,serif}
+:root{--bg:#0b0b0b;--panel:#141414;--line:#2b2519;--text:#f3ece0;--muted:#9c9484;--gold:#e2c78f;--serif:'Playfair Display',Georgia,serif}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,sans-serif;font-weight:300}
@@ -14,16 +14,17 @@ a{color:inherit;text-decoration:none}
 [hidden]{display:none!important}
 header{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px 6vw;background:rgba(11,11,11,.93);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .logo{font-family:var(--serif);font-size:1.7rem;letter-spacing:.35em;color:var(--gold)}
-nav a{margin-left:28px;font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);transition:color .2s}
+nav a{margin-left:28px;font-size:.8rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--text);transition:color .2s}
 nav a:hover{color:var(--gold)}
 /* patrón de fondo en negativo: líneas doradas sutiles sobre negro */
 .pat{position:relative;overflow:hidden}
 .pat::before{content:"";position:absolute;inset:0;background:var(--bg-img) center/380px repeat;filter:invert(1);opacity:.07;pointer-events:none}
 .pat>*{position:relative}
 .hero{min-height:52vh;display:flex;flex-direction:column;justify-content:center;padding:60px 6vw;background:radial-gradient(ellipse at 78% 50%,#2c2314 0%,#0b0b0b 65%)}
-.hero .reloj{position:absolute;right:9vw;top:50%;transform:translateY(-50%);height:min(88%,400px);width:auto;filter:drop-shadow(0 0 30px rgba(201,169,110,.18))}
+.hero .reloj{position:absolute;right:9vw;top:50%;transform:translateY(-50%);height:min(88%,400px);width:auto;filter:drop-shadow(0 0 30px rgba(226,199,143,.2))}
 .seg{transform-origin:150px 220px;animation:giro 60s linear infinite}
 @keyframes giro{to{transform:rotate(360deg)}}
+.hero .eyebrow,.hero h1{z-index:2}
 .eyebrow{font-size:.75rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold)}
 .hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.6rem,7vw,5.6rem);line-height:1.08;margin:18px 0 0;max-width:9em}
 .btn{display:inline-block;border:1px solid var(--gold);color:var(--gold);padding:15px 38px;font-size:.78rem;letter-spacing:.25em;text-transform:uppercase;background:none;cursor:pointer;font-family:inherit;transition:all .25s}
@@ -32,12 +33,12 @@ section.cols{padding:90px 6vw}
 h2.t{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,4vw,3rem);text-align:center;margin:0 0 12px}
 .sub{text-align:center;color:var(--muted);margin:0 0 54px;letter-spacing:.05em}
 .rule{width:60px;height:1px;background:var(--gold);margin:0 auto 22px}
-.colgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;max-width:1250px;margin:0 auto}
-.col{display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:4/5;padding:28px;border:1px solid var(--line);background:linear-gradient(180deg,#121212,#0b0b0b);transition:border-color .3s,transform .3s}
+.colgrid{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:22px;max-width:1250px;margin:0 auto;container-type:inline-size}
+.col{display:flex;flex-direction:column;justify-content:flex-end;height:208px;min-width:0;overflow:hidden;padding:clamp(14px,2.2cqw,28px);border:1px solid var(--line);background:var(--bg);transition:border-color .3s,transform .3s}
 .col:hover{border-color:var(--gold);transform:translateY(-5px)}
-.col h3{font-family:var(--serif);font-weight:400;font-size:1.9rem;margin:6px 0 14px;color:var(--gold)}
-.col .n{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-.col .ver{font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;border-bottom:1px solid var(--gold);align-self:flex-start;padding-bottom:4px}
+.col h3{font-family:var(--serif);font-weight:400;font-size:clamp(1.05rem,2.3cqw,1.9rem);margin:4px 0 10px;color:var(--gold)}
+.col .n{font-size:clamp(.58rem,.9cqw,.72rem);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.col .ver{font-size:clamp(.58rem,.95cqw,.75rem);letter-spacing:.16em;white-space:nowrap;text-transform:uppercase;border-bottom:1px solid var(--gold);align-self:flex-start;padding-bottom:4px}
 .banner{padding:70px 6vw 54px;text-align:center;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#171309,#0b0b0b)}
 .banner h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.4rem,6vw,4.2rem);margin:14px 0 0}
 .back{font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted)}
@@ -69,7 +70,24 @@ footer .logo{font-size:1.3rem;display:block;margin-bottom:14px}
 #modal img{max-width:90%;max-height:88%;object-fit:contain}
 #modal button{position:absolute;background:rgba(255,255,255,.1);color:#fff;border:none;border-radius:50%;width:46px;height:46px;font-size:26px;cursor:pointer}
 #mx{top:22px;right:26px}#mp{left:20px;top:50%}#mn{right:20px;top:50%}
-@media(max-width:640px){header{padding:14px 5vw}.logo{font-size:1.3rem}nav a{margin-left:16px;font-size:.68rem}.hero{min-height:46vh;padding:48px 5vw}.hero .reloj{right:-14vw;height:330px;opacity:.4}section.cols{padding:60px 5vw}.colgrid{grid-template-columns:1fr 1fr;gap:12px}.col{padding:18px}.col h3{font-size:1.4rem}.tools{padding:22px 5vw 6px}.grid{padding:16px 5vw 60px}}
+@media(max-width:640px){
+header{padding:14px 5vw}.logo{font-size:1.3rem}nav a{margin-left:16px;font-size:.72rem}
+.hero{min-height:44vh;padding:44px 5vw}
+.hero .reloj{right:-26vw;top:auto;bottom:-30px;transform:none;height:300px;opacity:.22}
+.eyebrow{font-size:.64rem;letter-spacing:.2em;line-height:1.8}
+.hero h1{font-size:clamp(2.3rem,11vw,3rem)}
+section.cols{padding:50px 5vw}.sub{margin-bottom:34px}
+.colgrid{grid-auto-flow:row;grid-template-columns:1fr;gap:10px}
+.col{display:grid;grid-template-columns:1fr auto;grid-template-areas:"h n" "h v";align-items:center;column-gap:12px;height:auto;min-height:84px;padding:16px 18px}
+.col h3{grid-area:h;margin:0;font-size:1.5rem}
+.col .n{grid-area:n;justify-self:end;font-size:.62rem;margin-bottom:6px}
+.col .ver{grid-area:v;justify-self:end;align-self:auto;font-size:.62rem}
+.banner{padding:44px 5vw 34px}
+.tools{padding:22px 5vw 6px}
+.grid{grid-template-columns:1fr 1fr;gap:12px;padding:16px 5vw 60px}
+.img{height:190px}.info{padding:14px}.info h3{font-size:1.05rem}.info p{font-size:.78rem;margin-bottom:14px}
+.wa{padding:10px 6px;font-size:.6rem;letter-spacing:.1em}
+}
 </style>
 </head>
 <body>
@@ -83,7 +101,7 @@ footer .logo{font-size:1.3rem;display:block;margin-bottom:14px}
     <div class="eyebrow">Relojes · Carteras · Billeteras · Lentes</div>
     <h1>Elegancia en cada detalle</h1>
     <svg class="reloj" viewBox="0 0 300 440" aria-hidden="true">
-      <defs><linearGradient id="oro" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f1dca8"/><stop offset=".5" stop-color="#c9a96e"/><stop offset="1" stop-color="#8a6d3b"/></linearGradient></defs>
+      <defs><linearGradient id="oro" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6e6bd"/><stop offset=".5" stop-color="#e2c78f"/><stop offset="1" stop-color="#8a6d3b"/></linearGradient></defs>
       <path d="M96 0h108l9 112H87z" fill="#15120b" stroke="url(#oro)" stroke-width="2"/>
       <path d="M87 328h126l-9 112H96z" fill="#15120b" stroke="url(#oro)" stroke-width="2"/>
       <path d="M92 40h116M89 76h122M89 364h122M92 400h116" stroke="url(#oro)" stroke-width="1" opacity=".45"/>
@@ -124,7 +142,7 @@ footer .logo{font-size:1.3rem;display:block;margin-bottom:14px}
 (() => {
   const WA = "5491159828985";
   const NOMBRES = {relojes:"Relojes",carteras:"Carteras",billeteras:"Billeteras",lentes:"Lentes",gadgets:"Gadgets"};
-  const FONDOS = {relojes:"fondo.jpg",carteras:"Fondo_Carteras.png",billeteras:"Fondo_Billeteras.png",lentes:"Fondo_Lentes.png",gadgets:"Fondo_Gadgets.png",home:"Fondo_Varios.png"};
+  const FONDOS = {relojes:"fondo.jpg",carteras:"Fondo Carteras.png",billeteras:"Fondo_Billeteras.png",lentes:"Fondo Lentes.png",gadgets:"Fondo Gadgets.png",home:"Fondo Varios.png"};
   const PRINCIPALES = ["relojes","carteras","billeteras","lentes"];
   const $ = id => document.getElementById(id);
   const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -133,7 +151,7 @@ footer .logo{font-size:1.3rem;display:block;margin-bottom:14px}
   const cat = p => (p.categoria || "").toLowerCase();
   const marcaDe = p => (p.marca && String(p.marca).trim()) || String(p.nombre || "").trim().split(/\s+/)[0] || "";
   const modeloDe = p => { const n = String(p.nombre || "").trim(), m = marcaDe(p); return m && n.toLowerCase().startsWith(m.toLowerCase()) ? n.slice(m.length).trim() : n; };
-  const fondo = c => `url('${FONDOS[c] || FONDOS.home}')`;
+  const fondo = c => `url('${encodeURI(FONDOS[c] || FONDOS.home)}')`;
 
   let productos = [], actual = "home", filtroMarca = "todas";
   $("navWa").href = `https://wa.me/${WA}?text=${encodeURIComponent("Hola! Quisiera hacer una consulta.")}`;
@@ -143,7 +161,7 @@ footer .logo{font-size:1.3rem;display:block;margin-bottom:14px}
     const extras = [...new Set(productos.map(cat).filter(c => c && !PRINCIPALES.includes(c)))].sort();
     $("colgrid").innerHTML = [...PRINCIPALES, ...extras].map(c => {
       const n = productos.filter(p => cat(p) === c).length;
-      return `<a class="col pat" href="#/${esc(c)}" style="--bg-img:${fondo(c)}"><span class="n">${n} ${n === 1 ? "pieza" : "piezas"}</span><h3>${esc(nombreCat(c))}</h3><span class="ver">Ver colección</span></a>`;
+      return `<a class="col" href="#/${esc(c)}"><span class="n">${n} ${n === 1 ? "pieza" : "piezas"}</span><h3>${esc(nombreCat(c))}</h3><span class="ver">Ver colección</span></a>`;
     }).join("");
   }
 
