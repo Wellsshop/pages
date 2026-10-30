@@ -1,804 +1,224 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wellsshop | Catálogo</title>
-    <!-- Fuente moderna e importada de Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --accent-color: #1e293b;
-            --whatsapp-color: #10b981;
-            --whatsapp-hover: #059669;
-            --border-color: #e2e8f0;
-            --cobre: #a9673f;
-            --header-bg: #ffffff;
-
-            /* Fondo inicial (relojes). Lo cambia el JS al tocar cada categoría */
-            --fondo-img: url('fondo.jpg');
-            --fondo-size: 420px;
-        }
-
-        body { 
-            font-family: 'Inter', sans-serif; 
-            margin: 0; 
-            padding: 0 0 50px 0; 
-            background: var(--bg-color); 
-            color: var(--text-main);
-            position: relative;
-            min-height: 100vh;
-        }
-
-        /* PATRÓN DE FONDO SUTIL (cambia según la categoría) */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: var(--fondo-img);
-            background-repeat: repeat;
-            background-size: var(--fondo-size) auto;
-            opacity: 0.06;
-            z-index: -1;
-            pointer-events: none;
-            transition: opacity 0.25s ease;
-        }
-
-        body.cambiando-fondo::before { opacity: 0; }
-
-        /* ENCABEZADO ESTILO BOUTIQUE */
-        header {
-            background: #ffffff;
-            color: var(--text-main);
-            padding: 14px 20px;
-            text-align: center;
-            margin-bottom: 30px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        #logo {
-            display: none; /* se muestra solo si la imagen carga bien */
-            max-height: 90px;
-            width: auto;
-            margin: 0 auto;
-        }
-        #logo.visible { display: inline-block; }
-
-        /* Si el logo no carga, mostramos este título en su lugar */
-        h1 { 
-            margin: 0; 
-            font-size: 2.2rem; 
-            font-weight: 700; 
-            letter-spacing: -0.5px;
-            color: var(--cobre);
-        }
-        h1.oculto { display: none; }
-
-        p.subtitle { 
-            display: none;
-        }
-
-        /* BARRA DE CATEGORÍAS */
-        .categorias {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            max-width: 1200px;
-            margin: 0 auto 30px;
-            padding: 0 20px;
-        }
-
-        .cat-btn {
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            font-size: 0.9rem;
-            padding: 10px 20px;
-            border-radius: 999px;
-            border: 1px solid var(--border-color);
-            background: var(--card-bg);
-            color: var(--text-muted);
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .cat-btn:hover {
-            border-color: var(--accent-color);
-            color: var(--accent-color);
-        }
-
-        .cat-btn.activo {
-            background: var(--accent-color);
-            color: white;
-            border-color: var(--accent-color);
-        }
-
-        .marcas {
-            display: none;
-            justify-content: flex-start;
-            max-width: 1200px;
-            margin: -16px auto 30px;
-            padding: 0 20px;
-            position: relative;
-        }
-
-        .marca-toggle {
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            font-size: 0.85rem;
-            padding: 9px 16px;
-            border-radius: 999px;
-            border: 1px solid var(--border-color);
-            background: var(--card-bg);
-            color: var(--text-main);
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            transition: all 0.2s ease;
-        }
-
-        .marca-toggle:hover { border-color: var(--accent-color); }
-
-        .marca-toggle .flecha {
-            font-size: 0.65rem;
-            color: var(--text-muted);
-            transition: transform 0.15s ease;
-        }
-
-        .marca-toggle.abierto .flecha { transform: rotate(180deg); }
-
-        .marca-menu {
-            position: absolute;
-            top: calc(100% + 6px);
-            left: 20px;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 14px;
-            box-shadow: 0 10px 28px rgba(15, 23, 42, 0.14);
-            min-width: 210px;
-            max-height: 280px;
-            overflow-y: auto;
-            z-index: 30;
-            padding: 6px;
-        }
-
-        .marca-opt {
-            display: block;
-            width: 100%;
-            text-align: left;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.88rem;
-            font-weight: 500;
-            padding: 9px 12px;
-            border: none;
-            background: none;
-            border-radius: 8px;
-            color: var(--text-main);
-            cursor: pointer;
-        }
-
-        .marca-opt:hover { background: var(--bg-color); }
-
-        .marca-opt.activo {
-            background: var(--accent-color);
-            color: white;
-            font-weight: 600;
-        }
-
-        /* GRILLA DE PRODUCTOS */
-        .grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); 
-            gap: 25px; 
-            max-width: 1200px; 
-            margin: 0 auto; 
-            padding: 0 20px; 
-        }
-
-        /* TARJETAS */
-        .card { 
-            background: var(--card-bg); 
-            border-radius: 12px; 
-            border: 1px solid var(--border-color);
-            padding: 20px; 
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.01); 
-            text-align: left; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: space-between; 
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 20px -3px rgba(0, 0, 0, 0.08);
-        }
-        
-        .card-image-wrapper {
-            display: block;
-            width: 100%;
-            height: 220px;
-            overflow: hidden;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            cursor: pointer;
-            background-color: #f1f5f9;
-            position: relative;
-        }
-        
-        .card img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: contain; 
-            transition: transform 0.3s ease;
-        }
-        
-        .card-image-wrapper:hover img {
-            transform: scale(1.06);
-        }
-
-        .card h3 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin: 0 0 2px 0;
-            color: var(--text-main);
-        }
-
-        .card .modelo {
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: var(--text-muted);
-            margin: 0 0 8px 0;
-        }
-
-        .price { 
-            font-weight: 700; 
-            color: #047857; 
-            font-size: 1.25rem; 
-            margin: 5px 0 10px 0; 
-        }
-
-        .card p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin: 0 0 15px 0;
-            line-height: 1.4;
-            flex-grow: 1;
-            white-space: pre-line; /* respeta los Enter / renglones de la descripción */
-        }
-        .card p.modelo { white-space: normal; flex-grow: 0; }
-
-        .btn-whatsapp { 
-            display: flex; 
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background: var(--whatsapp-color); 
-            color: white; 
-            padding: 10px 15px; 
-            border-radius: 8px; 
-            text-decoration: none; 
-            font-weight: 600; 
-            font-size: 0.9rem;
-            transition: background 0.2s ease;
-            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
-        }
-        
-        .btn-whatsapp:hover { 
-            background: var(--whatsapp-hover); 
-        }
-
-        #error-msg {
-            max-width: 600px;
-            margin: 20px auto;
-            background: #fee2e2;
-            color: #991b1b;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            display: none;
-            font-weight: 500;
-        }
-
-        /* VENTANA FLOTANTE (MODAL) */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(4px);
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-content {
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
-            border-radius: 8px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
-        }
-        .close-btn {
-            position: absolute;
-            top: 25px;
-            right: 30px;
-            color: #fff;
-            font-size: 35px;
-            font-weight: 300;
-            cursor: pointer;
-            background: rgba(255, 255, 255, 0.1);
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.2s;
-        }
-        .close-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-        .nav { position: absolute; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; border: none; border-radius: 50%; background: rgba(255,255,255,0.9); color: var(--text-main); font-size: 20px; line-height: 1; cursor: pointer; box-shadow: 0 1px 4px rgba(0,0,0,0.2); opacity: 0; transition: opacity 0.2s; }
-        .nav.prev { left: 8px; } .nav.next { right: 8px; }
-        .card-image-wrapper:hover .nav, .card-image-wrapper:focus-within .nav { opacity: 1; }
-        @media (hover: none) { .nav { opacity: 1; } }
-        .dots { position: absolute; bottom: 8px; left: 0; right: 0; display: flex; justify-content: center; gap: 5px; pointer-events: none; }
-        .dots span { width: 7px; height: 7px; border-radius: 50%; background: rgba(15,23,42,0.25); }
-        .dots span.on { background: var(--cobre); }
-        .modal-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 46px; height: 46px; border: none; border-radius: 50%; background: rgba(255,255,255,0.15); color: #fff; font-size: 28px; cursor: pointer; display: none; align-items: center; justify-content: center; }
-        .modal-nav:hover { background: rgba(255,255,255,0.3); }
-        #modalPrev { left: 20px; } #modalNext { right: 20px; }
-        #modalCount { position: absolute; bottom: 22px; left: 0; right: 0; text-align: center; color: #fff; font-size: 0.9rem; }
-    
-        /* VISTA MOBILE: cabecera más compacta, filtros en tiras con scroll horizontal */
-        @media (max-width: 640px) {
-            header { padding: 10px 16px; margin-bottom: 14px; }
-            #logo { max-height: 52px; }
-            h1 { font-size: 1.5rem; }
-
-            .categorias {
-                flex-wrap: nowrap;
-                justify-content: flex-start;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: none;
-                margin: 0 auto 10px;
-                padding: 0 16px 4px;
-            }
-            .categorias::-webkit-scrollbar { display: none; }
-            .cat-btn { flex: 0 0 auto; padding: 8px 16px; font-size: 0.84rem; }
-
-            .marcas { margin: -4px auto 12px; padding: 0 16px; }
-            .marca-toggle { padding: 8px 14px; font-size: 0.82rem; }
-            .marca-menu { left: 16px; right: 16px; min-width: 0; }
-
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glam | Relojes, Carteras, Billeteras y Lentes</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0b0b;--panel:#141414;--line:#2b2519;--text:#f3ece0;--muted:#9c9484;--gold:#c9a96e;--serif:'Playfair Display',Georgia,serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,sans-serif;font-weight:300}
+a{color:inherit;text-decoration:none}
+[hidden]{display:none!important}
+header{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px 6vw;background:rgba(11,11,11,.93);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.logo{font-family:var(--serif);font-size:1.7rem;letter-spacing:.35em;color:var(--gold)}
+nav a{margin-left:28px;font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);transition:color .2s}
+nav a:hover{color:var(--gold)}
+/* patrón de fondo en negativo: líneas doradas sutiles sobre negro */
+.pat{position:relative;overflow:hidden}
+.pat::before{content:"";position:absolute;inset:0;background:var(--bg-img) center/380px repeat;filter:invert(1);opacity:.07;pointer-events:none}
+.pat>*{position:relative}
+.hero{min-height:52vh;display:flex;flex-direction:column;justify-content:center;padding:60px 6vw;background:radial-gradient(ellipse at 78% 50%,#2c2314 0%,#0b0b0b 65%)}
+.hero .reloj{position:absolute;right:9vw;top:50%;transform:translateY(-50%);height:min(88%,400px);width:auto;filter:drop-shadow(0 0 30px rgba(201,169,110,.18))}
+.seg{transform-origin:150px 220px;animation:giro 60s linear infinite}
+@keyframes giro{to{transform:rotate(360deg)}}
+.eyebrow{font-size:.75rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold)}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.6rem,7vw,5.6rem);line-height:1.08;margin:18px 0 0;max-width:9em}
+.btn{display:inline-block;border:1px solid var(--gold);color:var(--gold);padding:15px 38px;font-size:.78rem;letter-spacing:.25em;text-transform:uppercase;background:none;cursor:pointer;font-family:inherit;transition:all .25s}
+.btn:hover{background:var(--gold);color:#0b0b0b}
+section.cols{padding:90px 6vw}
+h2.t{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,4vw,3rem);text-align:center;margin:0 0 12px}
+.sub{text-align:center;color:var(--muted);margin:0 0 54px;letter-spacing:.05em}
+.rule{width:60px;height:1px;background:var(--gold);margin:0 auto 22px}
+.colgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;max-width:1250px;margin:0 auto}
+.col{display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:4/5;padding:28px;border:1px solid var(--line);background:linear-gradient(180deg,#121212,#0b0b0b);transition:border-color .3s,transform .3s}
+.col:hover{border-color:var(--gold);transform:translateY(-5px)}
+.col h3{font-family:var(--serif);font-weight:400;font-size:1.9rem;margin:6px 0 14px;color:var(--gold)}
+.col .n{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.col .ver{font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;border-bottom:1px solid var(--gold);align-self:flex-start;padding-bottom:4px}
+.banner{padding:70px 6vw 54px;text-align:center;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#171309,#0b0b0b)}
+.banner h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.4rem,6vw,4.2rem);margin:14px 0 0}
+.back{font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted)}
+.back:hover{color:var(--gold)}
+.tools{display:flex;justify-content:space-between;align-items:center;max-width:1250px;margin:0 auto;padding:30px 6vw 10px}
+.tools span{color:var(--muted);font-size:.85rem}
+select{background:var(--panel);color:var(--text);border:1px solid var(--line);padding:11px 16px;font-family:inherit;font-size:.85rem;letter-spacing:.05em}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:26px;max-width:1250px;margin:0 auto;padding:20px 6vw 90px}
+.card{background:var(--panel);border:1px solid var(--line);display:flex;flex-direction:column;transition:border-color .3s}
+.card:hover{border-color:var(--gold)}
+.img{position:relative;height:270px;background:#f3f0ea;cursor:zoom-in;overflow:hidden}
+.img img{width:100%;height:100%;object-fit:contain;transition:transform .4s}
+.img:hover img{transform:scale(1.05)}
+.nav{position:absolute;top:50%;transform:translateY(-50%);width:32px;height:32px;border:none;border-radius:50%;background:rgba(11,11,11,.8);color:var(--gold);font-size:20px;cursor:pointer;opacity:0;transition:opacity .2s}
+.prev{left:8px}.next{right:8px}.img:hover .nav{opacity:1}
+@media(hover:none){.nav{opacity:1}}
+.dots{position:absolute;bottom:8px;left:0;right:0;display:flex;justify-content:center;gap:5px;pointer-events:none}
+.dots i{width:6px;height:6px;border-radius:50%;background:rgba(0,0,0,.25)}.dots i.on{background:var(--gold)}
+.info{padding:22px;display:flex;flex-direction:column;flex:1}
+.info .m{font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold)}
+.info h3{font-family:var(--serif);font-weight:400;font-size:1.3rem;margin:6px 0 10px}
+.info p{margin:0 0 20px;color:var(--muted);font-size:.88rem;line-height:1.55;white-space:pre-line;flex:1}
+.wa{display:block;text-align:center;border:1px solid var(--gold);color:var(--gold);padding:12px;font-size:.73rem;letter-spacing:.2em;text-transform:uppercase;transition:all .25s}
+.wa:hover{background:var(--gold);color:#0b0b0b}
+.vacio{grid-column:1/-1;text-align:center;color:var(--muted);padding:60px 0}
+footer{border-top:1px solid var(--line);padding:50px 6vw;text-align:center;color:var(--muted);font-size:.8rem;letter-spacing:.1em}
+footer .logo{font-size:1.3rem;display:block;margin-bottom:14px}
+#modal{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.92);display:none;justify-content:center;align-items:center}
+#modal img{max-width:90%;max-height:88%;object-fit:contain}
+#modal button{position:absolute;background:rgba(255,255,255,.1);color:#fff;border:none;border-radius:50%;width:46px;height:46px;font-size:26px;cursor:pointer}
+#mx{top:22px;right:26px}#mp{left:20px;top:50%}#mn{right:20px;top:50%}
+@media(max-width:640px){header{padding:14px 5vw}.logo{font-size:1.3rem}nav a{margin-left:16px;font-size:.68rem}.hero{min-height:46vh;padding:48px 5vw}.hero .reloj{right:-14vw;height:330px;opacity:.4}section.cols{padding:60px 5vw}.colgrid{grid-template-columns:1fr 1fr;gap:12px}.col{padding:18px}.col h3{font-size:1.4rem}.tools{padding:22px 5vw 6px}.grid{padding:16px 5vw 60px}}
+</style>
 </head>
 <body>
+<header>
+  <a href="#/" class="logo">GLAM</a>
+  <nav><a href="#/">Inicio</a><a id="navWa" href="#" target="_blank" rel="noopener">Contacto</a></nav>
+</header>
 
-    <header>
-        <img id="logo" alt="Wellsshop">
-    </header>
+<main id="home">
+  <div class="hero pat" id="heroPat">
+    <div class="eyebrow">Relojes · Carteras · Billeteras · Lentes</div>
+    <h1>Elegancia en cada detalle</h1>
+    <svg class="reloj" viewBox="0 0 300 440" aria-hidden="true">
+      <defs><linearGradient id="oro" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f1dca8"/><stop offset=".5" stop-color="#c9a96e"/><stop offset="1" stop-color="#8a6d3b"/></linearGradient></defs>
+      <path d="M96 0h108l9 112H87z" fill="#15120b" stroke="url(#oro)" stroke-width="2"/>
+      <path d="M87 328h126l-9 112H96z" fill="#15120b" stroke="url(#oro)" stroke-width="2"/>
+      <path d="M92 40h116M89 76h122M89 364h122M92 400h116" stroke="url(#oro)" stroke-width="1" opacity=".45"/>
+      <rect x="266" y="204" width="20" height="32" rx="4" fill="url(#oro)"/>
+      <circle cx="150" cy="220" r="119" fill="#0b0b0b" stroke="url(#oro)" stroke-width="6"/>
+      <circle cx="150" cy="220" r="105" fill="none" stroke="url(#oro)" stroke-width="1.5"/>
+      <circle cx="150" cy="220" r="98" fill="#111"/>
+      <circle cx="150" cy="220" r="90" fill="none" stroke="url(#oro)" stroke-width="5" stroke-dasharray="1 8.42" transform="rotate(-90.3 150 220)" opacity=".7"/>
+      <circle cx="150" cy="220" r="78" fill="none" stroke="url(#oro)" stroke-width="16" stroke-dasharray="4 37.9" transform="rotate(-91.5 150 220)"/>
+      <line x1="150" y1="220" x2="150" y2="168" stroke="url(#oro)" stroke-width="6" stroke-linecap="round" transform="rotate(-55 150 220)"/>
+      <line x1="150" y1="220" x2="150" y2="140" stroke="url(#oro)" stroke-width="4" stroke-linecap="round" transform="rotate(60 150 220)"/>
+      <g class="seg"><line x1="150" y1="238" x2="150" y2="136" stroke="#e8d3a0" stroke-width="1.5"/></g>
+      <circle cx="150" cy="220" r="6" fill="url(#oro)"/><circle cx="150" cy="220" r="2" fill="#0b0b0b"/>
+    </svg>
+  </div>
+  <section class="cols" id="colecciones">
+    <div class="rule"></div>
+    <h2 class="t">Nuestras Colecciones</h2>
+    <p class="sub">Elegí una categoría y descubrí la selección</p>
+    <div class="colgrid" id="colgrid"></div>
+  </section>
+</main>
 
-    <div class="categorias" id="barra-categorias"></div>
-    <div class="marcas" id="barra-marcas"></div>
-    <div id="error-msg"></div>
-    <div class="grid" id="catalogo-productos"></div>
+<main id="categoria" hidden>
+  <div class="banner pat" id="banner">
+    <a class="back" href="#/">← Colecciones</a>
+    <h1 id="catTitulo"></h1>
+  </div>
+  <div class="tools"><span id="cantidad"></span><select id="marcaSel"></select></div>
+  <div class="grid" id="grid"></div>
+</main>
 
-    <!-- MODAL -->
-    <div id="imageModal" class="modal">
-        <span class="close-btn" id="closeModal">&times;</span>
-        <button class="modal-nav" id="modalPrev" type="button">‹</button>
-        <img class="modal-content" id="modalImg" alt="Imagen ampliada">
-        <button class="modal-nav" id="modalNext" type="button">›</button>
-        <div id="modalCount"></div>
-    </div>
+<footer><span class="logo">GLAM</span>glamshop.com.ar &nbsp;·&nbsp; Consultas por WhatsApp</footer>
 
-    <script>
-        (() => {
-            const numeroWhatsApp = "5491159828985";
-            const contenedor = document.getElementById("catalogo-productos");
-            const barraCategorias = document.getElementById("barra-categorias");
-            const barraMarcas = document.getElementById("barra-marcas");
+<div id="modal"><button id="mx">&times;</button><button id="mp">‹</button><img id="mi" alt=""><button id="mn">›</button></div>
 
-            // Nombres lindos para mostrar en los botones (agregá acá si sumás categorías nuevas)
-            const NOMBRES_CATEGORIA = {
-                relojes: "Relojes",
-                carteras: "Carteras",
-                lentes: "Lentes",
-                gadgets: "Gadgets",
-                billeteras: "Billeteras",
-            };
+<script>
+(() => {
+  const WA = "5491159828985";
+  const NOMBRES = {relojes:"Relojes",carteras:"Carteras",billeteras:"Billeteras",lentes:"Lentes",gadgets:"Gadgets"};
+  const FONDOS = {relojes:"fondo.jpg",carteras:"Fondo_Carteras.png",billeteras:"Fondo_Billeteras.png",lentes:"Fondo_Lentes.png",gadgets:"Fondo_Gadgets.png",home:"Fondo_Varios.png"};
+  const PRINCIPALES = ["relojes","carteras","billeteras","lentes"];
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+  const nombreCat = c => NOMBRES[c] || cap(c);
+  const cat = p => (p.categoria || "").toLowerCase();
+  const marcaDe = p => (p.marca && String(p.marca).trim()) || String(p.nombre || "").trim().split(/\s+/)[0] || "";
+  const modeloDe = p => { const n = String(p.nombre || "").trim(), m = marcaDe(p); return m && n.toLowerCase().startsWith(m.toLowerCase()) ? n.slice(m.length).trim() : n; };
+  const fondo = c => `url('${FONDOS[c] || FONDOS.home}')`;
 
-            // Fondo de cada categoría (los archivos van en la raíz del sitio, junto al index.html)
-            const FONDOS = {
-                relojes: "fondo.jpg",
-                carteras: "Fondo_Carteras.png",
-                lentes: "Fondo_Lentes.png",
-                gadgets: "Fondo_Gadgets.png",
-                billeteras: "Fondo_Billeteras.png",
-                todos: "Fondo_Varios.png",
-            };
+  let productos = [], actual = "home", filtroMarca = "todas";
+  $("navWa").href = `https://wa.me/${WA}?text=${encodeURIComponent("Hola! Quisiera hacer una consulta.")}`;
+  $("heroPat").style.setProperty("--bg-img", fondo("home"));
 
-            // Orden en que aparecen los botones. "todos" siempre va al final.
-            const ORDEN_CATEGORIAS = ["relojes", "carteras", "lentes", "gadgets"];
+  function pintarColecciones() {
+    const extras = [...new Set(productos.map(cat).filter(c => c && !PRINCIPALES.includes(c)))].sort();
+    $("colgrid").innerHTML = [...PRINCIPALES, ...extras].map(c => {
+      const n = productos.filter(p => cat(p) === c).length;
+      return `<a class="col pat" href="#/${esc(c)}" style="--bg-img:${fondo(c)}"><span class="n">${n} ${n === 1 ? "pieza" : "piezas"}</span><h3>${esc(nombreCat(c))}</h3><span class="ver">Ver colección</span></a>`;
+    }).join("");
+  }
 
-            // Guardamos dónde estaba la persona (categoría, marca y scroll) para que al
-            // actualizar la página vuelva exactamente al mismo lugar.
-            const CLAVE_ESTADO = "wellsshop_estado";
-            function leerEstado() {
-                try { return JSON.parse(sessionStorage.getItem(CLAVE_ESTADO)) || {}; } catch (e) { return {}; }
-            }
-            function guardarEstado(parcial) {
-                try { sessionStorage.setItem(CLAVE_ESTADO, JSON.stringify({ ...leerEstado(), ...parcial })); } catch (e) {}
-            }
-            const estadoInicial = leerEstado();
+  function pintarCategoria() {
+    $("catTitulo").textContent = nombreCat(actual);
+    document.title = nombreCat(actual) + " | Glam";
+    $("banner").style.setProperty("--bg-img", fondo(actual));
+    const marcas = [...new Set(productos.filter(p => cat(p) === actual).map(marcaDe).filter(Boolean))].sort((a, b) => a.localeCompare(b, "es", {sensitivity:"base"}));
+    $("marcaSel").hidden = marcas.length < 2;
+    $("marcaSel").innerHTML = `<option value="todas">Todas las marcas</option>` + marcas.map(m => `<option value="${esc(m.toLowerCase())}">${esc(m)}</option>`).join("");
+    pintarProductos();
+  }
 
-            let categoriaActiva = estadoInicial.cat || "relojes";
-            let marcaActiva = estadoInicial.marca || "todas";
+  function pintarProductos() {
+    const o = {sensitivity:"base", numeric:true};
+    const lista = productos.filter(p => cat(p) === actual && p.imagen && (filtroMarca === "todas" || marcaDe(p).toLowerCase() === filtroMarca))
+      .sort((a, b) => marcaDe(a).localeCompare(marcaDe(b), "es", o) || String(a.nombre).localeCompare(String(b.nombre), "es", o));
+    $("cantidad").textContent = lista.length ? `${lista.length} ${lista.length === 1 ? "pieza" : "piezas"}` : "";
+    const grid = $("grid");
+    grid.innerHTML = lista.length ? "" : `<div class="vacio">Próximamente nuevas piezas en esta colección.</div>`;
+    lista.forEach(p => {
+      const fotos = (Array.isArray(p.imagenes) && p.imagenes.length ? p.imagenes : [p.imagen]).map(f => String(f).trim()).filter(Boolean);
+      const nombre = String(p.nombre || "Producto").trim(), m = marcaDe(p), mod = m ? modeloDe(p) : "";
+      const url = new URL("img/" + fotos[0], location.href).href;
+      const msg = encodeURIComponent(`Hola! Me interesa este producto:\n\n*${nombre}*\nFoto: ${url}`);
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `<div class="img"><img src="img/${esc(fotos[0])}" alt="${esc(nombre)}">${fotos.length > 1 ? `<button class="nav prev" type="button">‹</button><button class="nav next" type="button">›</button><div class="dots">${fotos.map((_, i) => `<i class="${i ? "" : "on"}"></i>`).join("")}</div>` : ""}</div>
+      <div class="info"><span class="m">${esc(m || nombre)}</span>${mod ? `<h3>${esc(mod)}</h3>` : `<h3></h3>`}<p>${esc(p.descripcion)}</p><a class="wa" target="_blank" rel="noopener" href="https://wa.me/${WA}?text=${msg}">Consultar por WhatsApp</a></div>`;
+      let i = 0;
+      const img = card.querySelector("img"), pts = card.querySelectorAll(".dots i");
+      img.onerror = () => { if (!i) card.remove(); };
+      const ir = d => { i = (i + d + fotos.length) % fotos.length; img.src = "img/" + fotos[i]; pts.forEach((x, k) => x.classList.toggle("on", k === i)); };
+      const pv = card.querySelector(".prev"), nx = card.querySelector(".next");
+      if (pv) { pv.onclick = e => { e.stopPropagation(); ir(-1); }; nx.onclick = e => { e.stopPropagation(); ir(1); }; }
+      card.querySelector(".img").onclick = () => abrir(fotos.map(f => "img/" + f), i);
+      grid.appendChild(card);
+    });
+  }
 
-            // El navegador no puede restaurar el scroll solo porque el catálogo se carga después
-            if ("scrollRestoration" in history) history.scrollRestoration = "manual";
-            let guardandoScroll = false;
-            window.addEventListener("scroll", () => { if (guardandoScroll) guardarEstado({ y: window.scrollY }); }, { passive: true });
-            window.addEventListener("pagehide", () => { if (guardandoScroll) guardarEstado({ y: window.scrollY }); });
+  $("marcaSel").onchange = e => { filtroMarca = e.target.value; pintarProductos(); };
 
-            function restaurarScroll() {
-                const y = Number(estadoInicial.y) || 0;
-                const ir = () => window.scrollTo(0, y);
-                ir();
-                // Las fotos terminan de cargar después y cambian el alto de la página: reintentamos
-                window.addEventListener("load", ir, { once: true });
-                setTimeout(ir, 300);
-                setTimeout(() => { ir(); guardandoScroll = true; }, 800);
-            }
+  function render() {
+    actual = (location.hash.replace(/^#\/?/, "") || "home").toLowerCase();
+    const home = actual === "home";
+    $("home").hidden = !home; $("categoria").hidden = home;
+    filtroMarca = "todas";
+    if (home) { document.title = "Glam | Relojes, Carteras, Billeteras y Lentes"; pintarColecciones(); }
+    else pintarCategoria();
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener("hashchange", render);
 
-            // La marca para filtrar: si el producto tiene el campo "marca" cargado a mano, se
-            // usa ese. Si no, se toma automáticamente la primera palabra del nombre, así no
-            // hace falta completar nada aparte para que el filtro funcione.
-            // El modelo es el nombre sin la marca al principio ("Hublot Big Bang" -> "Big Bang")
-            function modeloDe(prod) {
-                const nombre = String(prod.nombre || "").trim();
-                const marca = marcaDe(prod);
-                if (marca && nombre.toLowerCase().startsWith(marca.toLowerCase())) {
-                    return nombre.slice(marca.length).trim();
-                }
-                return nombre;
-            }
+  // Visor de fotos
+  let gal = [], gi = 0;
+  const modal = $("modal");
+  const mostrar = () => { $("mi").src = gal[gi]; $("mp").style.display = $("mn").style.display = gal.length > 1 ? "block" : "none"; };
+  function abrir(f, i) { gal = f; gi = i; modal.style.display = "flex"; mostrar(); }
+  const mover = d => { gi = (gi + d + gal.length) % gal.length; mostrar(); };
+  $("mp").onclick = e => { e.stopPropagation(); mover(-1); };
+  $("mn").onclick = e => { e.stopPropagation(); mover(1); };
+  $("mx").onclick = () => modal.style.display = "none";
+  modal.onclick = e => { if (e.target === modal) modal.style.display = "none"; };
+  document.addEventListener("keydown", e => {
+    if (modal.style.display !== "flex") return;
+    if (e.key === "Escape") modal.style.display = "none";
+    if (e.key === "ArrowLeft") mover(-1);
+    if (e.key === "ArrowRight") mover(1);
+  });
 
-            function marcaDe(prod) {
-                if (prod.marca && String(prod.marca).trim()) return String(prod.marca).trim();
-                const primera = String(prod.nombre || "").trim().split(/\s+/)[0];
-                return primera || "";
-            }
-
-            // Probamos varias ubicaciones y formas de escribir el nombre, así funciona
-            // tanto si las fotos están en la raíz como dentro de img/ o fondos/,
-            // y tanto si el nombre lleva guión bajo como espacio.
-            function rutasPosibles(archivo) {
-                const variantes = [archivo, archivo.replace(/_/g, " "), archivo.replace(/ /g, "_")];
-                const carpetas = ["", "img/", "fondos/"];
-                const lista = [];
-                carpetas.forEach(c => variantes.forEach(v => {
-                    const ruta = c + v;
-                    if (!lista.includes(ruta)) lista.push(ruta);
-                }));
-                return lista;
-            }
-
-            const fondoResuelto = {}; // guardamos la ruta que funcionó para no buscar de nuevo
-
-            function aplicarFondo(cat) {
-                const archivo = FONDOS[cat] || FONDOS.todos;
-                document.body.classList.add("cambiando-fondo");
-
-                const mostrar = (ruta) => {
-                    fondoResuelto[cat] = ruta;
-                    document.documentElement.style.setProperty("--fondo-img", `url('${ruta}')`);
-                    document.body.classList.remove("cambiando-fondo");
-                };
-
-                if (fondoResuelto[cat]) { mostrar(fondoResuelto[cat]); return; }
-
-                const candidatos = rutasPosibles(archivo);
-                let i = 0;
-                const probar = () => {
-                    if (i >= candidatos.length) {
-                        // No se encontró ninguna: dejamos el fondo anterior en vez de una pantalla pelada
-                        console.warn("No se encontró el fondo de " + cat + " (" + archivo + ")");
-                        document.body.classList.remove("cambiando-fondo");
-                        return;
-                    }
-                    const ruta = candidatos[i++];
-                    const img = new Image();
-                    img.onload = () => mostrar(ruta);
-                    img.onerror = probar;
-                    img.src = encodeURI(ruta);
-                };
-                probar();
-            }
-
-            function pintarProductos(productos) {
-                contenedor.innerHTML = "";
-                let filtrados = categoriaActiva === "todos"
-                    ? productos
-                    : productos.filter(p => (p.categoria || "").toLowerCase() === categoriaActiva);
-                if (marcaActiva !== "todas") {
-                    filtrados = filtrados.filter(p => marcaDe(p).toLowerCase() === marcaActiva);
-                }
-                // Orden alfabético: primero por marca y después por modelo (ignora mayúsculas y acentos)
-                const opt = { sensitivity: "base", numeric: true };
-                const visibles = [...filtrados].sort((a, b) =>
-                    marcaDe(a).localeCompare(marcaDe(b), "es", opt) ||
-                    String(a.nombre || "").trim().localeCompare(String(b.nombre || "").trim(), "es", opt)
-                );
-
-                if (visibles.length === 0) {
-                    contenedor.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--text-muted);">No hay productos en esta categoría todavía.</p>';
-                    return;
-                }
-
-                visibles.forEach((prod) => {
-                    if (!prod.imagen) return;
-                    const imagen = String(prod.imagen).trim();
-                    if (imagen === "" || imagen.toLowerCase() === "undefined" || imagen.toLowerCase() === "null") return;
-
-                    const fotos = (Array.isArray(prod.imagenes) && prod.imagenes.length ? prod.imagenes : [imagen]).map(f => String(f).trim()).filter(Boolean);
-                    const nombre = prod.nombre ? String(prod.nombre).trim() : 'Producto';
-                    const descripcion = prod.descripcion ? String(prod.descripcion).trim() : '';
-                    const marcaCard = marcaDe(prod) || nombre;
-                    const modeloCard = marcaDe(prod) ? modeloDe(prod) : '';
-
-                    const urlFoto = new URL('img/' + fotos[0], window.location.href).href;
-                    const textoMensaje = encodeURIComponent(`Hola! Me interesa este producto:\n\n*${nombre}*\nFoto: ${urlFoto}`);
-
-                    const card = document.createElement("div");
-                    card.className = "card";
-                    card.innerHTML = `
-                        <div class="card-image-wrapper" title="Ampliar imagen">
-                            <img src="img/${fotos[0]}" alt="${nombre}">
-                            ${fotos.length > 1 ? `<button class="nav prev" type="button">‹</button><button class="nav next" type="button">›</button><div class="dots">${fotos.map((_, i) => `<span class="${i === 0 ? 'on' : ''}"></span>`).join('')}</div>` : ''}
-                        </div>
-                        <h3>${marcaCard}</h3>
-                        ${modeloCard ? `<p class="modelo">${modeloCard}</p>` : ''}
-                        <p>${descripcion}</p>
-                        <a href="https://wa.me/${numeroWhatsApp}?text=${textoMensaje}" class="btn-whatsapp" target="_blank">
-                            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-                            Consultar por WhatsApp
-                        </a>
-                    `;
-                    let idx = 0;
-                    const img = card.querySelector("img");
-                    const puntos = card.querySelectorAll(".dots span");
-                    img.onerror = () => { if (idx === 0) card.remove(); };
-                    const ir = (d) => {
-                        idx = (idx + d + fotos.length) % fotos.length;
-                        img.src = "img/" + fotos[idx];
-                        puntos.forEach((p, i) => p.classList.toggle("on", i === idx));
-                    };
-                    const prev = card.querySelector(".prev"), next = card.querySelector(".next");
-                    if (prev) prev.onclick = (e) => { e.stopPropagation(); ir(-1); };
-                    if (next) next.onclick = (e) => { e.stopPropagation(); ir(1); };
-                    card.querySelector(".card-image-wrapper").onclick = () => abrirModal(fotos.map(f => "img/" + f), idx);
-                    contenedor.appendChild(card);
-                });
-            }
-
-            function pintarBotonesMarca(productos) {
-                // Marcas presentes dentro de la categoría activa (o de todo el catálogo si "todos")
-                const enCategoria = categoriaActiva === "todos"
-                    ? productos
-                    : productos.filter(p => (p.categoria || "").toLowerCase() === categoriaActiva);
-                const marcas = [...new Set(
-                    enCategoria.map(p => marcaDe(p)).filter(Boolean)
-                )].sort((a, b) => a.localeCompare(b, "es", { sensitivity: "base" }));
-
-                if (marcas.length === 0) {
-                    barraMarcas.style.display = "none";
-                    marcaActiva = "todas";
-                    return;
-                }
-
-                if (!marcas.some(m => m.toLowerCase() === marcaActiva)) marcaActiva = "todas";
-
-                barraMarcas.style.display = "flex";
-                barraMarcas.innerHTML = `
-                    <button type="button" class="marca-toggle" id="marcaToggle">
-                        Elegir marca <span class="flecha">▾</span>
-                    </button>
-                    <div class="marca-menu" id="marcaMenu" hidden></div>
-                `;
-                const toggle = barraMarcas.querySelector("#marcaToggle");
-                const menu = barraMarcas.querySelector("#marcaMenu");
-                const todas = ["todas", ...marcas];
-
-                todas.forEach((m) => {
-                    const valor = m === "todas" ? "todas" : m.toLowerCase();
-                    const opt = document.createElement("button");
-                    opt.type = "button";
-                    opt.className = "marca-opt" + (valor === marcaActiva ? " activo" : "");
-                    opt.textContent = m === "todas" ? "Todas las marcas" : m;
-                    opt.onclick = () => {
-                        marcaActiva = valor;
-                        guardarEstado({ marca: valor });
-                        [...menu.children].forEach(b => b.classList.remove("activo"));
-                        opt.classList.add("activo");
-                        menu.hidden = true;
-                        toggle.classList.remove("abierto");
-                        pintarProductos(productos);
-                    };
-                    menu.appendChild(opt);
-                });
-
-                toggle.onclick = (e) => {
-                    e.stopPropagation();
-                    const abrir = menu.hidden;
-                    // Cerramos cualquier otro menú abierto antes de abrir este
-                    document.querySelectorAll(".marca-menu").forEach(m2 => (m2.hidden = true));
-                    document.querySelectorAll(".marca-toggle").forEach(t => t.classList.remove("abierto"));
-                    menu.hidden = !abrir;
-                    toggle.classList.toggle("abierto", abrir);
-                };
-            }
-
-            // Cierra el desplegable de marca si se toca afuera
-            document.addEventListener("click", (e) => {
-                if (barraMarcas.contains(e.target)) return;
-                const menu = barraMarcas.querySelector(".marca-menu");
-                const toggle = barraMarcas.querySelector(".marca-toggle");
-                if (menu && !menu.hidden) {
-                    menu.hidden = true;
-                    toggle.classList.remove("abierto");
-                }
-            });
-
-            function pintarBotonesCategoria(productos) {
-                // Solo mostramos botones de las categorías que realmente tienen productos
-                const presentes = [...new Set(productos.map(p => (p.categoria || "").toLowerCase()).filter(Boolean))];
-
-                if (presentes.length <= 1) {
-                    // Con una sola categoría no tienen sentido los filtros
-                    barraCategorias.style.display = "none";
-                    categoriaActiva = presentes[0] || "todos";
-                    aplicarFondo(categoriaActiva);
-                    return;
-                }
-
-                // Orden: primero las que definimos a mano, después cualquier categoría nueva, y "Todos" al final
-                const ordenadas = [
-                    ...ORDEN_CATEGORIAS.filter(c => presentes.includes(c)),
-                    ...presentes.filter(c => !ORDEN_CATEGORIAS.includes(c)).sort(),
-                ];
-                const todas = [...ordenadas, "todos"];
-
-                // Si no hay relojes cargados, arrancamos en la primera categoría que sí tenga productos
-                if (!todas.includes(categoriaActiva)) categoriaActiva = todas[0];
-                aplicarFondo(categoriaActiva);
-
-                barraCategorias.style.display = "flex";
-                barraCategorias.innerHTML = "";
-                todas.forEach((cat) => {
-                    const btn = document.createElement("button");
-                    btn.className = "cat-btn" + (cat === categoriaActiva ? " activo" : "");
-                    btn.textContent = cat === "todos" ? "Todos" : (NOMBRES_CATEGORIA[cat] || (cat.charAt(0).toUpperCase() + cat.slice(1)));
-                    btn.onclick = () => {
-                        categoriaActiva = cat;
-                        marcaActiva = "todas";
-                        guardarEstado({ cat: cat, marca: "todas", y: 0 });
-                        [...barraCategorias.children].forEach(b => b.classList.remove("activo"));
-                        btn.classList.add("activo");
-                        aplicarFondo(cat);
-                        pintarBotonesMarca(productos);
-                        pintarProductos(productos);
-                    };
-                    barraCategorias.appendChild(btn);
-                });
-            }
-
-            // Logo: probamos raíz, img/ y las variantes .jpeg/.jpg/.png, por si
-            // lo subiste con otro nombre o carpeta.
-            (function cargarLogo() {
-                const logo = document.getElementById("logo");
-                const candidatos = [
-                    "logo.png", "img/logo.png",
-                    "logo.jpeg", "img/logo.jpeg",
-                    "logo.jpg", "img/logo.jpg",
-                ];
-                let i = 0;
-                const probar = () => {
-                    if (i >= candidatos.length) return; // no había logo: dejamos solo el texto
-                    logo.onload = () => {
-                        logo.classList.add("visible");
-                        // El logo ya trae el nombre "Wellsshop" escrito, así que
-                        // no lo repetimos con el título de texto.
-                        const t = document.getElementById("titulo-texto"); if (t) t.classList.add("oculto");
-                    };
-                    logo.onerror = () => { i++; probar(); };
-                    logo.src = candidatos[i];
-                };
-                probar();
-            })();
-
-            fetch('./products.json?t=' + Date.now())
-                .then(response => {
-                    if (!response.ok) throw new Error("No se encontró el archivo products.json");
-                    return response.json();
-                })
-                .then(productos => {
-                    pintarBotonesCategoria(productos);
-                    pintarBotonesMarca(productos);
-                    pintarProductos(productos);
-                    restaurarScroll();
-                })
-                .catch(error => {
-                    console.error(error);
-                    document.getElementById("error-msg").style.display = "block";
-                    document.getElementById("error-msg").innerText = "No se pudo cargar el catálogo. Intentá de nuevo en un momento.";
-                });
-        })();
-
-        // Lógica del Modal
-        const modal = document.getElementById("imageModal");
-        const modalImg = document.getElementById("modalImg");
-        const closeModal = document.getElementById("closeModal");
-
-        let galeria = [], gi = 0;
-        function mostrarModal() {
-            modalImg.src = galeria[gi];
-            const varias = galeria.length > 1;
-            document.getElementById("modalPrev").style.display = varias ? "flex" : "none";
-            document.getElementById("modalNext").style.display = varias ? "flex" : "none";
-            document.getElementById("modalCount").textContent = varias ? `${gi + 1} / ${galeria.length}` : "";
-        }
-        function abrirModal(fotos, i = 0) {
-            galeria = Array.isArray(fotos) ? fotos : [fotos];
-            gi = i;
-            modal.style.display = "flex";
-            mostrarModal();
-        }
-        function moverModal(d) {
-            gi = (gi + d + galeria.length) % galeria.length;
-            mostrarModal();
-        }
-        document.getElementById("modalPrev").onclick = (e) => { e.stopPropagation(); moverModal(-1); };
-        document.getElementById("modalNext").onclick = (e) => { e.stopPropagation(); moverModal(1); };
-        document.addEventListener("keydown", (e) => {
-            if (modal.style.display !== "flex") return;
-            if (e.key === "Escape") modal.style.display = "none";
-            if (e.key === "ArrowLeft") moverModal(-1);
-            if (e.key === "ArrowRight") moverModal(1);
-        });
-        let toqueX = null;
-        modal.addEventListener("touchstart", (e) => { toqueX = e.touches[0].clientX; }, { passive: true });
-        modal.addEventListener("touchend", (e) => {
-            if (toqueX === null || galeria.length < 2) return;
-            const dx = e.changedTouches[0].clientX - toqueX;
-            if (Math.abs(dx) > 50) moverModal(dx < 0 ? 1 : -1);
-            toqueX = null;
-        });
-
-        closeModal.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        modal.onclick = function(event) {
-            if (event.target === modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
-
+  render();
+  fetch("./products.json?t=" + Date.now()).then(r => r.json()).then(d => { productos = d; render(); }).catch(() => {
+    $("colgrid").insertAdjacentHTML("afterend", `<p class="sub" style="margin-top:30px">No se pudo cargar el catálogo. Intentá de nuevo en un momento.</p>`);
+  });
+})();
+</script>
 </body>
 </html>
