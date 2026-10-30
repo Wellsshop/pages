@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glam | Relojes, Carteras, Billeteras y Lentes</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0b0b;--panel:#141414;--line:#2b2519;--text:#f3ece0;--muted:#9c9484;--gold:#c9a96e;--serif:'Playfair Display',Georgia,serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,sans-serif;font-weight:300}
+a{color:inherit;text-decoration:none}
+[hidden]{display:none!important}
+header{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px 6vw;background:rgba(11,11,11,.93);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.logo{font-family:var(--serif);font-size:1.7rem;letter-spacing:.35em;color:var(--gold)}
+nav a{margin-left:28px;font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);transition:color .2s}
+nav a:hover{color:var(--gold)}
+/* patrón de fondo en negativo: líneas doradas sutiles sobre negro */
+.pat{position:relative;overflow:hidden}
+.pat::before{content:"";position:absolute;inset:0;background:var(--bg-img) center/380px repeat;filter:invert(1);opacity:.07;pointer-events:none}
+.pat>*{position:relative}
+.hero{min-height:52vh;display:flex;flex-direction:column;justify-content:center;padding:60px 6vw;background:radial-gradient(ellipse at 78% 50%,#2c2314 0%,#0b0b0b 65%)}
+.hero .reloj{position:absolute;right:9vw;top:50%;transform:translateY(-50%);height:min(88%,400px);width:auto;filter:drop-shadow(0 0 30px rgba(201,169,110,.18))}
+.seg{transform-origin:150px 220px;animation:giro 60s linear infinite}
+@keyframes giro{to{transform:rotate(360deg)}}
+.eyebrow{font-size:.75rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold)}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.6rem,7vw,5.6rem);line-height:1.08;margin:18px 0 0;max-width:9em}
+.btn{display:inline-block;border:1px solid var(--gold);color:var(--gold);padding:15px 38px;font-size:.78rem;letter-spacing:.25em;text-transform:uppercase;background:none;cursor:pointer;font-family:inherit;transition:all .25s}
+.btn:hover{background:var(--gold);color:#0b0b0b}
+section.cols{padding:90px 6vw}
+h2.t{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,4vw,3rem);text-align:center;margin:0 0 12px}
+.sub{text-align:center;color:var(--muted);margin:0 0 54px;letter-spacing:.05em}
+.rule{width:60px;height:1px;background:var(--gold);margin:0 auto 22px}
+.colgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;max-width:1250px;margin:0 auto}
+.col{display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:4/5;padding:28px;border:1px solid var(--line);background:linear-gradient(180deg,#121212,#0b0b0b);transition:border-color .3s,transform .3s}
+.col:hover{border-color:var(--gold);transform:translateY(-5px)}
+.col h3{font-family:var(--serif);font-weight:400;font-size:1.9rem;margin:6px 0 14px;color:var(--gold)}
+.col .n{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.col .ver{font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;border-bottom:1px solid var(--gold);align-self:flex-start;padding-bottom:4px}
+.banner{padding:70px 6vw 54px;text-align:center;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#171309,#0b0b0b)}
+.banner h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.4rem,6vw,4.2rem);margin:14px 0 0}
+.back{font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted)}
+.back:hover{color:var(--gold)}
+.tools{display:flex;justify-content:space-between;align-items:center;max-width:1250px;margin:0 auto;padding:30px 6vw 10px}
+.tools span{color:var(--muted);font-size:.85rem}
+select{background:var(--panel);color:var(--text);border:1px solid var(--line);padding:11px 16px;font-family:inherit;font-size:.85rem;letter-spacing:.05em}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:26px;max-width:1250px;margin:0 auto;padding:20px 6vw 90px}
+.card{background:var(--panel);border:1px solid var(--line);display:flex;flex-direction:column;transition:border-color .3s}
+.card:hover{border-color:var(--gold)}
+.img{position:relative;height:270px;background:#f3f0ea;cursor:zoom-in;overflow:hidden}
+.img img{width:100%;height:100%;object-fit:contain;transition:transform .4s}
+.img:hover img{transform:scale(1.05)}
+.nav{position:absolute;top:50%;transform:translateY(-50%);width:32px;height:32px;border:none;border-radius:50%;background:rgba(11,11,11,.8);color:var(--gold);font-size:20px;cursor:pointer;opacity:0;transition:opacity .2s}
+.prev{left:8px}.next{right:8px}.img:hover .nav{opacity:1}
+@media(hover:none){.nav{opacity:1}}
+.dots{position:absolute;bottom:8px;left:0;right:0;display:flex;justify-content:center;gap:5px;pointer-events:none}
+.dots i{width:6px;height:6px;border-radius:50%;background:rgba(0,0,0,.25)}.dots i.on{background:var(--gold)}
+.info{padding:22px;display:flex;flex-direction:column;flex:1}
+.info .m{font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold)}
+.info h3{font-family:var(--serif);font-weight:400;font-size:1.3rem;margin:6px 0 10px}
+.info p{margin:0 0 20px;color:var(--muted);font-size:.88rem;line-height:1.55;white-space:pre-line;flex:1}
+.wa{display:block;text-align:center;border:1px solid var(--gold);color:var(--gold);padding:12px;font-size:.73rem;letter-spacing:.2em;text-transform:uppercase;transition:all .25s}
+.wa:hover{background:var(--gold);color:#0b0b0b}
+.vacio{grid-column:1/-1;text-align:center;color:var(--muted);padding:60px 0}
+footer{border-top:1px solid var(--line);padding:50px 6vw;text-align:center;color:var(--muted);font-size:.8rem;letter-spacing:.1em}
+footer .logo{font-size:1.3rem;display:block;margin-bottom:14px}
+#modal{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.92);display:none;justify-content:center;align-items:center}
+#modal img{max-width:90%;max-height:88%;object-fit:contain}
+#modal button{position:absolute;background:rgba(255,255,255,.1);color:#fff;border:none;border-radius:50%;width:46px;height:46px;font-size:26px;cursor:pointer}
+#mx{top:22px;right:26px}#mp{left:20px;top:50%}#mn{right:20px;top:50%}
+@media(max-width:640px){header{padding:14px 5vw}.logo{font-size:1.3rem}nav a{margin-left:16px;font-size:.68rem}.hero{min-height:46vh;padding:48px 5vw}.hero .reloj{right:-14vw;height:330px;opacity:.4}section.cols{padding:60px 5vw}.colgrid{grid-template-columns:1fr 1fr;gap:12px}.col{padding:18px}.col h3{font-size:1.4rem}.tools{padding:22px 5vw 6px}.grid{padding:16px 5vw 60px}}
+</style>
+</head>
+<body>
+<header>
+  <a href="#/" class="logo">GLAM</a>
+  <nav><a href="#/">Inicio</a><a id="navWa" href="#" target="_blank" rel="noopener">Contacto</a></nav>
+</header>
+
+<main id="home">
+  <div class="hero pat" id="heroPat">
+    <div class="eyebrow">Relojes · Carteras · Billeteras · Lentes</div>
+    <h1>Elegancia en cada detalle</h1>
+    <svg class="reloj" viewBox="0 0 300 440" aria-hidden="true">
+      <defs><linearGradient id="oro" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f1dca8"/><stop offset=".5" stop-color="#c9a96e"/><stop offset="1" stop-color="#8a6d3b"/></linearGradient></defs>
+      <path d="M96 0h108l9 112H87z" fill="#15120b" stroke="url(#oro)" stroke-width="2"/>
+      <path d="M87 328h126l-9 112H96z" fill="#15120b" stroke="url(#oro)" stroke-width="2"/>
+      <path d="M92 40h116M89 76h122M89 364h122M92 400h116" stroke="url(#oro)" stroke-width="1" opacity=".45"/>
+      <rect x="266" y="204" width="20" height="32" rx="4" fill="url(#oro)"/>
+      <circle cx="150" cy="220" r="119" fill="#0b0b0b" stroke="url(#oro)" stroke-width="6"/>
+      <circle cx="150" cy="220" r="105" fill="none" stroke="url(#oro)" stroke-width="1.5"/>
+      <circle cx="150" cy="220" r="98" fill="#111"/>
+      <circle cx="150" cy="220" r="90" fill="none" stroke="url(#oro)" stroke-width="5" stroke-dasharray="1 8.42" transform="rotate(-90.3 150 220)" opacity=".7"/>
+      <circle cx="150" cy="220" r="78" fill="none" stroke="url(#oro)" stroke-width="16" stroke-dasharray="4 37.9" transform="rotate(-91.5 150 220)"/>
+      <line x1="150" y1="220" x2="150" y2="168" stroke="url(#oro)" stroke-width="6" stroke-linecap="round" transform="rotate(-55 150 220)"/>
+      <line x1="150" y1="220" x2="150" y2="140" stroke="url(#oro)" stroke-width="4" stroke-linecap="round" transform="rotate(60 150 220)"/>
+      <g class="seg"><line x1="150" y1="238" x2="150" y2="136" stroke="#e8d3a0" stroke-width="1.5"/></g>
+      <circle cx="150" cy="220" r="6" fill="url(#oro)"/><circle cx="150" cy="220" r="2" fill="#0b0b0b"/>
+    </svg>
+  </div>
+  <section class="cols" id="colecciones">
+    <div class="rule"></div>
+    <h2 class="t">Nuestras Colecciones</h2>
+    <p class="sub">Elegí una categoría y descubrí la selección</p>
+    <div class="colgrid" id="colgrid"></div>
+  </section>
+</main>
+
+<main id="categoria" hidden>
+  <div class="banner pat" id="banner">
+    <a class="back" href="#/">← Colecciones</a>
+    <h1 id="catTitulo"></h1>
+  </div>
+  <div class="tools"><span id="cantidad"></span><select id="marcaSel"></select></div>
+  <div class="grid" id="grid"></div>
+</main>
+
+<footer><span class="logo">GLAM</span>glamshop.com.ar &nbsp;·&nbsp; Consultas por WhatsApp</footer>
+
+<div id="modal"><button id="mx">&times;</button><button id="mp">‹</button><img id="mi" alt=""><button id="mn">›</button></div>
+
+<script>
+(() => {
+  const WA = "5491159828985";
+  const NOMBRES = {relojes:"Relojes",carteras:"Carteras",billeteras:"Billeteras",lentes:"Lentes",gadgets:"Gadgets"};
+  const FONDOS = {relojes:"fondo.jpg",carteras:"Fondo_Carteras.png",billeteras:"Fondo_Billeteras.png",lentes:"Fondo_Lentes.png",gadgets:"Fondo_Gadgets.png",home:"Fondo_Varios.png"};
+  const PRINCIPALES = ["relojes","carteras","billeteras","lentes"];
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+  const nombreCat = c => NOMBRES[c] || cap(c);
+  const cat = p => (p.categoria || "").toLowerCase();
+  const marcaDe = p => (p.marca && String(p.marca).trim()) || String(p.nombre || "").trim().split(/\s+/)[0] || "";
+  const modeloDe = p => { const n = String(p.nombre || "").trim(), m = marcaDe(p); return m && n.toLowerCase().startsWith(m.toLowerCase()) ? n.slice(m.length).trim() : n; };
+  const fondo = c => `url('${FONDOS[c] || FONDOS.home}')`;
+
+  let productos = [], actual = "home", filtroMarca = "todas";
+  $("navWa").href = `https://wa.me/${WA}?text=${encodeURIComponent("Hola! Quisiera hacer una consulta.")}`;
+  $("heroPat").style.setProperty("--bg-img", fondo("home"));
+
+  function pintarColecciones() {
+    const extras = [...new Set(productos.map(cat).filter(c => c && !PRINCIPALES.includes(c)))].sort();
+    $("colgrid").innerHTML = [...PRINCIPALES, ...extras].map(c => {
+      const n = productos.filter(p => cat(p) === c).length;
+      return `<a class="col pat" href="#/${esc(c)}" style="--bg-img:${fondo(c)}"><span class="n">${n} ${n === 1 ? "pieza" : "piezas"}</span><h3>${esc(nombreCat(c))}</h3><span class="ver">Ver colección</span></a>`;
+    }).join("");
+  }
+
+  function pintarCategoria() {
+    $("catTitulo").textContent = nombreCat(actual);
+    document.title = nombreCat(actual) + " | Glam";
+    $("banner").style.setProperty("--bg-img", fondo(actual));
+    const marcas = [...new Set(productos.filter(p => cat(p) === actual).map(marcaDe).filter(Boolean))].sort((a, b) => a.localeCompare(b, "es", {sensitivity:"base"}));
+    $("marcaSel").hidden = marcas.length < 2;
+    $("marcaSel").innerHTML = `<option value="todas">Todas las marcas</option>` + marcas.map(m => `<option value="${esc(m.toLowerCase())}">${esc(m)}</option>`).join("");
+    pintarProductos();
+  }
+
+  function pintarProductos() {
+    const o = {sensitivity:"base", numeric:true};
+    const lista = productos.filter(p => cat(p) === actual && p.imagen && (filtroMarca === "todas" || marcaDe(p).toLowerCase() === filtroMarca))
+      .sort((a, b) => marcaDe(a).localeCompare(marcaDe(b), "es", o) || String(a.nombre).localeCompare(String(b.nombre), "es", o));
+    $("cantidad").textContent = lista.length ? `${lista.length} ${lista.length === 1 ? "pieza" : "piezas"}` : "";
+    const grid = $("grid");
+    grid.innerHTML = lista.length ? "" : `<div class="vacio">Próximamente nuevas piezas en esta colección.</div>`;
+    lista.forEach(p => {
+      const fotos = (Array.isArray(p.imagenes) && p.imagenes.length ? p.imagenes : [p.imagen]).map(f => String(f).trim()).filter(Boolean);
+      const nombre = String(p.nombre || "Producto").trim(), m = marcaDe(p), mod = m ? modeloDe(p) : "";
+      const url = new URL("img/" + fotos[0], location.href).href;
+      const msg = encodeURIComponent(`Hola! Me interesa este producto:\n\n*${nombre}*\nFoto: ${url}`);
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `<div class="img"><img src="img/${esc(fotos[0])}" alt="${esc(nombre)}">${fotos.length > 1 ? `<button class="nav prev" type="button">‹</button><button class="nav next" type="button">›</button><div class="dots">${fotos.map((_, i) => `<i class="${i ? "" : "on"}"></i>`).join("")}</div>` : ""}</div>
+      <div class="info"><span class="m">${esc(m || nombre)}</span>${mod ? `<h3>${esc(mod)}</h3>` : `<h3></h3>`}<p>${esc(p.descripcion)}</p><a class="wa" target="_blank" rel="noopener" href="https://wa.me/${WA}?text=${msg}">Consultar por WhatsApp</a></div>`;
+      let i = 0;
+      const img = card.querySelector("img"), pts = card.querySelectorAll(".dots i");
+      img.onerror = () => { if (!i) card.remove(); };
+      const ir = d => { i = (i + d + fotos.length) % fotos.length; img.src = "img/" + fotos[i]; pts.forEach((x, k) => x.classList.toggle("on", k === i)); };
+      const pv = card.querySelector(".prev"), nx = card.querySelector(".next");
+      if (pv) { pv.onclick = e => { e.stopPropagation(); ir(-1); }; nx.onclick = e => { e.stopPropagation(); ir(1); }; }
+      card.querySelector(".img").onclick = () => abrir(fotos.map(f => "img/" + f), i);
+      grid.appendChild(card);
+    });
+  }
+
+  $("marcaSel").onchange = e => { filtroMarca = e.target.value; pintarProductos(); };
+
+  function render() {
+    actual = (location.hash.replace(/^#\/?/, "") || "home").toLowerCase();
+    const home = actual === "home";
+    $("home").hidden = !home; $("categoria").hidden = home;
+    filtroMarca = "todas";
+    if (home) { document.title = "Glam | Relojes, Carteras, Billeteras y Lentes"; pintarColecciones(); }
+    else pintarCategoria();
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener("hashchange", render);
+
+  // Visor de fotos
+  let gal = [], gi = 0;
+  const modal = $("modal");
+  const mostrar = () => { $("mi").src = gal[gi]; $("mp").style.display = $("mn").style.display = gal.length > 1 ? "block" : "none"; };
+  function abrir(f, i) { gal = f; gi = i; modal.style.display = "flex"; mostrar(); }
+  const mover = d => { gi = (gi + d + gal.length) % gal.length; mostrar(); };
+  $("mp").onclick = e => { e.stopPropagation(); mover(-1); };
+  $("mn").onclick = e => { e.stopPropagation(); mover(1); };
+  $("mx").onclick = () => modal.style.display = "none";
+  modal.onclick = e => { if (e.target === modal) modal.style.display = "none"; };
+  document.addEventListener("keydown", e => {
+    if (modal.style.display !== "flex") return;
+    if (e.key === "Escape") modal.style.display = "none";
+    if (e.key === "ArrowLeft") mover(-1);
+    if (e.key === "ArrowRight") mover(1);
+  });
+
+  render();
+  fetch("./products.json?t=" + Date.now()).then(r => r.json()).then(d => { productos = d; render(); }).catch(() => {
+    $("colgrid").insertAdjacentHTML("afterend", `<p class="sub" style="margin-top:30px">No se pudo cargar el catálogo. Intentá de nuevo en un momento.</p>`);
+  });
+})();
+</script>
+</body>
+</html>
