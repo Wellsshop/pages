@@ -124,7 +124,7 @@ footer .logo{font-size:1.3rem;display:block;margin-bottom:14px}
 (() => {
   const WA = "5491159828985";
   const NOMBRES = {relojes:"Relojes",carteras:"Carteras",billeteras:"Billeteras",lentes:"Lentes",gadgets:"Gadgets"};
-  const FONDOS = {relojes:"fondo.jpg",carteras:"Fondo Carteras.png",billeteras:"Fondo_Billeteras.png",lentes:"Fondo Lentes.png",gadgets:"Fondo Gadgets.png",home:"Fondo Varios.png"};
+  const FONDOS = {relojes:"fondo.jpg",carteras:"Fondo_Carteras.png",billeteras:"Fondo_Billeteras.png",lentes:"Fondo_Lentes.png",gadgets:"Fondo_Gadgets.png",home:"Fondo_Varios.png"};
   const PRINCIPALES = ["relojes","carteras","billeteras","lentes"];
   const $ = id => document.getElementById(id);
   const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -133,7 +133,7 @@ footer .logo{font-size:1.3rem;display:block;margin-bottom:14px}
   const cat = p => (p.categoria || "").toLowerCase();
   const marcaDe = p => (p.marca && String(p.marca).trim()) || String(p.nombre || "").trim().split(/\s+/)[0] || "";
   const modeloDe = p => { const n = String(p.nombre || "").trim(), m = marcaDe(p); return m && n.toLowerCase().startsWith(m.toLowerCase()) ? n.slice(m.length).trim() : n; };
-  const fondo = c => `url('${encodeURI(FONDOS[c] || FONDOS.home)}')`;
+  const fondo = c => `url('${FONDOS[c] || FONDOS.home}')`;
 
   let productos = [], actual = "home", filtroMarca = "todas";
   $("navWa").href = `https://wa.me/${WA}?text=${encodeURIComponent("Hola! Quisiera hacer una consulta.")}`;
