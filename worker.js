@@ -216,48 +216,67 @@ async function handleEditar(request, env) {
   }
 }
 
-// Edición masiva: actualiza muchos productos en UN solo guardado (un solo commit en GitHub).
-// Solo modifica datos de texto; las fotos no se tocan. No agrega ni borra productos.
-async function handleImportar(request, env) {
-  const body = await request.json();
-  const { password } = body;
-  const cambios = Array.isArray(body.cambios) ? body.cambios : [];
+// ---------- Logos de marcas ----------
+// Los logos se guardan en img/marcas/ y el listado (marca -> archivo) en marcas.json
+const slugMarca = (m) => limpiarTexto(String(m || "")).replace(/_/g, "-");
 
+async function leerMarcas(env) {
+  const file = await getFile(env, "marcas.json");
+  if (!file.exists) return { marcas: {}, sha: null };
+  return { marcas: JSON.parse(fromBase64Utf8(file.contentBase64)), sha: file.sha };
+}
+
+async function guardarMarcas(env, marcas, sha, mensaje) {
+  return putFile(env, "marcas.json", toBase64Utf8(JSON.stringify(marcas, null, 2)), mensaje, sha);
+}
+
+async function handleMarcas(env) {
+  const { marcas } = await leerMarcas(env);
+  return jsonResponse(marcas);
+}
+
+async function handleLogo(request, env) {
+  const { password, marca, base64, ext } = await request.json();
   if (!checkPassword(env, password)) return jsonResponse({ error: "Clave incorrecta" }, 401);
-  if (cambios.length === 0) return jsonResponse({ error: "No hay cambios para aplicar" }, 400);
-  if (cambios.length > 1000) return jsonResponse({ error: "Demasiados cambios de una vez (máximo 1000)" }, 400);
+  const slug = slugMarca(marca);
+  if (!slug || !base64) return jsonResponse({ error: "Faltan datos (marca o logo)" }, 400);
+  const extension = String(ext || "png").replace(".", "").toLowerCase();
+  if (!["png", "jpg", "jpeg", "webp"].includes(extension)) return jsonResponse({ error: "Formato de imagen no permitido" }, 400);
+
+  const archivo = `marcas/${slug}_${Date.now()}.${extension}`;
+  await putFile(env, `img/${archivo}`, base64, `Logo de marca: ${marca}`, null);
 
   for (let intento = 0; intento < 2; intento++) {
-    const { productos, sha } = await leerProductos(env);
-    const indicePorId = new Map(productos.map((p, i) => [idDe(p), i]));
-    let actualizados = 0;
-    const noEncontrados = [];
-
-    for (const c of cambios) {
-      const i = indicePorId.get(c.id);
-      if (i === undefined) { noEncontrados.push(c.id); continue; }
-      const nombre = String(c.nombre || "").trim();
-      if (!nombre) continue;
-      const p = productos[i];
-      const precio = String(c.precio ?? "").trim() || "Consultar";
-      productos[i] = {
-        ...p,
-        nombre,
-        marca: String(c.marca ?? p.marca ?? "").trim(),
-        precio: isNaN(Number(precio)) ? precio : Number(precio),
-        descripcion: String(c.descripcion ?? "").trim(),
-        categoria: String(c.categoria || p.categoria || "sin-categoria").trim().toLowerCase(),
-      };
-      actualizados++;
-    }
-
-    if (actualizados === 0) return jsonResponse({ error: "Ningún producto coincidió con el catálogo actual" }, 400);
-
+    const { marcas, sha } = await leerMarcas(env);
+    const anterior = marcas[slug];
+    marcas[slug] = archivo;
     try {
-      await guardarProductos(env, productos, sha, `Edición masiva: ${actualizados} productos`);
-      return jsonResponse({ ok: true, actualizados, noEncontrados });
+      await guardarMarcas(env, marcas, sha, `Logo de marca: ${marca}`);
+      if (anterior && anterior !== archivo) await borrarFotos(env, [anterior]);
+      return jsonResponse({ ok: true, archivo });
     } catch (e) {
-      if (intento === 1) return jsonResponse({ error: "No se pudo guardar los cambios: " + e.message }, 500);
+      if (intento === 1) return jsonResponse({ error: "No se pudo guardar el logo: " + e.message }, 500);
+    }
+  }
+}
+
+async function handleLogoEliminar(request, env) {
+  const { password, marca } = await request.json();
+  if (!checkPassword(env, password)) return jsonResponse({ error: "Clave incorrecta" }, 401);
+  const slug = slugMarca(marca);
+  if (!slug) return jsonResponse({ error: "Falta indicar la marca" }, 400);
+
+  for (let intento = 0; intento < 2; intento++) {
+    const { marcas, sha } = await leerMarcas(env);
+    const archivo = marcas[slug];
+    if (!archivo) return jsonResponse({ ok: true });
+    delete marcas[slug];
+    try {
+      await guardarMarcas(env, marcas, sha, `Quita logo de marca: ${marca}`);
+      await borrarFotos(env, [archivo]);
+      return jsonResponse({ ok: true });
+    } catch (e) {
+      if (intento === 1) return jsonResponse({ error: "No se pudo quitar el logo: " + e.message }, 500);
     }
   }
 }
@@ -310,11 +329,17 @@ export default {
       if (request.method === "POST" && url.pathname === "/editar") {
         return await handleEditar(request, env);
       }
-      if (request.method === "POST" && url.pathname === "/importar") {
-        return await handleImportar(request, env);
-      }
       if (request.method === "GET" && url.pathname === "/productos") {
         return await handleProductos(env);
+      }
+      if (request.method === "GET" && url.pathname === "/marcas") {
+        return await handleMarcas(env);
+      }
+      if (request.method === "POST" && url.pathname === "/logo") {
+        return await handleLogo(request, env);
+      }
+      if (request.method === "POST" && url.pathname === "/logo-eliminar") {
+        return await handleLogoEliminar(request, env);
       }
       if (request.method === "POST" && url.pathname === "/eliminar") {
         return await handleEliminar(request, env);

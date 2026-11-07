@@ -48,6 +48,14 @@ h2.t{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,4vw,3rem);tex
 .back:hover{color:var(--gold)}
 .tools{display:flex;justify-content:space-between;align-items:center;max-width:1250px;margin:0 auto;padding:30px 6vw 10px}
 .tools span{color:var(--muted);font-size:.85rem}
+.marcas{display:flex;flex-wrap:wrap;gap:10px;max-width:1250px;margin:0 auto;padding:6px 6vw 8px}
+.mb{display:inline-flex;align-items:center;justify-content:center;height:54px;min-width:96px;padding:0 22px;border:1px solid var(--line);background:none;color:var(--gold);font:inherit;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:all .25s}
+.mb:hover{border-color:var(--gold)}
+.mb.on{border-color:var(--gold);box-shadow:0 0 0 2px var(--gold)}
+.mb.txt.on{background:var(--gold);color:var(--bg)}
+.mb.lg{background:#fff8fb;padding:8px 18px}
+.mb img{height:36px;max-width:120px;width:auto;object-fit:contain;display:block}
+@media(max-width:640px){.marcas{padding:6px 5vw 8px;gap:8px}.mb{height:46px;min-width:72px;padding:0 14px;font-size:.66rem}.mb img{height:28px;max-width:90px}}
 select{background:var(--panel);color:var(--text);border:1px solid var(--line);padding:11px 16px;font-family:inherit;font-size:.85rem;letter-spacing:.05em}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:26px;max-width:1250px;margin:0 auto;padding:20px 6vw 90px}
 .card{background:var(--panel);border:1px solid var(--line);display:flex;flex-direction:column;transition:border-color .3s}
@@ -100,7 +108,8 @@ footer .sl{display:block;font-family:var(--serif);font-style:italic;font-size:1r
     <a class="back" href="#/">← Colecciones</a>
     <h1 id="catTitulo"></h1>
   </div>
-  <div class="tools"><span id="cantidad"></span><select id="marcaSel"></select></div>
+  <div class="tools"><span id="cantidad"></span></div>
+  <div class="marcas" id="marcas"></div>
   <div class="grid" id="grid"></div>
 </main>
 
@@ -123,7 +132,7 @@ footer .sl{display:block;font-family:var(--serif);font-style:italic;font-size:1r
   const modeloDe = p => { const n = String(p.nombre || "").trim(), m = marcaDe(p); return m && n.toLowerCase().startsWith(m.toLowerCase()) ? n.slice(m.length).trim() : n; };
   const fondo = c => `url('${encodeURI(FONDOS[c] || FONDOS.home)}')`;
 
-  let productos = [], actual = "home", filtroMarca = "todas";
+  let productos = [], logos = {}, actual = "home", filtroMarca = "todas";
   $("navWa").href = `https://wa.me/${WA}?text=${encodeURIComponent("Hola! Quisiera hacer una consulta.")}`;
   $("heroPat").style.setProperty("--bg-img", fondo("home"));
 
@@ -134,13 +143,43 @@ footer .sl{display:block;font-family:var(--serif);font-style:italic;font-size:1r
     }).join("");
   }
 
+  const slug = m => String(m).normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+  let marcasActuales = [];
+
+  // Filtro por marca: logo si existe en marcas.json, si no el nombre en texto
+  function pintarMarcas(marcas = marcasActuales) {
+    marcasActuales = marcas;
+    const cont = $("marcas");
+    cont.hidden = marcas.length < 2;
+    cont.innerHTML = "";
+    const boton = (clave, nombre) => {
+      const b = document.createElement("button");
+      b.type = "button"; b.dataset.m = clave; b.title = nombre;
+      b.className = "mb txt" + (filtroMarca === clave ? " on" : "");
+      const archivo = clave !== "todas" && logos[slug(nombre)];
+      const texto = () => { b.className = "mb txt" + (filtroMarca === clave ? " on" : ""); b.textContent = clave === "todas" ? "Todas" : nombre; };
+      if (archivo) {
+        const im = new Image();
+        im.alt = nombre; im.src = "img/" + encodeURI(archivo);
+        im.onerror = texto;
+        b.className = "mb lg" + (filtroMarca === clave ? " on" : "");
+        b.appendChild(im);
+      } else texto();
+      b.onclick = () => { filtroMarca = clave; cont.querySelectorAll(".mb").forEach(x => x.classList.toggle("on", x.dataset.m === clave)); pintarProductos(); };
+      return b;
+    };
+    cont.appendChild(boton("todas", "Todas"));
+    marcas.forEach(m => cont.appendChild(boton(m.toLowerCase(), m)));
+  }
+
   function pintarCategoria() {
     $("catTitulo").textContent = nombreCat(actual);
     document.title = nombreCat(actual) + " | Glam";
     $("banner").style.setProperty("--bg-img", fondo(actual));
-    const marcas = [...new Set(productos.filter(p => cat(p) === actual).map(marcaDe).filter(Boolean))].sort((a, b) => a.localeCompare(b, "es", {sensitivity:"base"}));
-    $("marcaSel").hidden = marcas.length < 2;
-    $("marcaSel").innerHTML = `<option value="todas">Todas las marcas</option>` + marcas.map(m => `<option value="${esc(m.toLowerCase())}">${esc(m)}</option>`).join("");
+    const vistas = new Map();
+    productos.filter(p => cat(p) === actual).map(marcaDe).filter(Boolean).forEach(m => { if (!vistas.has(m.toLowerCase())) vistas.set(m.toLowerCase(), m); });
+    const marcas = [...vistas.values()].sort((a, b) => a.localeCompare(b, "es", {sensitivity:"base"}));
+    pintarMarcas(marcas);
     pintarProductos();
   }
 
@@ -171,8 +210,6 @@ footer .sl{display:block;font-family:var(--serif);font-style:italic;font-size:1r
     });
   }
 
-  $("marcaSel").onchange = e => { filtroMarca = e.target.value; pintarProductos(); };
-
   function render() {
     actual = (location.hash.replace(/^#\/?/, "") || "home").toLowerCase();
     const home = actual === "home";
@@ -202,6 +239,7 @@ footer .sl{display:block;font-family:var(--serif);font-style:italic;font-size:1r
   });
 
   render();
+  fetch("./marcas.json?t=" + Date.now()).then(r => r.ok ? r.json() : {}).catch(() => ({})).then(l => { logos = l || {}; if (actual !== "home") pintarMarcas(); });
   fetch("./products.json?t=" + Date.now()).then(r => r.json()).then(d => { productos = d; render(); }).catch(() => {
     $("colgrid").insertAdjacentHTML("afterend", `<p class="sub" style="margin-top:30px">No se pudo cargar el catálogo. Intentá de nuevo en un momento.</p>`);
   });
