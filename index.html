@@ -42,20 +42,20 @@ h2.t{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,4vw,3rem);tex
 .col h3{font-family:var(--serif);font-weight:400;font-size:1.8rem;margin:0 0 10px;color:var(--gold)}
 .col .n{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
 .col .ver{font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;border-bottom:1px solid var(--gold);align-self:flex-start;padding-bottom:4px}
-.banner{padding:70px 6vw 54px;text-align:center;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#6b0b4f,#22031b)}
+.banner{padding:48px 6vw 44px;text-align:center;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#6b0b4f,#22031b)}
 .banner h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.4rem,6vw,4.2rem);margin:14px 0 0}
-.back{font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted)}
-.back:hover{color:var(--gold)}
+.back{display:inline-block;border:1px solid var(--gold);color:var(--gold);padding:10px 22px;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;transition:all .25s}
+.back:hover{background:var(--gold);color:var(--bg)}
 .tools{display:flex;justify-content:space-between;align-items:center;max-width:1250px;margin:0 auto;padding:30px 6vw 10px}
 .tools span{color:var(--muted);font-size:.85rem}
 .marcas{display:flex;flex-wrap:wrap;gap:10px;max-width:1250px;margin:0 auto;padding:6px 6vw 8px}
-.mb{display:inline-flex;align-items:center;justify-content:center;height:54px;min-width:96px;padding:0 22px;border:1px solid var(--line);background:none;color:var(--gold);font:inherit;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:all .25s}
+.mb{display:inline-flex;align-items:center;justify-content:center;height:38px;min-width:64px;padding:0 16px;border:1px solid var(--line);background:none;color:var(--gold);font:inherit;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:all .25s}
 .mb:hover{border-color:var(--gold)}
 .mb.on{border-color:var(--gold);box-shadow:0 0 0 2px var(--gold)}
 .mb.txt.on{background:var(--gold);color:var(--bg)}
-.mb.lg{background:#fff8fb;padding:8px 18px}
-.mb img{height:36px;max-width:120px;width:auto;object-fit:contain;display:block}
-@media(max-width:640px){.marcas{padding:6px 5vw 8px;gap:8px}.mb{height:46px;min-width:72px;padding:0 14px;font-size:.66rem}.mb img{height:28px;max-width:90px}}
+.mb.lg{background:#fff;padding:5px 12px}
+.mb img{height:24px;max-width:84px;width:auto;object-fit:contain;display:block}
+@media(max-width:640px){.marcas{padding:6px 5vw 8px;gap:8px}.mb{height:34px;min-width:56px;padding:0 12px;font-size:.62rem}.mb.lg{padding:4px 10px}.mb img{height:20px;max-width:70px}.banner{padding:36px 5vw 34px}}
 select{background:var(--panel);color:var(--text);border:1px solid var(--line);padding:11px 16px;font-family:inherit;font-size:.85rem;letter-spacing:.05em}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:26px;max-width:1250px;margin:0 auto;padding:20px 6vw 90px}
 .card{background:var(--panel);border:1px solid var(--line);display:flex;flex-direction:column;transition:border-color .3s}
@@ -105,7 +105,7 @@ footer .sl{display:block;font-family:var(--serif);font-style:italic;font-size:1r
 
 <main id="categoria" hidden>
   <div class="banner pat" id="banner">
-    <a class="back" href="#/">← Colecciones</a>
+    <a class="back" href="#/">← Volver a colecciones</a>
     <h1 id="catTitulo"></h1>
   </div>
   <div class="tools"><span id="cantidad"></span></div>
