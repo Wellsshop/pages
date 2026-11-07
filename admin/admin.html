@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Administrar Catálogo | Glam</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Bodoni+Moda:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
-<link rel="icon" href="glam-icon.png">
+<link rel="icon" href="../glam-icon.png">
 <style>
   :root {
     --bg: #fdf4f9;
@@ -125,6 +125,18 @@
   #btnEliminarSeleccion:hover { background: #dc2626; }
   #btnEliminarSeleccion:disabled { background: #fca5a5; cursor: not-allowed; }
 
+  #avisoLogos { font-size: 0.9rem; border-radius: 8px; margin-bottom: 12px; }
+  #avisoLogos.ok { background: #d1fae5; color: #065f46; padding: 10px 12px; }
+  #avisoLogos.error { background: #fee2e2; color: #991b1b; padding: 10px 12px; }
+  #avisoLogos.info { background: var(--soft); color: var(--muted); padding: 10px 12px; }
+  .logos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+  .logo-item { border: 1px solid var(--border); border-radius: 12px; padding: 10px; display: flex; flex-direction: column; gap: 8px; background: var(--card); }
+  .logo-item .caja { height: 72px; border-radius: 8px; background: #fff8fb; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .logo-item .caja img { max-width: 90%; max-height: 90%; object-fit: contain; }
+  .logo-item .caja span { font-size: 0.75rem; color: #8a5a7a; }
+  .logo-item .nom { font-weight: 600; font-size: 0.88rem; text-align: center; word-break: break-word; }
+  .logo-item .btns { display: flex; gap: 6px; }
+  .logo-item .btns button { width: auto; flex: 1; padding: 7px 4px; font-size: 0.78rem; }
   #listaEstado { color: var(--muted); font-size: 0.9rem; }
 
   /* Lista por categorías, en columnas */
@@ -184,7 +196,7 @@
 <body>
 
 <header>
-  <img src="glam.jpg" alt="Glam">
+  <img src="../glam.jpg" alt="Glam">
   <h1>Administrar Catálogo</h1>
   <p>Glam — agregar, editar y eliminar productos</p>
 </header>
@@ -263,6 +275,14 @@
       <button id="btnEliminarSeleccion" disabled>Eliminar seleccionados</button>
     </div>
     <div id="listaProductos"></div>
+  </section>
+
+  <section class="card">
+    <h2>🏷️ Logos de marcas</h2>
+    <p style="margin:0 0 14px; color:var(--muted); font-size:0.9rem;">Cada marca de tus productos aparece acá. Si le subís un logo, la web lo muestra en el filtro; si no, muestra el nombre en texto. Conviene un PNG con fondo transparente.</p>
+    <div id="avisoLogos"></div>
+    <div class="logos-grid" id="logosGrid"></div>
+    <input type="file" id="archivoLogo" accept="image/png,image/jpeg,image/webp" style="display:none">
   </section>
 
 </div>
@@ -671,6 +691,7 @@
         productos = await r.json();
       }
       productosActuales = productos;
+      cargarLogos();
 
       if (productos.length === 0) {
         listaEstado.textContent = "No hay productos cargados todavía.";
@@ -782,6 +803,101 @@
       h.style.display = categoriaListaActiva === "todas" || h.dataset.categoria === categoriaListaActiva ? "" : "none";
     });
     actualizarBarraSeleccion(filas.filter((f) => f.style.display !== "none").length);
+  }
+
+  // ---------- Logos de marcas ----------
+  const slugMarca = (m) => String(m || "").normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+  let marcasLogos = {};      // slug -> archivo guardado en img/
+  const logosLocal = {};     // slug -> vista previa de lo recién subido
+  const marcaDeProducto = (p) => (p.marca && String(p.marca).trim()) || String(p.nombre || "").trim().split(/\s+/)[0] || "";
+
+  function avisoLogos(texto, tipo) {
+    const el = $("avisoLogos");
+    el.textContent = texto; el.className = texto ? tipo : "";
+  }
+
+  async function cargarLogos() {
+    try {
+      let r = await fetch(WORKER_URL + "/marcas?t=" + Date.now(), { cache: "no-store" });
+      if (!r.ok) r = await fetch("../marcas.json?t=" + Date.now());
+      marcasLogos = r.ok ? await r.json() : {};
+    } catch (_) { marcasLogos = {}; }
+    pintarLogos();
+  }
+
+  function pintarLogos() {
+    const grid = $("logosGrid");
+    const vistas = new Map();
+    productosActuales.forEach((p) => {
+      const nombre = marcaDeProducto(p), slug = slugMarca(nombre);
+      if (slug && !vistas.has(slug)) vistas.set(slug, nombre);
+    });
+    const marcas = [...vistas.entries()].sort((a, b) => a[1].localeCompare(b[1], "es", { sensitivity: "base" }));
+    if (!marcas.length) { grid.innerHTML = '<div style="color:var(--muted); font-size:0.9rem;">Cuando cargues productos, sus marcas van a aparecer acá.</div>'; return; }
+    grid.innerHTML = "";
+    marcas.forEach(([slug, nombre]) => {
+      const src = logosLocal[slug] || (marcasLogos[slug] ? IMG_BASE + marcasLogos[slug] : "");
+      const item = document.createElement("div");
+      item.className = "logo-item";
+      item.innerHTML = `<div class="caja">${src ? `<img src="${src}" alt="">` : "<span>Sin logo</span>"}</div>
+        <div class="nom">${esc(nombre)}</div>
+        <div class="btns"><button type="button" class="btn-no" data-a="subir">${src ? "Cambiar" : "Subir logo"}</button>${src ? '<button type="button" class="btn-danger" data-a="quitar">Quitar</button>' : ""}</div>`;
+      item.querySelector('[data-a="subir"]').onclick = () => { logoMarcaActual = nombre; $("archivoLogo").value = ""; $("archivoLogo").click(); };
+      const q = item.querySelector('[data-a="quitar"]');
+      if (q) q.onclick = () => quitarLogo(nombre);
+      grid.appendChild(item);
+    });
+  }
+
+  // Achica el logo (máx. 400x240) y lo guarda como PNG para no perder la transparencia
+  async function logoAPng(file) {
+    const bmp = await createImageBitmap(file);
+    const k = Math.min(1, 400 / bmp.width, 240 / bmp.height);
+    const c = document.createElement("canvas");
+    c.width = Math.max(1, Math.round(bmp.width * k)); c.height = Math.max(1, Math.round(bmp.height * k));
+    c.getContext("2d").drawImage(bmp, 0, 0, c.width, c.height);
+    const url = c.toDataURL("image/png");
+    return { base64: url.split(",")[1], preview: url };
+  }
+
+  let logoMarcaActual = "";
+  $("archivoLogo").onchange = async (e) => {
+    const file = e.target.files[0];
+    if (!file || !logoMarcaActual) return;
+    const nombre = logoMarcaActual, slug = slugMarca(nombre);
+    avisoLogos(`Subiendo el logo de ${nombre}...`, "info");
+    try {
+      const img = await logoAPng(file);
+      const resp = await fetch(WORKER_URL + "/logo", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password: clave, marca: nombre, base64: img.base64, ext: "png" }),
+      });
+      const data = await resp.json();
+      if (!resp.ok) throw new Error(data.error || "Error desconocido");
+      marcasLogos[slug] = data.archivo; logosLocal[slug] = img.preview;
+      pintarLogos();
+      avisoLogos(`Logo de ${nombre} guardado. La web puede tardar hasta 1 minuto en mostrarlo.`, "ok");
+    } catch (err) {
+      avisoLogos("No se pudo subir el logo: " + err.message, "error");
+    }
+  };
+
+  async function quitarLogo(nombre) {
+    const slug = slugMarca(nombre);
+    avisoLogos(`Quitando el logo de ${nombre}...`, "info");
+    try {
+      const resp = await fetch(WORKER_URL + "/logo-eliminar", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password: clave, marca: nombre }),
+      });
+      const data = await resp.json();
+      if (!resp.ok) throw new Error(data.error || "Error desconocido");
+      delete marcasLogos[slug]; delete logosLocal[slug];
+      pintarLogos();
+      avisoLogos(`Logo de ${nombre} eliminado. La web va a mostrar el nombre en texto.`, "ok");
+    } catch (err) {
+      avisoLogos("No se pudo quitar el logo: " + err.message, "error");
+    }
   }
 
   // ---------- Edición ----------
