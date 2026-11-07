@@ -23,7 +23,7 @@ nav a:hover{color:var(--gold)}
 .pat{position:relative;overflow:hidden}
 .pat::before{content:"";position:absolute;inset:0;background:var(--bg-img) center/380px repeat;filter:invert(1);opacity:.07;pointer-events:none}
 .pat>*{position:relative}
-.hero{min-height:0;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:40px;padding:48px 6vw;background:radial-gradient(ellipse at 80% 45%,#b0127f 0%,#5c0a47 38%,#22031b 75%)}
+.hero{min-height:0;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:40px;padding:40px 6vw;background:radial-gradient(ellipse at 80% 45%,#b0127f 0%,#5c0a47 38%,#22031b 75%)}
 .hero .txt{max-width:620px}
 .poster{justify-self:center;width:min(100%,400px);height:auto;aspect-ratio:1000/1023;object-fit:contain;display:block;border:1px solid var(--gold);padding:7px;background:#7a0a55;box-shadow:0 0 0 1px rgba(232,201,138,.25),0 30px 70px rgba(0,0,0,.55),0 0 90px rgba(209,26,138,.45)}
 
@@ -32,14 +32,14 @@ nav a:hover{color:var(--gold)}
 .hero .tag{font-family:var(--serif);font-style:italic;font-size:1.35rem;color:var(--gold);margin:0}
 .btn{display:inline-block;border:1px solid var(--gold);color:var(--gold);padding:15px 38px;font-size:.78rem;letter-spacing:.25em;text-transform:uppercase;background:none;cursor:pointer;font-family:inherit;transition:all .25s}
 .btn:hover{background:var(--gold);color:var(--bg)}
-section.cols{padding:70px 6vw 80px}
+section.cols{padding:40px 6vw 60px}
 h2.t{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,4vw,3rem);text-align:center;margin:0 0 12px}
 .sub{text-align:center;color:var(--muted);margin:0 0 54px;letter-spacing:.05em}
 .rule{width:60px;height:1px;background:var(--gold);margin:0 auto 22px}
 .colgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;max-width:1250px;margin:0 auto}
-.col{display:flex;flex-direction:column;justify-content:flex-end;min-height:190px;padding:26px 28px;border:1px solid var(--line);background:linear-gradient(180deg,#4a0c39,#22031b);transition:border-color .3s,transform .3s}
+.col{display:flex;flex-direction:column;justify-content:flex-end;min-height:120px;padding:20px 24px;border:1px solid var(--line);background:linear-gradient(180deg,#4a0c39,#22031b);transition:border-color .3s,transform .3s}
 .col:hover{border-color:var(--gold);transform:translateY(-5px);box-shadow:0 18px 40px rgba(209,26,138,.3)}
-.col h3{font-family:var(--serif);font-weight:400;font-size:1.9rem;margin:0 0 14px;color:var(--gold)}
+.col h3{font-family:var(--serif);font-weight:400;font-size:1.8rem;margin:0 0 10px;color:var(--gold)}
 .col .n{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
 .col .ver{font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;border-bottom:1px solid var(--gold);align-self:flex-start;padding-bottom:4px}
 .banner{padding:70px 6vw 54px;text-align:center;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#6b0b4f,#22031b)}
@@ -74,7 +74,7 @@ footer .sl{display:block;font-family:var(--serif);font-style:italic;font-size:1r
 #modal img{max-width:90%;max-height:88%;object-fit:contain}
 #modal button{position:absolute;background:rgba(255,255,255,.1);color:#fff;border:none;border-radius:50%;width:46px;height:46px;font-size:26px;cursor:pointer}
 #mx{top:22px;right:26px}#mp{left:20px;top:50%}#mn{right:20px;top:50%}
-@media(max-width:640px){header{padding:14px 5vw}.logo{font-size:1.3rem}nav a{margin-left:16px;font-size:.68rem}.hero{grid-template-columns:1fr;gap:32px;min-height:0;padding:44px 5vw 52px}.poster{width:min(86%,340px)}section.cols{padding:60px 5vw}.colgrid{grid-template-columns:1fr 1fr;gap:12px}.col{padding:18px}.col h3{font-size:1.4rem}.tools{padding:22px 5vw 6px}.grid{padding:16px 5vw 60px}}
+@media(max-width:640px){header{padding:14px 5vw}.logo{font-size:1.3rem}nav a{margin-left:16px;font-size:.68rem}.hero{grid-template-columns:1fr;gap:32px;min-height:0;padding:44px 5vw 52px}.poster{width:min(86%,340px)}section.cols{padding:28px 5vw 48px}.colgrid{grid-template-columns:1fr 1fr;gap:12px}.col{padding:16px;min-height:96px}.col h3{font-size:1.4rem}.tools{padding:22px 5vw 6px}.grid{padding:16px 5vw 60px}}
 </style>
 </head>
 <body>
@@ -86,14 +86,11 @@ footer .sl{display:block;font-family:var(--serif);font-style:italic;font-size:1r
 <main id="home">
   <div class="hero pat" id="heroPat">
     <div class="txt"><div class="eyebrow">Relojes · Carteras · Billeteras · Lentes</div>
-    <h1>Lo mejor del lujo a tu alcance</h1>
+    <h1>Elegancia en cada detalle</h1>
     <p class="tag">artículos de lujo</p></div>
     <img class="poster" src="glam.jpg" alt="Glam, artículos de lujo: cartera, relojes y lentes" width="1000" height="1023">
   </div>
   <section class="cols" id="colecciones">
-    <div class="rule"></div>
-    <h2 class="t">Nuestras Colecciones</h2>
-    <p class="sub">Elegí una categoría y descubrí la selección</p>
     <div class="colgrid" id="colgrid"></div>
   </section>
 </main>
