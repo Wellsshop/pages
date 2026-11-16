@@ -231,9 +231,9 @@
       <label for="descripcion">Descripción</label>
       <textarea id="descripcion" rows="4" placeholder="Ej: Reloj Rolex Submariner Negro&#10;(Cada Enter se respeta en la web)"></textarea>
     </div>
-    <div class="field" style="display:none">
-      <label for="precio">Precio (opcional)</label>
-      <input type="text" id="precio" placeholder="Ej: 300000 (si lo dejás vacío queda como Consultar)">
+    <div class="field">
+      <label for="codigo">Código (opcional)</label>
+      <input type="text" id="codigo" placeholder="Ej: REL-001">
     </div>
     <div class="field">
       <label for="categoria">Categoría</label>
@@ -293,7 +293,7 @@
     <div class="field"><label for="e_marca">Marca</label><input type="text" id="e_marca" placeholder="Ej: Rolex"></div>
     <div class="field"><label for="e_nombre">Modelo</label><input type="text" id="e_nombre" placeholder="Ej: Submariner"></div>
     <div class="field"><label for="e_descripcion">Descripción</label><textarea id="e_descripcion" rows="5"></textarea></div>
-    <div class="field" style="display:none"><label for="e_precio">Precio (opcional)</label><input type="text" id="e_precio" placeholder="Si lo dejás vacío queda como Consultar"></div>
+    <div class="field"><label for="e_codigo">Código (opcional)</label><input type="text" id="e_codigo" placeholder="Ej: REL-001"></div>
     <div class="field"><label for="e_categoria">Categoría</label><select id="e_categoria"></select></div>
     <div class="field"><label>Fotos (la primera es la principal)</label><div id="e_fotos"></div></div>
     <div id="estadoEditar" style="display:none; margin-bottom:12px; font-size:0.9rem; padding:10px 12px; border-radius:8px;"></div>
@@ -481,7 +481,8 @@
     const marca = $("marca").value.trim();
     const modelo = $("nombre").value.trim();
     const nombre = unirNombre(marca, modelo);
-    const precio = $("precio").value.trim() || "Consultar";
+    const precio = "Consultar";
+    const codigo = $("codigo").value.trim();
     const descripcion = $("descripcion").value.trim();
     const categoria = $("categoria").value;
     const estado = $("estadoAgregar");
@@ -502,14 +503,14 @@
       const resp = await fetch(WORKER_URL + "/agregar", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password: clave, nombre, precio, descripcion, categoria, marca, fotos: gestorAgregar.payload().fotosNuevas }),
+        body: JSON.stringify({ password: clave, nombre, precio, codigo, descripcion, categoria, marca, fotos: gestorAgregar.payload().fotosNuevas }),
       });
       const data = await resp.json();
       if (!resp.ok) throw new Error(data.error || "Error desconocido");
 
       estado.textContent = "¡Producto agregado y publicado! Puede demorar 1 minuto en verse en la web.";
       estado.className = "ok";
-      $("nombre").value = ""; $("precio").value = ""; $("descripcion").value = ""; $("marca").value = "";
+      $("nombre").value = ""; $("codigo").value = ""; $("descripcion").value = ""; $("marca").value = "";
       gestorAgregar.set([]);
       cargarProductos();
     } catch (e) {
@@ -933,8 +934,7 @@
     const sep = separarProducto(p);
     $("e_marca").value = sep.marca;
     $("e_nombre").value = sep.modelo;
-    const pr = String(p.precio ?? "").trim();
-    $("e_precio").value = pr.toLowerCase() === "consultar" ? "" : pr;
+    $("e_codigo").value = p.codigo || "";
     $("e_descripcion").value = p.descripcion || "";
     const sel = $("e_categoria");
     const cat = p.categoria || sel.options[0].value;
@@ -954,7 +954,8 @@
     const marca = $("e_marca").value.trim();
     const modelo = $("e_nombre").value.trim();
     const nombre = unirNombre(marca, modelo);
-    const precio = $("e_precio").value.trim() || "Consultar";
+    const precio = "Consultar";
+    const codigo = $("e_codigo").value.trim();
     estado.className = ""; estado.style.display = "none";
 
     if (!marca || !modelo || gestorEditar.count() === 0) {
@@ -968,7 +969,7 @@
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          password: clave, id: editandoId, nombre, precio,
+          password: clave, id: editandoId, nombre, precio, codigo,
           descripcion: $("e_descripcion").value.trim(),
           categoria: $("e_categoria").value,
           marca,
