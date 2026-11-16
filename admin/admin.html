@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Administrar Catálogo | Glam</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Bodoni+Moda:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
-<link rel="icon" href="../glam-icon.png">
+<link rel="icon" href="glam-icon.png">
 <style>
   :root {
     --bg: #fdf4f9;
@@ -196,7 +196,7 @@
 <body>
 
 <header>
-  <img src="../glam.jpg" alt="Glam">
+  <img src="glam.jpg" alt="Glam">
   <h1>Administrar Catálogo</h1>
   <p>Glam — agregar, editar y eliminar productos</p>
 </header>
@@ -231,7 +231,7 @@
       <label for="descripcion">Descripción</label>
       <textarea id="descripcion" rows="4" placeholder="Ej: Reloj Rolex Submariner Negro&#10;(Cada Enter se respeta en la web)"></textarea>
     </div>
-    <div class="field">
+    <div class="field" style="display:none">
       <label for="precio">Precio (opcional)</label>
       <input type="text" id="precio" placeholder="Ej: 300000 (si lo dejás vacío queda como Consultar)">
     </div>
@@ -256,7 +256,7 @@
   <section class="card">
     <h2>📊 Edición masiva (Excel)</h2>
     <p style="font-size:0.9rem; color:var(--muted); margin:0 0 14px; line-height:1.5;">
-      Descargá todos los productos en un Excel, editá lo que quieras (marca, modelo, descripción, precio o categoría) y volvé a subirlo.
+      Descargá todos los productos en un Excel, editá lo que quieras (marca, modelo, descripción, categoría y, para MarionShop, el código y el precio) y volvé a subirlo. El código se muestra de forma discreta en Glam y en MarionShop; el precio, solo en MarionShop.
       No borres la columna "ID" ni agregues filas nuevas. Las fotos no se tocan: para borrar productos o cambiar fotos usá la lista de abajo.
     </p>
     <button class="btn-primary" id="btnDescargarExcel">⬇️ Descargar Excel</button>
@@ -293,7 +293,7 @@
     <div class="field"><label for="e_marca">Marca</label><input type="text" id="e_marca" placeholder="Ej: Rolex"></div>
     <div class="field"><label for="e_nombre">Modelo</label><input type="text" id="e_nombre" placeholder="Ej: Submariner"></div>
     <div class="field"><label for="e_descripcion">Descripción</label><textarea id="e_descripcion" rows="5"></textarea></div>
-    <div class="field"><label for="e_precio">Precio (opcional)</label><input type="text" id="e_precio" placeholder="Si lo dejás vacío queda como Consultar"></div>
+    <div class="field" style="display:none"><label for="e_precio">Precio (opcional)</label><input type="text" id="e_precio" placeholder="Si lo dejás vacío queda como Consultar"></div>
     <div class="field"><label for="e_categoria">Categoría</label><select id="e_categoria"></select></div>
     <div class="field"><label>Fotos (la primera es la principal)</label><div id="e_fotos"></div></div>
     <div id="estadoEditar" style="display:none; margin-bottom:12px; font-size:0.9rem; padding:10px 12px; border-radius:8px;"></div>
@@ -538,10 +538,12 @@
     chkTodos.indeterminate = seleccionados.size > 0 && seleccionados.size < totalFilas;
   }
 
-  let productosActuales = [];
+  let productosActuales = [], marionDatos = {}, marionOk = false;
 
   // ---------- Edición masiva (Excel) ----------
-  const COLS = { marca: "Marca", modelo: "Modelo", desc: "Descripción", precio: "Precio", cat: "Categoría", id: "ID (no modificar)" };
+  const COLS = { codigo: "Código", marca: "Marca", modelo: "Modelo", desc: "Descripción", precio: "Precio Marion", cat: "Categoría", id: "ID (no modificar)" };
+  const normPrecioM = (x) => { let t = String(x ?? "").trim().replace(/^\$\s*/, ""); if (/^\d{1,3}(\.\d{3})+(,\d+)?$/.test(t)) t = t.replace(/\./g, "").replace(",", "."); return t.toLowerCase() === "consultar" ? "" : t; };
+  const AVISO_MARION = "No se pudieron leer los precios de Marion. Revisá que GITHUB_REPO_MARION esté configurado en el Worker y recargá la página.";
   const quitarAcentos = (t) => String(t ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toLowerCase();
   const normDesc = (t) => String(t ?? "").replace(/\r\n?/g, "\n").trim();
   const normPrecio = (x) => { const t = String(x ?? "").trim(); return t.toLowerCase() === "consultar" ? "" : t; };
@@ -557,11 +559,14 @@
   function descargarExcel() {
     if (typeof XLSX === "undefined") { estadoMasivo("No se pudo cargar el módulo de Excel. Revisá la conexión y recargá la página.", "error"); return; }
     if (!productosActuales.length) { estadoMasivo("Todavía no hay productos para descargar.", "error"); return; }
+    if (!marionOk) { estadoMasivo(AVISO_MARION, "error"); return; }
     const etiquetas = new Map([...$("categoria").options].map((o) => [o.value, o.textContent.trim()]));
     const filas = [...productosActuales].sort(porMarcaYModelo).map((p) => {
       const { marca, modelo } = separarProducto(p);
-      const precio = normPrecio(p.precio);
+      const md = marionDatos[p.id || p.imagen] || {};
+      const precio = normPrecioM(md.precio);
       return {
+        [COLS.codigo]: String(p.codigo ?? ""),
         [COLS.marca]: marca,
         [COLS.modelo]: modelo,
         [COLS.desc]: String(p.descripcion || ""),
@@ -571,10 +576,10 @@
       };
     });
     const ws = XLSX.utils.json_to_sheet(filas, { header: Object.values(COLS) });
-    ws["!cols"] = [{ wch: 16 }, { wch: 30 }, { wch: 60 }, { wch: 12 }, { wch: 12 }, { wch: 36 }];
+    ws["!cols"] = [{ wch: 14 }, { wch: 16 }, { wch: 30 }, { wch: 60 }, { wch: 14 }, { wch: 12 }, { wch: 36 }];
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, "Catalogo");
-    XLSX.writeFile(wb, `catalogo_glam_${new Date().toISOString().slice(0, 10)}.xlsx`);
+    XLSX.writeFile(wb, `catalogo_${new Date().toISOString().slice(0, 10)}.xlsx`);
     estadoMasivo(`Se descargó el Excel con ${filas.length} productos. Editalo, guardalo y subilo con el botón de abajo.`, "ok");
   }
 
@@ -588,8 +593,9 @@
       estadoMasivo("No pude leer ese archivo. Tiene que ser el Excel (.xlsx) descargado desde acá.", "error");
       return;
     }
-    if (!filas.length || !(COLS.id in filas[0])) {
-      estadoMasivo(`No encuentro la columna "${COLS.id}". Usá el Excel descargado desde este panel y no borres esa columna.`, "error");
+    if (!marionOk) { estadoMasivo(AVISO_MARION, "error"); return; }
+    if (!filas.length || !(COLS.id in filas[0]) || !(COLS.codigo in filas[0])) {
+      estadoMasivo(`No encuentro las columnas "${COLS.id}" o "${COLS.codigo}". Descargá el Excel de nuevo desde este panel y no borres esas columnas.`, "error");
       return;
     }
 
@@ -597,7 +603,7 @@
     const cats = new Map();
     [...$("categoria").options].forEach((o) => { cats.set(quitarAcentos(o.value), o.value); cats.set(quitarAcentos(o.textContent), o.value); });
 
-    const cambios = [], errores = [];
+    const cambios = [], cambiados = [], marion = {}, errores = [];
     let sinCambios = 0, desconocidos = 0;
 
     filas.forEach((f, idx) => {
@@ -610,7 +616,8 @@
       const marca = String(f[COLS.marca] ?? "").trim();
       const modelo = String(f[COLS.modelo] ?? "").trim();
       const descripcion = normDesc(f[COLS.desc]);
-      const precio = normPrecio(f[COLS.precio]);
+      const precio = normPrecioM(f[COLS.precio]);
+      const codigo = String(f[COLS.codigo] ?? "").trim();
       const catTxt = String(f[COLS.cat] ?? "").trim();
 
       if (!marca || !modelo) { errores.push(`Fila ${fila}: falta la marca o el modelo`); return; }
@@ -621,24 +628,38 @@
       }
 
       const sep = separarProducto(p);
-      const igual = marca === sep.marca && modelo === sep.modelo &&
-        descripcion === normDesc(p.descripcion) &&
-        precio === normPrecio(p.precio) && categoria === p.categoria;
-      if (igual) { sinCambios++; return; }
-      cambios.push({ id, nombre: unirNombre(marca, modelo), marca, descripcion, precio: precio || "Consultar", categoria });
+      const glamIgual = marca === sep.marca && modelo === sep.modelo && descripcion === normDesc(p.descripcion) && categoria === p.categoria && codigo === String(p.codigo ?? "").trim();
+      const md = marionDatos[id] || {};
+      const marionIgual = precio === normPrecioM(md.precio);
+      if (glamIgual && marionIgual) { sinCambios++; return; }
+      if (!glamIgual) cambios.push({ id, nombre: unirNombre(marca, modelo), marca, descripcion, categoria, codigo });
+      if (!marionIgual) marion[id] = { precio };
+      cambiados.push(unirNombre(marca, modelo));
     });
+
+    // Los códigos no pueden repetirse (contando también los productos que no cambian)
+    const porCodigo = new Map();
+    productosActuales.forEach((p) => {
+      const id = p.id || p.imagen;
+      const nuevo = cambios.find((x) => x.id === id);
+      const c = String(nuevo ? nuevo.codigo : p.codigo ?? "").trim().toLowerCase();
+      if (!c) return;
+      if (!porCodigo.has(c)) porCodigo.set(c, []);
+      porCodigo.get(c).push(p.nombre);
+    });
+    porCodigo.forEach((n, c) => { if (n.length > 1) errores.push(`El código "${c}" está repetido (${n.slice(0, 3).join(", ")})`); });
 
     if (errores.length) {
       estadoMasivo("No se subió nada. Corregí esto y probá de nuevo:\n• " + errores.slice(0, 10).join("\n• ") + (errores.length > 10 ? `\n… y ${errores.length - 10} más` : ""), "error");
       return;
     }
-    if (!cambios.length) {
+    if (!cambiados.length) {
       estadoMasivo("No encontré cambios para subir." + (desconocidos ? ` (${desconocidos} filas no coinciden con ningún producto).` : ""), "");
       return;
     }
 
-    const lista = cambios.slice(0, 10).map((c) => "• " + c.nombre).join("\n") + (cambios.length > 10 ? `\n… y ${cambios.length - 10} más` : "");
-    if (!confirm(`Se van a actualizar ${cambios.length} productos (${sinCambios} quedan igual):\n\n${lista}\n\n¿Confirmás?`)) {
+    const lista = cambiados.slice(0, 10).map((n) => "• " + n).join("\n") + (cambiados.length > 10 ? `\n… y ${cambiados.length - 10} más` : "");
+    if (!confirm(`Se van a actualizar ${cambiados.length} productos (${sinCambios} quedan igual):\n\n${lista}\n\n¿Confirmás?`)) {
       estadoMasivo("Cancelado. No se cambió nada.", "");
       return;
     }
@@ -649,11 +670,11 @@
       const resp = await fetch(WORKER_URL + "/importar", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password: clave, cambios }),
+        body: JSON.stringify({ password: clave, cambios, marion }),
       });
       const data = await resp.json();
       if (!resp.ok) throw new Error(data.error || "Error desconocido");
-      estadoMasivo(`Listo: se actualizaron ${data.actualizados} productos. La web puede tardar hasta 1 minuto en mostrar los cambios.`, "ok");
+      estadoMasivo(`Listo: se actualizaron ${cambiados.length} productos. Glam y Marion pueden tardar hasta 1 minuto en mostrar los cambios.`, "ok");
       cargarProductos();
     } catch (e) {
       estadoMasivo("No se pudo subir: " + e.message, "error");
@@ -691,6 +712,7 @@
         productos = await r.json();
       }
       productosActuales = productos;
+      try { const rm = await fetch(WORKER_URL + "/marion?t=" + Date.now(), { cache: "no-store" }); marionOk = rm.ok; marionDatos = rm.ok ? await rm.json() : {}; } catch (_) { marionOk = false; marionDatos = {}; }
       cargarLogos();
 
       if (productos.length === 0) {
@@ -721,8 +743,9 @@
         const row = document.createElement("div");
         row.className = "producto-row";
 
-        const precioRaw = String(p.precio ?? "").trim();
-        const precioTexto = !precioRaw ? "Consultar" : (/^[\d.,\s]+$/.test(precioRaw) ? "$" + precioRaw : precioRaw);
+        const md = marionDatos[p.id || p.imagen] || {};
+        const precioRaw = String(md.precio ?? "").trim();
+        const precioTexto = (p.codigo ? p.codigo + " · " : "") + (!precioRaw ? "Sin precio (Marion)" : (/^[\d.,\s]+$/.test(precioRaw) ? "$" + precioRaw : precioRaw));
 
         row.innerHTML = `
           <input type="checkbox" class="chk-producto">
