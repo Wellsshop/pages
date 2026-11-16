@@ -236,6 +236,10 @@
       <input type="text" id="codigo" placeholder="Ej: REL-001">
     </div>
     <div class="field">
+      <label for="precioM">Precio Marion (opcional)</label>
+      <input type="text" id="precioM" placeholder="Ej: 300000 (solo se muestra en MarionShop, nunca en Glam)">
+    </div>
+    <div class="field">
       <label for="categoria">Categoría</label>
       <select id="categoria">
         <option value="relojes">Relojes</option>
@@ -294,6 +298,7 @@
     <div class="field"><label for="e_nombre">Modelo</label><input type="text" id="e_nombre" placeholder="Ej: Submariner"></div>
     <div class="field"><label for="e_descripcion">Descripción</label><textarea id="e_descripcion" rows="5"></textarea></div>
     <div class="field"><label for="e_codigo">Código (opcional)</label><input type="text" id="e_codigo" placeholder="Ej: REL-001"></div>
+    <div class="field"><label for="e_precioM">Precio Marion (opcional)</label><input type="text" id="e_precioM" placeholder="Ej: 300000 (solo se muestra en MarionShop)"></div>
     <div class="field"><label for="e_categoria">Categoría</label><select id="e_categoria"></select></div>
     <div class="field"><label>Fotos (la primera es la principal)</label><div id="e_fotos"></div></div>
     <div id="estadoEditar" style="display:none; margin-bottom:12px; font-size:0.9rem; padding:10px 12px; border-radius:8px;"></div>
@@ -483,6 +488,7 @@
     const nombre = unirNombre(marca, modelo);
     const precio = "Consultar";
     const codigo = $("codigo").value.trim();
+    const precioMarion = normPrecioM($("precioM").value);
     const descripcion = $("descripcion").value.trim();
     const categoria = $("categoria").value;
     const estado = $("estadoAgregar");
@@ -503,14 +509,14 @@
       const resp = await fetch(WORKER_URL + "/agregar", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password: clave, nombre, precio, codigo, descripcion, categoria, marca, fotos: gestorAgregar.payload().fotosNuevas }),
+        body: JSON.stringify({ password: clave, nombre, precio, codigo, precioMarion, descripcion, categoria, marca, fotos: gestorAgregar.payload().fotosNuevas }),
       });
       const data = await resp.json();
       if (!resp.ok) throw new Error(data.error || "Error desconocido");
 
-      estado.textContent = "¡Producto agregado y publicado! Puede demorar 1 minuto en verse en la web.";
+      estado.textContent = "¡Producto agregado y publicado! Puede demorar 1 minuto en verse en la web." + (data.aviso ? " ⚠️ " + data.aviso : "");
       estado.className = "ok";
-      $("nombre").value = ""; $("codigo").value = ""; $("descripcion").value = ""; $("marca").value = "";
+      $("nombre").value = ""; $("codigo").value = ""; $("precioM").value = ""; $("descripcion").value = ""; $("marca").value = "";
       gestorAgregar.set([]);
       cargarProductos();
     } catch (e) {
@@ -935,6 +941,7 @@
     $("e_marca").value = sep.marca;
     $("e_nombre").value = sep.modelo;
     $("e_codigo").value = p.codigo || "";
+    $("e_precioM").value = String((marionDatos[p.id || p.imagen] || {}).precio ?? "");
     $("e_descripcion").value = p.descripcion || "";
     const sel = $("e_categoria");
     const cat = p.categoria || sel.options[0].value;
@@ -956,6 +963,7 @@
     const nombre = unirNombre(marca, modelo);
     const precio = "Consultar";
     const codigo = $("e_codigo").value.trim();
+    const precioMarion = normPrecioM($("e_precioM").value);
     estado.className = ""; estado.style.display = "none";
 
     if (!marca || !modelo || gestorEditar.count() === 0) {
@@ -969,7 +977,7 @@
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          password: clave, id: editandoId, nombre, precio, codigo,
+          password: clave, id: editandoId, nombre, precio, codigo, precioMarion,
           descripcion: $("e_descripcion").value.trim(),
           categoria: $("e_categoria").value,
           marca,
@@ -980,7 +988,7 @@
       if (!resp.ok) throw new Error(data.error || "Error desconocido");
       cerrarEdicion();
       cargarProductos();
-      mostrarAvisoLista("Cambios guardados. La web puede tardar hasta 1 minuto en actualizarse.", "ok");
+      mostrarAvisoLista(data.aviso ? "⚠️ " + data.aviso : "Cambios guardados. La web puede tardar hasta 1 minuto en actualizarse.", data.aviso ? "error" : "ok");
     } catch (e) {
       estado.textContent = "No se pudo guardar: " + e.message;
       estado.className = "error";
