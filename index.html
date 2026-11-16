@@ -83,6 +83,7 @@ footer .sl{display:block;font-family:var(--serif);font-style:italic;font-size:1r
 #modal button{position:absolute;background:rgba(255,255,255,.1);color:#fff;border:none;border-radius:50%;width:46px;height:46px;font-size:26px;cursor:pointer}
 #mx{top:22px;right:26px}#mp{left:20px;top:50%}#mn{right:20px;top:50%}
 @media(max-width:640px){header{padding:14px 5vw}.logo{font-size:1.3rem}nav a{margin-left:16px;font-size:.68rem}.hero{grid-template-columns:1fr;gap:32px;min-height:0;padding:44px 5vw 52px}.poster{width:min(86%,340px)}section.cols{padding:28px 5vw 48px}.colgrid{grid-template-columns:1fr 1fr;gap:12px}.col{padding:16px;min-height:96px}.col h3{font-size:1.4rem}.tools{padding:22px 5vw 6px}.grid{padding:16px 5vw 60px}}
+.cod{display:block;margin:-8px 0 16px;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);opacity:.45}
 </style>
 </head>
 <body>
@@ -194,11 +195,12 @@ footer .sl{display:block;font-family:var(--serif);font-style:italic;font-size:1r
       const fotos = (Array.isArray(p.imagenes) && p.imagenes.length ? p.imagenes : [p.imagen]).map(f => String(f).trim()).filter(Boolean);
       const nombre = String(p.nombre || "Producto").trim(), m = marcaDe(p), mod = m ? modeloDe(p) : "";
       const url = new URL("img/" + fotos[0], location.href).href;
-      const msg = encodeURIComponent(`Hola! Me interesa este producto:\n\n*${nombre}*\nFoto: ${url}`);
+      const cod = String(p.codigo || "").trim();
+      const msg = encodeURIComponent(`Hola! Me interesa este producto:\n\n*${nombre}*\n${cod ? "Código: " + cod + "\n" : ""}Foto: ${url}`);
       const card = document.createElement("div");
       card.className = "card";
       card.innerHTML = `<div class="img"><img src="img/${esc(fotos[0])}" alt="${esc(nombre)}">${fotos.length > 1 ? `<button class="nav prev" type="button">‹</button><button class="nav next" type="button">›</button><div class="dots">${fotos.map((_, i) => `<i class="${i ? "" : "on"}"></i>`).join("")}</div>` : ""}</div>
-      <div class="info"><span class="m">${esc(m || nombre)}</span>${mod ? `<h3>${esc(mod)}</h3>` : `<h3></h3>`}<p>${esc(p.descripcion)}</p><a class="wa" target="_blank" rel="noopener" href="https://wa.me/${WA}?text=${msg}">Consultar por WhatsApp</a></div>`;
+      <div class="info"><span class="m">${esc(m || nombre)}</span>${mod ? `<h3>${esc(mod)}</h3>` : `<h3></h3>`}<p>${esc(p.descripcion)}</p>${cod ? `<span class="cod">Cód. ${esc(cod)}</span>` : ""}<a class="wa" target="_blank" rel="noopener" href="https://wa.me/${WA}?text=${msg}">Consultar por WhatsApp</a></div>`;
       let i = 0;
       const img = card.querySelector("img"), pts = card.querySelectorAll(".dots i");
       img.onerror = () => { if (!i) card.remove(); };
