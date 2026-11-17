@@ -693,11 +693,11 @@
 
       const campo = (nombre, valor, x, y, w, h, opc = {}) => {
         const tf = form.createTextField(nombre);
-        tf.setText(sanear(valor));
-        if (opc.multi) tf.enableMultiline();
-        if (opc.ro) tf.enableReadOnly();
-        tf.setFontSize(opc.size || 9);
         tf.addToPage(page, { x, y, width: w, height: h, font, borderWidth: opc.ro ? 0 : 0.7, borderColor: borde, backgroundColor: opc.ro ? undefined : rgb(0.97, 0.98, 1) });
+        if (opc.multi) tf.enableMultiline();
+        tf.setFontSize(opc.size || 9);
+        tf.setText(sanear(valor));
+        if (opc.ro) tf.enableReadOnly();
         return tf;
       };
       const etiqueta = (txt, x, y) => page.drawText(txt, { x, y, size: 7, font: bold, color: gris });
