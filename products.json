@@ -10,7 +10,8 @@
     "precio": "Consultar",
     "descripcion": "Piel sintética texturizada caramelo con la leyenda \"THE TOTE BAG\".\nAsas y correa de hombro ajustable.\nIncluye mini bolso con cadena dorada.",
     "categoria": "carteras",
-    "marca": "Marc Jacobb"
+    "marca": "Marc Jacobb",
+    "codigo": "CA-MJ-TH-000084"
   },
   {
     "id": "neverfull_by_louis_vuitton_1790717181175_0.jpg",
@@ -22,7 +23,8 @@
     "precio": "Consultar",
     "descripcion": "Lona Monogram con asas de Eco cuero natural.\nEstilo tote amplio, con cordones laterales ajustables.\nIncluye pouch con cierre, extraíble.",
     "categoria": "carteras",
-    "marca": "Louis Vuitton"
+    "marca": "Louis Vuitton",
+    "codigo": "CA-LV-NE-000056"
   },
   {
     "id": "neverfull_by_louis_vuitton_1790717228481_0.jpg",
@@ -34,7 +36,8 @@
     "precio": "Consultar",
     "descripcion": "Lona Monogram Multicolor con asas de Eco cuero natural.\nEstilo tote amplio, con cordones laterales ajustables.\nIncluye pouch con cierre, extraíble.",
     "categoria": "carteras",
-    "marca": "Louis Vuitton"
+    "marca": "Louis Vuitton",
+    "codigo": "CA-LV-NE-000057"
   },
   {
     "id": "cherry_by_louis_vuitton_1790717535712_0.jpg",
@@ -46,7 +49,8 @@
     "precio": "Consultar",
     "descripcion": "Lona Monogram con estampado de cerezas y detalles de Eco cuero natural.\nCorrea ajustable.\nMonedero extraíble y llavero de cerezas.",
     "categoria": "carteras",
-    "marca": "Louis Vuitton"
+    "marca": "Louis Vuitton",
+    "codigo": "CA-LV-CH-000046"
   },
   {
     "id": "milano_baul_1790719369271_0.jpg",
@@ -58,7 +62,8 @@
     "precio": "Consultar",
     "descripcion": "Piel sintética negra con inscripción \"MILANO ITALY\" y bandera italiana.\nEstilo bowling con cierres laterales, asas y correa ajustable.\nDije de rosa color vino.",
     "categoria": "carteras",
-    "marca": "Otros"
+    "marca": "Otros",
+    "codigo": "CA-OT-BO-000112"
   },
   {
     "id": "kangaroo_bag_1790728820891_0.jpg",
@@ -70,7 +75,8 @@
     "precio": "Consultar",
     "descripcion": "Piel sintética texturizada marrón con logo metálico al frente.\nAsas rígidas y correa de hombro ajustable y extraíble.",
     "categoria": "carteras",
-    "marca": "Otros"
+    "marca": "Otros",
+    "codigo": "CA-OT-KA-000113"
   },
   {
     "id": "tote_croco_vintage_1790728967253_0.jpg",
@@ -82,7 +88,8 @@
     "precio": "Consultar",
     "descripcion": "Piel brillante rojo burdeos con relieve cocodrilo y herrajes dorados.\nAsas reforzadas y placa frontal grabada.\nCorrea de hombro ajustable y extraíble.",
     "categoria": "carteras",
-    "marca": "Saint Laurent"
+    "marca": "Saint Laurent",
+    "codigo": "CA-SL-SA-000122"
   },
   {
     "id": "cartier_clasic_c_1790729096923_0.jpg",
@@ -94,7 +101,8 @@
     "precio": "Consultar",
     "descripcion": "Montura metálica dorada.\nLentes degradadas rosadas, sin marco.",
     "categoria": "lentes",
-    "marca": "Cartier"
+    "marca": "Cartier",
+    "codigo": "LE-CA-CL-000007"
   },
   {
     "id": "prada_shield_1790729398436_0.jpg",
@@ -107,7 +115,8 @@
     "precio": "Consultar",
     "descripcion": "Montura metálica dorada, envolvente.\nPuente central de acetato negro con logo.\nLentes oscuras degradadas.",
     "categoria": "lentes",
-    "marca": "Prada"
+    "marca": "Prada",
+    "codigo": "LE-PR-SH-000115"
   },
   {
     "id": "prada_cat_eye_1790729492201_0.jpg",
@@ -120,7 +129,8 @@
     "precio": "Consultar",
     "descripcion": "Montura metálica dorada, estilo ojo de gato.\nVarillas finas con terminales oscuros.\nLentes degradadas marrón.",
     "categoria": "lentes",
-    "marca": "Prada"
+    "marca": "Prada",
+    "codigo": "LE-PR-CA-000114"
   },
   {
     "id": "tom_ford_rimless_1790729591493_0.jpg",
@@ -135,7 +145,8 @@
     "precio": "Consultar",
     "descripcion": "Lentes oscuras rectangulares, sin marco.\nPuente dorado y varillas oscuras.\nIncluye estuche rígido.",
     "categoria": "lentes",
-    "marca": "Tom Ford"
+    "marca": "Tom Ford",
+    "codigo": "LE-TF-RI-000154"
   },
   {
     "id": "chanel_oversized_1790729770854_0.jpg",
@@ -150,7 +161,8 @@
     "precio": "Consultar",
     "descripcion": "Montura metálica dorada, cuadrada.\nPatillas con cadena y logo doble C.\nLentes oscuras degradadas.",
     "categoria": "lentes",
-    "marca": "Chanel"
+    "marca": "Chanel",
+    "codigo": "LE-CH-OV-000014"
   },
   {
     "id": "chanel_5171_mademoiselle_chain_1790730282226_0.jpg",
@@ -163,7 +175,8 @@
     "precio": "Consultar",
     "descripcion": "Montura de acetato blanco y negro, ovalada.\nPatillas anchas con logo doble C.\nLentes oscuras degradadas.",
     "categoria": "lentes",
-    "marca": "Chanel"
+    "marca": "Chanel",
+    "codigo": "LE-CH-MA-000009"
   },
   {
     "id": "miu_miu_logo_rimless_oval_1790730464120_0.jpg",
@@ -175,7 +188,8 @@
     "precio": "Consultar",
     "descripcion": "Montura metálica dorada, sin marco.\nVarillas finas con logo.\nLentes oscuras degradadas.",
     "categoria": "lentes",
-    "marca": "Miu Miu"
+    "marca": "Miu Miu",
+    "codigo": "LE-MM-LO-000090"
   },
   {
     "id": "miu_miu_sunglasses_geometric_1790730970630_0.jpg",
@@ -187,7 +201,8 @@
     "precio": "Consultar",
     "descripcion": "Lentes oscuras geométricas, sin marco.\nPuente y estructura dorada.\nPatillas anchas de acetato negro con logo.",
     "categoria": "lentes",
-    "marca": "Miu Miu"
+    "marca": "Miu Miu",
+    "codigo": "LE-MM-SU-000099"
   },
   {
     "id": "miu_miu_oversized_pilot_1790731050536_0.jpg",
@@ -199,7 +214,8 @@
     "precio": "Consultar",
     "descripcion": "Montura metálica dorada, estilo aviador.\nVarillas finas con logo.\nLentes oscuras degradadas.",
     "categoria": "lentes",
-    "marca": "Miu Miu"
+    "marca": "Miu Miu",
+    "codigo": "LE-MM-OV-000093"
   },
   {
     "id": "miu_miu_gold_bridge_rectangular_1790731274477_0.jpg",
@@ -211,7 +227,8 @@
     "precio": "Consultar",
     "descripcion": "Montura de acetato negro, rectangular.\nDetalles dorados en puente y bisagras.\nLentes oscuras degradadas.",
     "categoria": "lentes",
-    "marca": "Miu Miu"
+    "marca": "Miu Miu",
+    "codigo": "LE-MM-GO-000089"
   },
   {
     "id": "tiffany_co_chain_link_rimless_1790731376417_0.jpg",
@@ -223,7 +240,8 @@
     "precio": "Consultar",
     "descripcion": "Lentes oscuras geométricas, sin marco.\nDetalles dorados en puente y esquinas.\nIncluye estuche rígido azul.",
     "categoria": "lentes",
-    "marca": "Tiffany & Co"
+    "marca": "Tiffany & Co",
+    "codigo": "LE-TI-CH-000153"
   },
   {
     "id": "tag_heuer_f1_1791141795008_0.jpg",
@@ -236,7 +254,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable negro.\nFondo negro con detalles rojos y amarillos.\nMalla de caucho amarillo.",
     "categoria": "relojes",
-    "marca": "Tag Heuer"
+    "marca": "Tag Heuer",
+    "codigo": "RE-TH-FO-000150"
   },
   {
     "id": "hublot_maradona_1791141896445_0.jpg",
@@ -249,7 +268,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo azul marino.\nMalla negra con costuras celestes y blancas.",
     "categoria": "relojes",
-    "marca": "Hublot"
+    "marca": "Hublot",
+    "codigo": "RE-HU-BI-000037"
   },
   {
     "id": "sunset_shoulder_bag_1792430078670_0.jpg",
@@ -264,7 +284,8 @@
     "precio": "Consultar",
     "descripcion": "Piel negra en relieve tipo cocodrilo con herrajes.\nCadena plateada con refuerzo de hombro en piel.\nSolapa frontal con monograma YSL.",
     "categoria": "carteras",
-    "marca": "Saint Laurent"
+    "marca": "Saint Laurent",
+    "codigo": "CA-SL-SU-000124"
   },
   {
     "id": "sunset_shoulder_bag_1792430261300_0.jpg",
@@ -280,7 +301,8 @@
     "precio": "Consultar",
     "descripcion": "Piel negra en relieve tipo cocodrilo con herrajes.\nCadena dorada con refuerzo de hombro en piel.\nSolapa frontal con monograma YSL.",
     "categoria": "carteras",
-    "marca": "Saint Laurent"
+    "marca": "Saint Laurent",
+    "codigo": "CA-SL-SU-000125"
   },
   {
     "id": "gucci_duffle_1792507453696_0.jpg",
@@ -292,7 +314,8 @@
     "precio": "Consultar",
     "descripcion": "Lona GG Supreme gris y negra.\nDoble cierre superior y asas de mano reforzadas.",
     "categoria": "carteras",
-    "marca": "Gucci"
+    "marca": "Gucci",
+    "codigo": "CA-GU-DU-000021"
   },
   {
     "id": "gucci_queen_margaret_1792508246516_0.jpg",
@@ -304,7 +327,8 @@
     "precio": "Consultar",
     "descripcion": "Lona GG Supreme con banda verde y roja y detalles de Eco cuero marrón.\nCierre de solapa metálico en forma de abeja.\nAsa superior y asa de mano.",
     "categoria": "carteras",
-    "marca": "Gucci"
+    "marca": "Gucci",
+    "codigo": "CA-GU-OP-000023"
   },
   {
     "id": "saint_laurent_icare_maxi_shopping_bag_1792508982097_0.jpg",
@@ -316,7 +340,8 @@
     "precio": "Consultar",
     "descripcion": "Piel negra acolchada en rombos, con herrajes al tono.\nAsas superiores.\nIncluye pouch con cierre y cadena.",
     "categoria": "carteras",
-    "marca": "Saint Laurent"
+    "marca": "Saint Laurent",
+    "codigo": "CA-SL-IC-000119"
   },
   {
     "id": "louis_vuitton_takashi_murakami_1792518415419_0.jpg",
@@ -328,7 +353,8 @@
     "precio": "Consultar",
     "descripcion": "Lona blanca con monograma y cerezas, detalles de Eco cuero natural.\nEstilo bowling con cierre superior y candado dorado.\nAsas superiores rígidas.",
     "categoria": "carteras",
-    "marca": "Louis Vuitton"
+    "marca": "Louis Vuitton",
+    "codigo": "CA-LV-SP-000077"
   },
   {
     "id": "saint_laurent_icare_maxi_shopping_bag_1792518815176_0.jpg",
@@ -340,7 +366,8 @@
     "precio": "Consultar",
     "descripcion": "Piel acolchada en rombos, azul turquesa, con herrajes dorados.\nAsas superiores y diseño amplio.",
     "categoria": "carteras",
-    "marca": "Saint Laurent"
+    "marca": "Saint Laurent",
+    "codigo": "CA-SL-IC-000120"
   },
   {
     "id": "hublot_big_bang_maradona_limited_edition_1792519895039_0.jpg",
@@ -352,7 +379,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo negro con detalles azul marino.\nMalla negra con costuras celestes y blancas.",
     "categoria": "relojes",
-    "marca": "Hublot"
+    "marca": "Hublot",
+    "codigo": "RE-HU-BI-000038"
   },
   {
     "id": "hublot_big_bang_maradona_limited_edition_1792520056068_0.jpg",
@@ -364,7 +392,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable negro.\nFondo negro con detalles celestes.\nMalla negra con costuras celestes y blancas.",
     "categoria": "relojes",
-    "marca": "Hublot"
+    "marca": "Hublot",
+    "codigo": "RE-HU-BI-000039"
   },
   {
     "id": "audemars_piguet_royal_oak_1792520241717_0.jpg",
@@ -376,7 +405,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable negro.\nFondo esqueletado negro con detalles verde lima.\nMalla de caucho verde lima.",
     "categoria": "relojes",
-    "marca": "Audemars Piguet"
+    "marca": "Audemars Piguet",
+    "codigo": "RE-AP-RO-000005"
   },
   {
     "id": "audemars_piguet_1792520343147_0.jpg",
@@ -388,7 +418,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable negro.\nFondo esqueletado negro con detalles rojos y plateados.\nMalla de caucho negro.",
     "categoria": "relojes",
-    "marca": "Audemars Piguet"
+    "marca": "Audemars Piguet",
+    "codigo": "RE-AP-RO-000006"
   },
   {
     "id": "omega_speedmaster_1792527919333_0.jpg",
@@ -400,7 +431,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo azul marino.\nMalla de acero inoxidable.",
     "categoria": "relojes",
-    "marca": "Omega"
+    "marca": "Omega",
+    "codigo": "RE-OM-SP-000111"
   },
   {
     "id": "omega_speedmaster_1792527976764_0.jpg",
@@ -412,7 +444,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable negro.\nFondo negro mate.\nMalla de acero negro.",
     "categoria": "relojes",
-    "marca": "Omega"
+    "marca": "Omega",
+    "codigo": "RE-OM-SP-000110"
   },
   {
     "id": "tag_heuer_formula_1_1792528184990_0.jpg",
@@ -424,7 +457,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo negro con detalles rojos y amarillos.\nMalla de caucho rojo.",
     "categoria": "relojes",
-    "marca": "Tag Heuer"
+    "marca": "Tag Heuer",
+    "codigo": "RE-TH-CH-000131"
   },
   {
     "id": "tag_heuer_formula_1_1792528399762_0.jpg",
@@ -436,7 +470,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo verde oscuro con detalles rojos y amarillos.\nMalla de acero inoxidable.",
     "categoria": "relojes",
-    "marca": "Tag Heuer"
+    "marca": "Tag Heuer",
+    "codigo": "RE-TH-FO-000148"
   },
   {
     "id": "tag_heuer_1792528523682_0.jpg",
@@ -448,7 +483,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo azul eléctrico con detalles rojos y amarillos.\nMalla de acero inoxidable.",
     "categoria": "relojes",
-    "marca": "Tag Heuer"
+    "marca": "Tag Heuer",
+    "codigo": "RE-TH-FO-000145"
   },
   {
     "id": "tag_heuer_carrera_1792528951556_0.jpg",
@@ -460,7 +496,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo blanco plateado con detalles oro rosa.\nMalla de acero inoxidable.",
     "categoria": "relojes",
-    "marca": "Tag Heuer"
+    "marca": "Tag Heuer",
+    "codigo": "RE-TH-CA-000127"
   },
   {
     "id": "tag_heuer_formula_1_1792529086162_0.jpg",
@@ -472,7 +509,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable negro.\nFondo amarillo.\nMalla de acero negro.",
     "categoria": "relojes",
-    "marca": "Tag Heuer"
+    "marca": "Tag Heuer",
+    "codigo": "RE-TH-FO-000151"
   },
   {
     "id": "tag_heuer_formula_1_calibre_16_chronograph_ayrton_senna_special_edition_1792588173969_0.jpg",
@@ -484,7 +522,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo negro mate con detalles rojos.\nMalla de caucho negro con detalles rojos.",
     "categoria": "relojes",
-    "marca": "Tag Heuer"
+    "marca": "Tag Heuer",
+    "codigo": "RE-TH-FO-000133"
   },
   {
     "id": "tag_heuer_formula_1_chronograph_blue_dial_black_steel_1792588263743_0.jpg",
@@ -496,7 +535,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable negro.\nFondo azul.\nMalla de acero negro.",
     "categoria": "relojes",
-    "marca": "Tag Heuer"
+    "marca": "Tag Heuer",
+    "codigo": "RE-TH-FO-000137"
   },
   {
     "id": "tag_heuer_formula_1_chronograph_black_yellow_accents_1792588314005_0.jpg",
@@ -508,7 +548,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo negro con detalles amarillos.\nMalla de acero inoxidable.",
     "categoria": "relojes",
-    "marca": "Tag Heuer"
+    "marca": "Tag Heuer",
+    "codigo": "RE-TH-FO-000134"
   },
   {
     "id": "tag_heuer_formula_1_chronograph_gulf_special_edition_1792588365562_0.jpg",
@@ -520,7 +561,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo blanco con franjas celestes y naranjas.\nMalla de acero inoxidable.",
     "categoria": "relojes",
-    "marca": "Tag Heuer"
+    "marca": "Tag Heuer",
+    "codigo": "RE-TH-FO-000144"
   },
   {
     "id": "tag_heuer_carrera_calibre_heuer_02_automatic_chronograph_black_dial_1792588416433_0.jpg",
@@ -532,7 +574,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo negro mate.\nMalla de acero inoxidable.",
     "categoria": "relojes",
-    "marca": "Tag Heuer"
+    "marca": "Tag Heuer",
+    "codigo": "RE-TH-CA-000128"
   },
   {
     "id": "tag_heuer_carrera_calibre_heuer_02_automatic_chronograph_green_dial_1792588484401_0.jpg",
@@ -544,7 +587,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo verde esmeralda.\nMalla de acero inoxidable.",
     "categoria": "relojes",
-    "marca": "Tag Heuer"
+    "marca": "Tag Heuer",
+    "codigo": "RE-TH-CA-000130"
   },
   {
     "id": "tag_heuer_formula_1_chronograph_black_dial_silver_subdials_1792588520038_0.jpg",
@@ -556,7 +600,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo negro con detalles blancos y rojos.\nMalla de acero inoxidable.",
     "categoria": "relojes",
-    "marca": "Tag Heuer"
+    "marca": "Tag Heuer",
+    "codigo": "RE-TH-FO-000135"
   },
   {
     "id": "tag_heuer_formula_1_chronograph_special_red_blue_edition_rubber_strap_1792588555347_0.jpg",
@@ -568,7 +613,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo negro con detalles rojos y amarillos.\nMalla de caucho negro.",
     "categoria": "relojes",
-    "marca": "Tag Heuer"
+    "marca": "Tag Heuer",
+    "codigo": "RE-TH-FO-000149"
   },
   {
     "id": "tag_heuer_formula_1_chronograph_special_edition_green_rubber_strap_1792588602281_0.jpg",
@@ -580,7 +626,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo negro con detalles rojos y amarillos.\nMalla de caucho verde.",
     "categoria": "relojes",
-    "marca": "Tag Heuer"
+    "marca": "Tag Heuer",
+    "codigo": "RE-TH-FO-000147"
   },
   {
     "id": "tag_heuer_formula_1_chronograph_special_edition_blue_rubber_strap_1792588649072_0.jpg",
@@ -592,7 +639,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo negro con detalles rojos y amarillos.\nMalla de caucho azul marino.",
     "categoria": "relojes",
-    "marca": "Tag Heuer"
+    "marca": "Tag Heuer",
+    "codigo": "RE-TH-FO-000146"
   },
   {
     "id": "tag_heuer_formula_1_senna_special_edition_chronograph_1792588744247_0.jpg",
@@ -604,7 +652,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable negro.\nFondo negro con franjas rojas.\nMalla de caucho negro con detalles rojos.",
     "categoria": "relojes",
-    "marca": "Tag Heuer"
+    "marca": "Tag Heuer",
+    "codigo": "RE-TH-FO-000152"
   },
   {
     "id": "tag_heuer_formula_1_chronograph_blue_dial_silver_subdials_1792588874591_0.jpg",
@@ -616,7 +665,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo azul marino con detalles rojos.\nMalla de acero inoxidable.",
     "categoria": "relojes",
-    "marca": "Tag Heuer"
+    "marca": "Tag Heuer",
+    "codigo": "RE-TH-FO-000138"
   },
   {
     "id": "tag_heuer_formula_1_calibre_16_chronograph_ayrton_senna_special_edition_leather_rubber_strap_1792588920904_0.jpg",
@@ -628,7 +678,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo negro mate con detalles rojos.\nMalla de caucho negro.",
     "categoria": "relojes",
-    "marca": "Tag Heuer"
+    "marca": "Tag Heuer",
+    "codigo": "RE-TH-FO-000132"
   },
   {
     "id": "tag_heuer_formula_1_chronograph_gulf_edition_steel_bezel_1792589087197_0.jpg",
@@ -640,7 +691,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo beige con franjas celestes y naranjas.\nMalla de acero inoxidable.",
     "categoria": "relojes",
-    "marca": "Tag Heuer"
+    "marca": "Tag Heuer",
+    "codigo": "RE-TH-FO-000140"
   },
   {
     "id": "tag_heuer_carrera_calibre_heuer_02_automatic_chronograph_blue_dial_1792589245408_0.jpg",
@@ -652,7 +704,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo azul marino.\nMalla de acero inoxidable.",
     "categoria": "relojes",
-    "marca": "Tag Heuer"
+    "marca": "Tag Heuer",
+    "codigo": "RE-TH-CA-000129"
   },
   {
     "id": "tag_heuer_formula_1_chronograph_gulf_special_edition_yellow_rubber_strap_1792589309340_0.jpg",
@@ -664,7 +717,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo blanco con franjas celestes y naranjas.\nMalla de caucho amarillo.",
     "categoria": "relojes",
-    "marca": "Tag Heuer"
+    "marca": "Tag Heuer",
+    "codigo": "RE-TH-FO-000143"
   },
   {
     "id": "tag_heuer_formula_1_chronograph_gulf_special_edition_blue_bezel_1792589355183_0.jpg",
@@ -676,7 +730,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo azul marino con franjas celestes y naranjas.\nMalla de acero inoxidable.",
     "categoria": "relojes",
-    "marca": "Tag Heuer"
+    "marca": "Tag Heuer",
+    "codigo": "RE-TH-FO-000142"
   },
   {
     "id": "tag_heuer_formula_1_chronograph_black_dial_steel_bezel_1792589390766_0.jpg",
@@ -688,7 +743,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo negro mate con detalles naranjas.\nMalla de acero inoxidable.",
     "categoria": "relojes",
-    "marca": "Tag Heuer"
+    "marca": "Tag Heuer",
+    "codigo": "RE-TH-FO-000136"
   },
   {
     "id": "tag_heuer_formula_1_chronograph_gulf_edition_leather_strap_1792589442003_0.jpg",
@@ -700,7 +756,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo beige con franjas celestes y naranjas.\nMalla de cuero marrón.",
     "categoria": "relojes",
-    "marca": "Tag Heuer"
+    "marca": "Tag Heuer",
+    "codigo": "RE-TH-FO-000139"
   },
   {
     "id": "rolex_cosmograph_daytona_panda_1792589516325_0.jpg",
@@ -712,7 +769,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo blanco con subdiales negros.\nMalla de acero inoxidable.",
     "categoria": "relojes",
-    "marca": "Rolex"
+    "marca": "Rolex",
+    "codigo": "RE-RO-CO-000116"
   },
   {
     "id": "tag_heuer_formula_1_chronograph_gulf_edition_steel_bezel_1792589554156_0.jpg",
@@ -724,7 +782,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo beige con franjas celestes y naranjas.\nMalla de acero inoxidable.",
     "categoria": "relojes",
-    "marca": "Tag Heuer"
+    "marca": "Tag Heuer",
+    "codigo": "RE-TH-FO-000141"
   },
   {
     "id": "rolex_cosmograph_daytona_blue_dial_1792589901144_0.jpg",
@@ -736,7 +795,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo azul.\nMalla de acero inoxidable.",
     "categoria": "relojes",
-    "marca": "Rolex"
+    "marca": "Rolex",
+    "codigo": "RE-RO-CO-000118"
   },
   {
     "id": "rolex_cosmograph_daytona_black_dial_1792590243248_0.jpg",
@@ -748,7 +808,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo negro mate.\nMalla de acero inoxidable.",
     "categoria": "relojes",
-    "marca": "Rolex"
+    "marca": "Rolex",
+    "codigo": "RE-RO-CO-000117"
   },
   {
     "id": "omega_seamaster_professional_chronograph_1792590301339_0.jpg",
@@ -760,7 +821,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo azul oscuro.\nMalla de acero inoxidable.",
     "categoria": "relojes",
-    "marca": "Omega"
+    "marca": "Omega",
+    "codigo": "RE-OM-SE-000107"
   },
   {
     "id": "omega_seamaster_co_axial_master_chronometer_chronograph_1792590344586_0.jpg",
@@ -772,7 +834,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo gris.\nMalla de acero inoxidable.",
     "categoria": "relojes",
-    "marca": "Omega"
+    "marca": "Omega",
+    "codigo": "RE-OM-SE-000105"
   },
   {
     "id": "audemars_piguet_royal_oak_offshore_chronograph_black_ceramic_blue_dial_1792590413783_0.jpg",
@@ -784,7 +847,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de color negro.\nFondo azul.\nMalla negra.",
     "categoria": "relojes",
-    "marca": "Audemars Piguet"
+    "marca": "Audemars Piguet",
+    "codigo": "RE-AP-RO-000003"
   },
   {
     "id": "omega_seamaster_professional_chronograph_black_dial_1792590703390_0.jpg",
@@ -796,7 +860,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo negro.\nMalla de acero inoxidable.",
     "categoria": "relojes",
-    "marca": "Omega"
+    "marca": "Omega",
+    "codigo": "RE-OM-SE-000108"
   },
   {
     "id": "audemars_piguet_royal_oak_offshore_chronograph_1792590747685_0.jpg",
@@ -808,7 +873,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo azul oscuro.\nMalla de caucho azul.",
     "categoria": "relojes",
-    "marca": "Audemars Piguet"
+    "marca": "Audemars Piguet",
+    "codigo": "RE-AP-RO-000001"
   },
   {
     "id": "audemars_piguet_royal_oak_offshore_chronograph_black_ceramic_green_accents_1792590796827_0.jpg",
@@ -820,7 +886,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de color negro.\nFondo esqueletado con detalles verdes.\nMalla de caucho verde.",
     "categoria": "relojes",
-    "marca": "Audemars Piguet"
+    "marca": "Audemars Piguet",
+    "codigo": "RE-AP-RO-000004"
   },
   {
     "id": "omega_seamaster_co_axial_master_chronometer_chronograph_1792590833198_0.jpg",
@@ -832,7 +899,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo negro.\nMalla de acero inoxidable.",
     "categoria": "relojes",
-    "marca": "Omega"
+    "marca": "Omega",
+    "codigo": "RE-OM-SE-000106"
   },
   {
     "id": "audemars_piguet_royal_oak_offshore_chronograph_1792590875662_0.jpg",
@@ -844,7 +912,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo verde.\nMalla de caucho negro.",
     "categoria": "relojes",
-    "marca": "Audemars Piguet"
+    "marca": "Audemars Piguet",
+    "codigo": "RE-AP-RO-000002"
   },
   {
     "id": "omega_seamaster_professional_chronograph_white_dial_1792590912639_0.jpg",
@@ -856,7 +925,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable.\nFondo blanco.\nMalla de acero inoxidable.",
     "categoria": "relojes",
-    "marca": "Omega"
+    "marca": "Omega",
+    "codigo": "RE-OM-SE-000109"
   },
   {
     "id": "forsining_grand_complication_calendar_moonphase_1792591471213_0.jpg",
@@ -868,7 +938,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable bicolor (plateado y oro rosa).\nFondo champán con calendario y fase lunar.\nMalla de cuero marrón.",
     "categoria": "relojes",
-    "marca": "FORSINING"
+    "marca": "FORSINING",
+    "codigo": "RE-FO-GR-000019"
   },
   {
     "id": "north_edge_solar_drive_pilot_chronograph_1792591655553_0.jpg",
@@ -880,7 +951,8 @@
     "precio": "Consultar",
     "descripcion": "Categoria AAA.\nCaja de acero inoxidable gris oscuro con detalles anaranjados.\nFondo negro con detalles anaranjados.\nMalla de caucho negro.",
     "categoria": "relojes",
-    "marca": "NORTH EDGE"
+    "marca": "NORTH EDGE",
+    "codigo": "RE-NE-SO-000104"
   },
   {
     "id": "longchamp_le_pliage_neo_top_handle_bag_black_1792591824822_0.jpg",
@@ -892,7 +964,8 @@
     "precio": "Consultar",
     "descripcion": "Nailon negro.\nCierre de botón y asas superiores.\nBandolera ajustable y desmontable.",
     "categoria": "carteras",
-    "marca": "Longchamp"
+    "marca": "Longchamp",
+    "codigo": "CA-LC-LE-000041"
   },
   {
     "id": "louis_vuitton_speedy_bandouliere_pink_monogram_1792592056435_0.jpg",
@@ -904,7 +977,8 @@
     "precio": "Consultar",
     "descripcion": "Lona rosa con monograma blanco y asas de Eco cuero.\nCierre superior dorado y correa larga regulable.\nIncluye monedero pequeño con cadena.",
     "categoria": "carteras",
-    "marca": "Louis Vuitton"
+    "marca": "Louis Vuitton",
+    "codigo": "CA-LV-SP-000069"
   },
   {
     "id": "zadig_voltaire_canvas_tote_bag_saint_tropez_1792592452429_0.jpg",
@@ -916,7 +990,8 @@
     "precio": "Consultar",
     "descripcion": "Lona de algodón negra con letras blancas al frente.\nAsas dobles color suela con remaches.\nEstilo tote espacioso para hombro.",
     "categoria": "carteras",
-    "marca": "Zadig & Voltaire"
+    "marca": "Zadig & Voltaire",
+    "codigo": "CA-ZV-CA-000155"
   },
   {
     "id": "louis_vuitton_neverfull_mm_monogram_1792592714793_0.jpg",
@@ -928,7 +1003,8 @@
     "precio": "Consultar",
     "descripcion": "Lona Monogram con asas de Eco cuero natural.\nEstilo tote amplio, con cordones laterales ajustables.",
     "categoria": "carteras",
-    "marca": "Louis Vuitton"
+    "marca": "Louis Vuitton",
+    "codigo": "CA-LV-NE-000059"
   },
   {
     "id": "saint_laurent_sunset_medium_shoulder_bag_1792593892110_0.jpg",
@@ -940,7 +1016,8 @@
     "precio": "Consultar",
     "descripcion": "Eco cuero liso rojo con herrajes plateados y monograma.\nSolapa con cierre magnético y cadena plateada.",
     "categoria": "carteras",
-    "marca": "Saint Laurent"
+    "marca": "Saint Laurent",
+    "codigo": "CA-SL-SU-000123"
   },
   {
     "id": "louis_vuitton_speedy_bandoliere_20_1792782368774_0.jpg",
@@ -952,7 +1029,8 @@
     "precio": "Consultar",
     "descripcion": "Mini Speedy. \nMedidas cm 20,5 largo x13,5 alto x12 ancho",
     "categoria": "carteras",
-    "marca": "Louis Vuitton"
+    "marca": "Louis Vuitton",
+    "codigo": "CA-LV-SP-000067"
   },
   {
     "id": "louis_vuitton_petitorio_noe_1792783428179_0.jpg",
@@ -964,7 +1042,8 @@
     "precio": "Consultar",
     "descripcion": "Modelo Noé (bombonera).\nLona Denim, base de Eco cuero. \nMedidas cm 25 de ancho x 27 de alto x20 de profundidad.",
     "categoria": "carteras",
-    "marca": "Louis Vuitton"
+    "marca": "Louis Vuitton",
+    "codigo": "CA-LV-PE-000063"
   },
   {
     "id": "louis_vuitton_onthego_en_monogram_denim_1792785662021_0.jpg",
@@ -977,7 +1056,8 @@
     "precio": "Consultar",
     "descripcion": "Lona denim azul con monograma.\nAsas y detalles de Eco cuero natural, herrajes dorados.\nEstilo tote amplio, con etiqueta de denim colgante.",
     "categoria": "carteras",
-    "marca": "Louis Vuitton"
+    "marca": "Louis Vuitton",
+    "codigo": "CA-LV-ON-000061"
   },
   {
     "id": "dior_30_montaigne_east_west_1792785744370_0.jpg",
@@ -990,7 +1070,8 @@
     "precio": "Consultar",
     "descripcion": "Lona denim azul con estampado Oblique.\nSolapa con tira de Eco cuero negro y cierre dorado “CD”.\nCadena dorada con correa de Eco cuero, para hombro o cruzada.",
     "categoria": "carteras",
-    "marca": "Dior"
+    "marca": "Dior",
+    "codigo": "CA-DI-MO-000018"
   },
   {
     "id": "louis_vuitton_carryall_en_monogram_denim_1792786434200_0.jpg",
@@ -1003,7 +1084,8 @@
     "precio": "Consultar",
     "descripcion": "Lona denim azul con monograma.\nBordes y correas de Eco cuero natural con tachas doradas.\nEstilo hobo amplio, con etiqueta de denim colgante e incluye pouch con cierre.",
     "categoria": "carteras",
-    "marca": "Louis Vuitton"
+    "marca": "Louis Vuitton",
+    "codigo": "CA-LV-CA-000045"
   },
   {
     "id": "celine_claude_chain_shoulder_bag_1792787210101_0.jpg",
@@ -1017,7 +1099,7 @@
     "descripcion": "Lona denim azul con estampado Triomphe.\nSolapa con cierre plateado “Triomphe”.\nCadena plateada para hombro.",
     "categoria": "carteras",
     "marca": "Celine",
-    "codigo": "CE-CL-000101"
+    "codigo": "CA-CE-CL-000008"
   },
   {
     "id": "louis_vuitton_billetera_compacta_con_solapa_1792790234243_0.jpg",
@@ -1029,7 +1111,8 @@
     "precio": "Consultar",
     "descripcion": "Billetera compacta con solapa\nCuadros en tonos negro y gris",
     "categoria": "billeteras",
-    "marca": "Louis Vuitton"
+    "marca": "Louis Vuitton",
+    "codigo": "BI-LV-CU-000047"
   },
   {
     "id": "hermes_billetera_compacta_con_solapa_y_broche_h_cuero_granulado_suela_1792790627752_0.jpg",
@@ -1041,7 +1124,8 @@
     "precio": "Consultar",
     "descripcion": "Billetera compacta con solapa y broche \"H\" (Eco Cuero Granulado Suela)",
     "categoria": "billeteras",
-    "marca": "Hermès"
+    "marca": "Hermès",
+    "codigo": "BI-HE-EC-000036"
   },
   {
     "id": "hermes_billetera_compacta_con_solapa_y_broche_h_cuero_granulado_blanco_1792790694363_0.jpg",
@@ -1053,7 +1137,8 @@
     "precio": "Consultar",
     "descripcion": "Billetera compacta con solapa y broche \"H\" (Eco Cuero Granulado Blanco)",
     "categoria": "billeteras",
-    "marca": "Hermès"
+    "marca": "Hermès",
+    "codigo": "BI-HE-EC-000034"
   },
   {
     "id": "hermes_cuero_blanco_1792845414871_0.jpg",
@@ -1065,7 +1150,8 @@
     "precio": "Consultar",
     "descripcion": "Billetera compacta con solapa y broche \"H\" (Eco Cuero Granulado negro)",
     "categoria": "billeteras",
-    "marca": "Hermès"
+    "marca": "Hermès",
+    "codigo": "BI-HE-EC-000035"
   },
   {
     "id": "louis_vuitton_mini_pleaty_monogram_denim_1792849041661_0.jpg",
@@ -1077,7 +1163,8 @@
     "precio": "Consultar",
     "descripcion": "Lona de mezclilla con monograma.\nAsa natural y herrajes dorados.\nDiseño compacto, versátil y sofisticado.",
     "categoria": "carteras",
-    "marca": "Louis Vuitton"
+    "marca": "Louis Vuitton",
+    "codigo": "CA-LV-MI-000055"
   },
   {
     "id": "louis_vuitton_loop_hobo_monogram_denim_1792849094660_0.jpg",
@@ -1089,7 +1176,8 @@
     "precio": "Consultar",
     "descripcion": "Lona de mezclilla con monograma.\nAsa ajustable y herrajes dorados.\nDiseño curvo, moderno y versátil.",
     "categoria": "carteras",
-    "marca": "Louis Vuitton"
+    "marca": "Louis Vuitton",
+    "codigo": "CA-LV-LO-000053"
   },
   {
     "id": "kate_spade_manhattan_small_tote_denim_1792849226492_0.jpg",
@@ -1101,7 +1189,8 @@
     "precio": "Consultar",
     "descripcion": "Confeccionado en tejido denim azul.\nCintas con logotipo bordado y amuleto de pica metálico.\nDiseño compacto con asas de mano y estilo casual chic.",
     "categoria": "carteras",
-    "marca": "Kate Spade"
+    "marca": "Kate Spade",
+    "codigo": "CA-KS-MA-000040"
   },
   {
     "id": "miu_miu_denim_shopping_tote_1792849283238_0.jpg",
@@ -1113,7 +1202,8 @@
     "precio": "Consultar",
     "descripcion": "Tejido denim en azul oscuro.\nAsas y acabados en color suela con logotipo metálico dorado.\nDiseño espacioso, funcional y de perfil elegante.",
     "categoria": "carteras",
-    "marca": "Miu Miu"
+    "marca": "Miu Miu",
+    "codigo": "CA-MM-DE-000088"
   },
   {
     "id": "louis_vuitton_speedy_bandouliere_20_1792849373864_0.jpg",
@@ -1125,7 +1215,8 @@
     "precio": "Consultar",
     "descripcion": "Lona Monogram clásica con ribetes natural.\nAsas superiores redondas y herrajes metálicos dorados.\nDiseño icónico, compacto y estructurado con tira ajustable.",
     "categoria": "carteras",
-    "marca": "Louis Vuitton"
+    "marca": "Louis Vuitton",
+    "codigo": "CA-LV-SP-000070"
   },
   {
     "id": "louis_vuitton_speedy_bandouliere_20_1792849458659_0.jpg",
@@ -1137,7 +1228,8 @@
     "precio": "Consultar",
     "descripcion": "Eco cuero graneada en color negro con relieve Monogram.\nAsas superiores y herrajes metálicos dorados.   \nDiseño sofisticado, estructurado y versátil.",
     "categoria": "carteras",
-    "marca": "Louis Vuitton"
+    "marca": "Louis Vuitton",
+    "codigo": "CA-LV-SP-000071"
   },
   {
     "id": "louis_vuitton_speedy_bandouliere_20_1792849533813_0.jpg",
@@ -1149,7 +1241,8 @@
     "precio": "Consultar",
     "descripcion": "Eco cuero graneado en tono gris beige con relieve Monogram.   \nAsas superiores y herrajes metálicos dorados.   \nDiseño icónico, estructurado y de acabado elegante.",
     "categoria": "carteras",
-    "marca": "Louis Vuitton"
+    "marca": "Louis Vuitton",
+    "codigo": "CA-LV-SP-000072"
   },
   {
     "id": "louis_vuitton_speedy_bandouliere_20_1792849592213_0.jpg",
@@ -1161,7 +1254,8 @@
     "precio": "Consultar",
     "descripcion": "Eco cuero graneado en color rojo vivo con relieve Monogram.\nAsas superiores y herrajes metálicos dorados.\nDiseño icónico, estructurado y de alto impacto visual.",
     "categoria": "carteras",
-    "marca": "Louis Vuitton"
+    "marca": "Louis Vuitton",
+    "codigo": "CA-LV-SP-000073"
   },
   {
     "id": "louis_vuitton_speedy_bandouliere_20_1792849652920_0.jpg",
@@ -1173,7 +1267,8 @@
     "precio": "Consultar",
     "descripcion": "Lona Monogram clásica con detalles y asas en piel tono suela/cognac.   \nHerrajes metálicos dorados y remaches grabados.   \nDiseño icónico, estructurado y de acabado elegante",
     "categoria": "carteras",
-    "marca": "Louis Vuitton"
+    "marca": "Louis Vuitton",
+    "codigo": "CA-LV-SP-000074"
   },
   {
     "id": "louis_vuitton_sarah_wallet_1792849727528_0.jpg",
@@ -1185,7 +1280,8 @@
     "precio": "Consultar",
     "descripcion": "Lona Monogram Multicolor sobre fondo blanco con solapa en sobre.\nDetalles interiores en beige y broche metálico dorado LV.",
     "categoria": "billeteras",
-    "marca": "Louis Vuitton"
+    "marca": "Louis Vuitton",
+    "codigo": "BI-LV-SA-000064"
   },
   {
     "id": "louis_vuitton_sarah_wallet_1792849780931_0.jpg",
@@ -1197,7 +1293,8 @@
     "precio": "Consultar",
     "descripcion": "Lona Monogram clásica con solapa en formato sobre.\nPaneles contrastantes en beige y broche metálico dorado LV.",
     "categoria": "billeteras",
-    "marca": "Louis Vuitton"
+    "marca": "Louis Vuitton",
+    "codigo": "BI-LV-SA-000065"
   },
   {
     "id": "louis_vuitton_sarah_wallet_1792849828866_0.jpg",
@@ -1209,7 +1306,8 @@
     "precio": "Consultar",
     "descripcion": "Lona Monogram Multicolor sobre fondo blanco con solapa rectangular.\nPanel frontal en beige con broche metálico dorado LV.",
     "categoria": "billeteras",
-    "marca": "Louis Vuitton"
+    "marca": "Louis Vuitton",
+    "codigo": "BI-LV-SA-000066"
   },
   {
     "id": "louis_vuitton_victorine_wallet_1792850038150_0.jpg",
@@ -1221,7 +1319,8 @@
     "precio": "Consultar",
     "descripcion": "Lona Monogram clásica con solapa curva.\nDetalle del logotipo LV en metal dorado.",
     "categoria": "billeteras",
-    "marca": "Louis Vuitton"
+    "marca": "Louis Vuitton",
+    "codigo": "BI-LV-VI-000079"
   },
   {
     "id": "louis_vuitton_victorine_walle_1792850088777_0.jpg",
@@ -1233,7 +1332,8 @@
     "precio": "Consultar",
     "descripcion": "Lona Damier Azur en tono crema y azul.\nSolapa curva con logotipo LV en metal dorado.",
     "categoria": "billeteras",
-    "marca": "Louis Vuitton"
+    "marca": "Louis Vuitton",
+    "codigo": "BI-LV-VI-000078"
   },
   {
     "id": "louis_vuitton_victorine_wallet_1792850136305_0.jpg",
@@ -1245,7 +1345,8 @@
     "precio": "Consultar",
     "descripcion": "Lona Damier Ébène en tonos marrón y ébano.\nSolapa curva con logotipo LV en metal dorado.",
     "categoria": "billeteras",
-    "marca": "Louis Vuitton"
+    "marca": "Louis Vuitton",
+    "codigo": "BI-LV-VI-000080"
   },
   {
     "id": "louis_vuitton_victorine_wallet_1792850211404_0.jpg",
@@ -1257,7 +1358,8 @@
     "precio": "Consultar",
     "descripcion": "Lona Monogram clásica con solapa curva.   \nDetalle del logotipo LV en metal dorado sobre fondo neutro.",
     "categoria": "billeteras",
-    "marca": "Louis Vuitton"
+    "marca": "Louis Vuitton",
+    "codigo": "BI-LV-VI-000081"
   },
   {
     "id": "louis_vuitton_victorine_wallet_1792850271624_0.jpg",
@@ -1269,7 +1371,8 @@
     "precio": "Consultar",
     "descripcion": "Lona Damier Graphite en tonos gris y negro con solapa curva.   Detalle del logotipo LV en metal dorado.",
     "categoria": "billeteras",
-    "marca": "Louis Vuitton"
+    "marca": "Louis Vuitton",
+    "codigo": "BI-LV-VI-000082"
   },
   {
     "id": "gucci_ophidia_gg_supreme_wallet_1792850317161_0.jpg",
@@ -1281,7 +1384,8 @@
     "precio": "Consultar",
     "descripcion": "Lona GG Supreme con detalles de solapa curva y bordes marrones.   \nHerraje metálico entrelazado GG en tono dorado.",
     "categoria": "billeteras",
-    "marca": "Gucci"
+    "marca": "Gucci",
+    "codigo": "BI-GU-OP-000024"
   },
   {
     "id": "louis_vuitton_victorine_wallet_1792850356802_0.jpg",
@@ -1293,7 +1397,8 @@
     "precio": "Consultar",
     "descripcion": "Lona Monogram Eclipse en tonos negro y gris con solapa curva.   Detalle del logotipo LV en metal dorado.",
     "categoria": "billeteras",
-    "marca": "Louis Vuitton"
+    "marca": "Louis Vuitton",
+    "codigo": "BI-LV-VI-000083"
   },
   {
     "id": "louis_vuitton_boulogne_monogram_denim_1792957606856_0.jpg",
@@ -1305,7 +1410,8 @@
     "precio": "Consultar",
     "descripcion": "Tejido denim con motivo Monogram en tono azul e inserciones en piel natural.\n\nCorrea de hombro color piel con hebilla central y herrajes metálicos dorados.",
     "categoria": "carteras",
-    "marca": "Louis Vuitton"
+    "marca": "Louis Vuitton",
+    "codigo": "CA-LV-BO-000043"
   },
   {
     "id": "louis_vuitton_speedy_bandouliere_25_1792958311509_0.jpg",
@@ -1317,7 +1423,8 @@
     "precio": "Consultar",
     "descripcion": "Lona Monogram en tono crema claro con motivos en contraste sutil.\n\nAsas superiores y bandolera en color natural con herrajes dorados.",
     "categoria": "carteras",
-    "marca": "Louis Vuitton"
+    "marca": "Louis Vuitton",
+    "codigo": "CA-LV-SP-000075"
   },
   {
     "id": "louis_vuitton_speedy_bandouliere_25_1792959461097_0.jpg",
@@ -1329,7 +1436,8 @@
     "precio": "Consultar",
     "descripcion": "ona Monogram clásica en tonos marrón y avellana.   \nAsas de mano y correa de hombro en color natural con herrajes dorados.",
     "categoria": "carteras",
-    "marca": "Louis Vuitton"
+    "marca": "Louis Vuitton",
+    "codigo": "CA-LV-SP-000076"
   },
   {
     "id": "louis_vuitton_boulogne_monogram_empreinte_black_1792961084563_0.jpg",
@@ -1341,7 +1449,8 @@
     "precio": "Consultar",
     "descripcion": "Eco cuero Monogram Empreinte grabada en color negro refinado.\nCorrea de hombro, cierre frontal con hebilla y herrajes dorados.",
     "categoria": "carteras",
-    "marca": "Louis Vuitton"
+    "marca": "Louis Vuitton",
+    "codigo": "CA-LV-BO-000044"
   },
   {
     "id": "hermes_birkin_35_1792961887892_0.jpg",
@@ -1354,7 +1463,8 @@
     "precio": "Consultar",
     "descripcion": "Eco Cuero de grano fino en un cálido tono Gold con costuras a contraste.\nAsas superiores, correas de ajuste e icónico cierre de giro en metal plateado.",
     "categoria": "carteras",
-    "marca": "Hermès"
+    "marca": "Hermès",
+    "codigo": "CA-HE-BI-000026"
   },
   {
     "id": "hermes_birkin_30_1792962404104_0.jpg",
@@ -1367,7 +1477,8 @@
     "precio": "Consultar",
     "descripcion": "Eco Cuero de grano fino en color negro intenso.\nAsas superiores, correas de ajuste e icónico cierre de giro en metal plateado.",
     "categoria": "carteras",
-    "marca": "Hermès"
+    "marca": "Hermès",
+    "codigo": "CA-HE-BI-000025"
   },
   {
     "id": "louis_vuitton_neverfull_mm_monogram_multicolore_white_1792963057671_0.jpg",
@@ -1380,7 +1491,8 @@
     "precio": "Consultar",
     "descripcion": "Lona Monogram Multicolore sobre fondo blanco con cordones laterales ajustables.\nAsas delgadas de hombro y ribetes superiores color natural con herrajes dorados.",
     "categoria": "carteras",
-    "marca": "Louis Vuitton"
+    "marca": "Louis Vuitton",
+    "codigo": "CA-LV-NE-000058"
   },
   {
     "id": "louis_vuitton_boulogne_monogram_1792963602130_0.jpg",
@@ -1392,7 +1504,8 @@
     "precio": "Consultar",
     "descripcion": "Lona Monogram clásica con detalles y esquinas reforzadas en eco cuero color natural.\nIncluye asa corta para hombro y bandolera textil jacquard con firma.",
     "categoria": "carteras",
-    "marca": "Louis Vuitton"
+    "marca": "Louis Vuitton",
+    "codigo": "CA-LV-BO-000042"
   },
   {
     "id": "saint_laurent_tote_icare_crochet_raffia_1794409591155_0.jpg",
@@ -1404,7 +1517,8 @@
     "precio": "Consultar",
     "descripcion": "Tejido de paja en rafia sintetica con patrón de red. \nFrente decorado con el icónico monograma dorado \"YSL\" en acabado envejecido. \nDoble asa superior y monedero/pouch independiente a juego.",
     "categoria": "carteras",
-    "marca": "Saint Laurent"
+    "marca": "Saint Laurent",
+    "codigo": "CA-SL-TO-000126"
   },
   {
     "id": "louis_vuitton_keepall_duffle_monogram_black_1794410178139_0.jpg",
@@ -1416,7 +1530,8 @@
     "precio": "Consultar",
     "descripcion": "Diseño en eco cuero con estampado Monogram en tono negro y gris. \nAsas en cuero ecológico, herrajes de dorados y correa desmontable para el hombro.",
     "categoria": "carteras",
-    "marca": "LOUIS VUITTON"
+    "marca": "LOUIS VUITTON",
+    "codigo": "CA-LV-KE-000051"
   },
   {
     "id": "louis_vuitton_keepall_duffle_damier_graphite_1794410289324_0.jpg",
@@ -1428,7 +1543,8 @@
     "precio": "Consultar",
     "descripcion": "Diseño en eco cuero con estampado a cuadros Damier Graphite gris y negro. \nCon tiras de refuerzo y asas de mano sintéticas, herrajes metálicos dorados y correa ajustable desmontable.",
     "categoria": "carteras",
-    "marca": "LOUIS VUITTON"
+    "marca": "LOUIS VUITTON",
+    "codigo": "CA-LV-KE-000050"
   },
   {
     "id": "louis_vuitton_keepall_duffle_monogram_classic_1794410326986_0.jpg",
@@ -1440,7 +1556,8 @@
     "precio": "Consultar",
     "descripcion": "Estampado Monogram marrón en eco cuero con detalles y tiras en tono suela. \nDoble asa de mano, herrajes en acabado dorado y correa ajustable para colgar al hombro.",
     "categoria": "carteras",
-    "marca": "LOUIS VUITTON"
+    "marca": "LOUIS VUITTON",
+    "codigo": "CA-LV-KE-000052"
   },
   {
     "id": "louis_vuitton_keepall_duffle_damier_ebene_1794410372892_0.jpg",
@@ -1452,7 +1569,8 @@
     "precio": "Consultar",
     "descripcion": "Diseño en eco cuero con estampado a cuadros Damier Ebene marrón. \nCon tiras en marrón oscuro , herrajes dorados y correa desmontable para hombro.",
     "categoria": "carteras",
-    "marca": "LOUIS VUITTON"
+    "marca": "LOUIS VUITTON",
+    "codigo": "CA-LV-KE-000049"
   },
   {
     "id": "miu_miu_top_handle_flap_bag_suela_1794419130097_0.jpg",
@@ -1464,7 +1582,8 @@
     "precio": "Consultar",
     "descripcion": "Cartera en eco cuero de acabado liso en tono suela. \nSolapa frontal con cierre magnético, doble asa de mano superior y correa desmontable para hombro. \nLogo metálico en dorado y llavero decorativo a juego.",
     "categoria": "carteras",
-    "marca": "MIU MIU"
+    "marca": "MIU MIU",
+    "codigo": "CA-MM-TO-000103"
   },
   {
     "id": "miu_miu_top_handle_flap_bag_blanco_1794419160873_0.jpg",
@@ -1476,7 +1595,8 @@
     "precio": "Consultar",
     "descripcion": "Cartera en eco cuero de acabado liso en tono blanco. \nSolapa frontal con cierre magnético, doble asa de mano superior y correa desmontable para hombro. \nLogo metálico en dorado y llavero decorativo a juego.",
     "categoria": "carteras",
-    "marca": "MIU MIU"
+    "marca": "MIU MIU",
+    "codigo": "CA-MM-TO-000100"
   },
   {
     "id": "miu_miu_top_handle_flap_bag_nude_beige_1794419199411_0.jpg",
@@ -1488,7 +1608,8 @@
     "precio": "Consultar",
     "descripcion": "Cartera en eco cuero de acabado liso en tono nude. \nSolapa frontal con cierre magnético, doble asa de mano superior y correa desmontable para hombro. \nLogo metálico en dorado y llavero decorativo a juego.",
     "categoria": "carteras",
-    "marca": "MIU MIU"
+    "marca": "MIU MIU",
+    "codigo": "CA-MM-TO-000102"
   },
   {
     "id": "miu_miu_top_handle_flap_bag_chocolate_1794419254191_0.jpg",
@@ -1500,7 +1621,8 @@
     "precio": "Consultar",
     "descripcion": "Cartera en eco cuero de acabado liso en tono chocolate. \nSolapa frontal con cierre magnético, doble asa de mano superior y correa desmontable para hombro. \nLogo metálico en dorado y llavero decorativo a juego.",
     "categoria": "carteras",
-    "marca": "MIU MIU"
+    "marca": "MIU MIU",
+    "codigo": "CA-MM-TO-000101"
   },
   {
     "id": "chanel_tote_cambon_quilted_marron_suela_1794425081230_0.jpg",
@@ -1512,7 +1634,8 @@
     "precio": "Consultar",
     "descripcion": "Cartera tote en eco cuero acolchado con trama de rombos en tono suela. Doble asa de mano superior y logo de doble C en relieve sobre el frente.",
     "categoria": "carteras",
-    "marca": "CHANEL"
+    "marca": "CHANEL",
+    "codigo": "CA-CH-TO-000016"
   },
   {
     "id": "chanel_tote_cambon_quilted_negro_blanco_1794425121653_0.jpg",
@@ -1524,7 +1647,8 @@
     "precio": "Consultar",
     "descripcion": "Cartera tote en eco cuero acolchado con trama de rombos en color negro. Doble asa de mano superior y gran logo de doble C a contraste en color blanco.",
     "categoria": "carteras",
-    "marca": "CHANEL"
+    "marca": "CHANEL",
+    "codigo": "CA-CH-TO-000017"
   },
   {
     "id": "chanel_tote_cambon_quilted_blanco_negro_1794425151356_0.jpg",
@@ -1536,7 +1660,8 @@
     "precio": "Consultar",
     "descripcion": "Cartera tote en eco cuero acolchado con trama de rombos en color blanco. Doble asa de mano superior en tono negro y logo de doble C a contraste al frente.",
     "categoria": "carteras",
-    "marca": "CHANEL"
+    "marca": "CHANEL",
+    "codigo": "CA-CH-TO-000015"
   },
   {
     "id": "chanel_bucket_shopping_bag_negro_1794425888565_0.jpg",
@@ -1549,7 +1674,8 @@
     "precio": "Consultar",
     "descripcion": "Cartera estilo shopping/bucket en eco cuero acolchado con trama de rombos en color negro. \nCierre central ajustables con cordón y aplique metálico de la doble C en dorado, asas superiores con cadena entretejida y bolsillos laterales.",
     "categoria": "carteras",
-    "marca": "CHANEL"
+    "marca": "CHANEL",
+    "codigo": "CA-CH-BU-000011"
   },
   {
     "id": "chanel_bucket_shopping_bag_rosado_1794425916142_0.jpg",
@@ -1562,7 +1688,8 @@
     "precio": "Consultar",
     "descripcion": "Cartera estilo shopping/bucket en eco cuero acolchado con trama de rombos en color rosa pastel. \nCierre central ajustable con cordón y aplique metálico de la doble C en dorado, asas superiores con cadena entretejida y bolsillos laterales.",
     "categoria": "carteras",
-    "marca": "CHANEL"
+    "marca": "CHANEL",
+    "codigo": "CA-CH-BU-000012"
   },
   {
     "id": "gucci_ophidia_duffle_1794426370673_0.jpg",
@@ -1574,7 +1701,8 @@
     "precio": "Consultar",
     "descripcion": "Lona GG Supreme beige y marrón. \nFranja verde y roja al frente, tiras de refuerzo y asas en marrón\nHerrajes dorados con aplique Doble G y correa de hombro desmontable.",
     "categoria": "carteras",
-    "marca": "GUCCI"
+    "marca": "GUCCI",
+    "codigo": "CA-GU-OP-000022"
   },
   {
     "id": "gucci_boston_web_horsebit_1794426510569_0.jpg",
@@ -1586,7 +1714,8 @@
     "precio": "Consultar",
     "descripcion": "Eco Cuero en color negro con banda verde y roja al frente.\nHerrajes en metal dorado.\nDoble asa superior de mano y etiqueta decorativa colgante.",
     "categoria": "carteras",
-    "marca": "GUCCI"
+    "marca": "GUCCI",
+    "codigo": "CA-GU-BO-000020"
   },
   {
     "id": "chanel_bucket_shopping_bag_white_1794451473959_0.jpg",
@@ -1598,7 +1727,8 @@
     "precio": "Consultar",
     "descripcion": "Cartera estilo shopping/bucket en eco cuero acolchado con trama de rombos en color blanco. \nCierre central ajustables con cordón y aplique metálico de la doble C en dorado, asas superiores con cadena entretejida y bolsillos laterales.",
     "categoria": "carteras",
-    "marca": "CHANEL"
+    "marca": "CHANEL",
+    "codigo": "CA-CH-BU-000013"
   },
   {
     "id": "chanel_bucket_shopping_bag_beige_1794451532589_0.jpg",
@@ -1610,7 +1740,8 @@
     "precio": "Consultar",
     "descripcion": "Cartera estilo shopping/bucket en eco cuero acolchado con trama de rombos en color beige. \nCierre central ajustables con cordón y aplique metálico de la doble C en dorado, asas superiores con cadena entretejida y bolsillos laterales.",
     "categoria": "carteras",
-    "marca": "CHANEL"
+    "marca": "CHANEL",
+    "codigo": "CA-CH-BU-000010"
   },
   {
     "id": "hermes_birkin_cargo_crudo_negro_1794452294159_0.jpg",
@@ -1623,7 +1754,8 @@
     "precio": "Consultar",
     "descripcion": "Lona textil en tono crudo con detalles, bordes y doble asa superior en Eco Cuero negro.\nBolsillos frontales exteriores y cierre de giro en metal plateado.",
     "categoria": "carteras",
-    "marca": "HERMÈS"
+    "marca": "HERMÈS",
+    "codigo": "CA-HE-BI-000028"
   },
   {
     "id": "hermes_birkin_cargo_crudo_azul_petroleo_1794452332607_0.jpg",
@@ -1635,7 +1767,8 @@
     "precio": "Consultar",
     "descripcion": "Lona textil en tono crudo con detalles, bordes y doble asa superior en Eco Cuero azul petróleo texturado.\nBolsillos frontales exteriores y cierre de giro en metal dorado.",
     "categoria": "carteras",
-    "marca": "HERMÈS"
+    "marca": "HERMÈS",
+    "codigo": "CA-HE-BI-000027"
   },
   {
     "id": "hermes_birkin_cargo_crudo_suela_1794452357325_0.jpg",
@@ -1647,7 +1780,8 @@
     "precio": "Consultar",
     "descripcion": "Lona textil en tono crudo con detalles, bordes y doble asa superior en Eco Cuero tono suela texturado.\nBolsillos frontales exteriores y cierre de giro en metal dorado.",
     "categoria": "carteras",
-    "marca": "HERMÈS"
+    "marca": "HERMÈS",
+    "codigo": "CA-HE-BI-000029"
   },
   {
     "id": "hermes_birkin_croco_rojo_borgona_1794452717664_0.jpg",
@@ -1659,7 +1793,8 @@
     "precio": "Consultar",
     "descripcion": "Eco Cuero con grabado efecto cocodrilo brillante en tono rojo borgoña.\nAsas superiores, cierre de giro en metal dorado, llavero colgante e incluye pañuelo decorativo estampado.",
     "categoria": "carteras",
-    "marca": "HERMÈS"
+    "marca": "HERMÈS",
+    "codigo": "CA-HE-BI-000030"
   },
   {
     "id": "hermes_birkin_croco_verde_esmeralda_1794452741313_0.jpg",
@@ -1671,7 +1806,8 @@
     "precio": "Consultar",
     "descripcion": "Eco Cuero con grabado efecto cocodrilo brillante en tono verde esmeralda.\nAsas superiores, cierre de giro en metal dorado, clochette colgante e incluye pañuelo decorativo estampado.",
     "categoria": "carteras",
-    "marca": "HERMÈS"
+    "marca": "HERMÈS",
+    "codigo": "CA-HE-BI-000031"
   },
   {
     "id": "hermes_birkin_croco_violeta_purpura_1794452801760_0.jpg",
@@ -1683,7 +1819,8 @@
     "precio": "Consultar",
     "descripcion": "Eco Cuero con grabado efecto cocodrilo brillante en tono violeta oscuro.\nAsas superiores, cierre de giro en metal dorado, clochette colgante e incluye pañuelo decorativo estampado.",
     "categoria": "carteras",
-    "marca": "HERMÈS"
+    "marca": "HERMÈS",
+    "codigo": "CA-HE-BI-000032"
   },
   {
     "id": "hermes_birkin_himalaya_croco_blanco_gris_1794452832882_0.jpg",
@@ -1695,7 +1832,8 @@
     "precio": "Consultar",
     "descripcion": "Eco Cuero con grabado efecto cocodrilo brillante en degradé blanco y gris.\nAsas superiores, cierre de giro en metal dorado, colgante metálico e incluye pañuelo decorativo estampado.",
     "categoria": "carteras",
-    "marca": "HERMÈS"
+    "marca": "HERMÈS",
+    "codigo": "CA-HE-BI-000033"
   },
   {
     "id": "louis_vuitton_speedy_bandouliere_monogram_blanco_arena_1794453307202_0.jpg",
@@ -1707,7 +1845,8 @@
     "precio": "Consultar",
     "descripcion": "Lona sintética estampada Monogram en blanco y tono arena con detalles, ribetes y asas en Eco Cuero suela.\nCorrea desmontable para hombro, herrajes en metal dorado e incluye cadena decorativa con perlas y llavero trenzado a juego.",
     "categoria": "carteras",
-    "marca": "LOUIS VUITTON"
+    "marca": "LOUIS VUITTON",
+    "codigo": "CA-LV-SP-000068"
   },
   {
     "id": "louis_vuitton_low_key_hobo_monogram_classic_1794453664735_0.jpg",
@@ -1719,7 +1858,8 @@
     "precio": "Consultar",
     "descripcion": "Lona sintética estampada Monogram marrón con ribetes y etiqueta colgante en Eco Cuero negro.\nAsa superior para hombro y detalle de candado decorativo en metal dorado al frente.",
     "categoria": "carteras",
-    "marca": "LOUIS VUITTON"
+    "marca": "LOUIS VUITTON",
+    "codigo": "CA-LV-LO-000054"
   },
   {
     "id": "miu_miu_pocket_shoulder_bag_negro_charol_1794455570531_0.jpg",
@@ -1732,7 +1872,8 @@
     "precio": "Consultar",
     "descripcion": "Eco Cuero de acabado charol brillante en color negro.\nBolsillo frontal con cierre, bolsillos laterales con solapa y logo en relieve.\nAsa superior para hombro y herrajes en metal dorado.",
     "categoria": "carteras",
-    "marca": "MIU MIU"
+    "marca": "MIU MIU",
+    "codigo": "CA-MM-PO-000095"
   },
   {
     "id": "miu_miu_pocket_shoulder_bag_blanco_1794455607282_0.jpg",
@@ -1745,7 +1886,8 @@
     "precio": "Consultar",
     "descripcion": "Eco Cuero de acabado liso en color blanco.\nBolsillo frontal con cierre, bolsillos laterales con solapa y logo en relieve.\nAsa superior para hombro y herrajes en metal dorado",
     "categoria": "carteras",
-    "marca": "MIU MIU"
+    "marca": "MIU MIU",
+    "codigo": "CA-MM-PO-000094"
   },
   {
     "id": "miu_miu_pocket_shoulder_bag_suela_charol_1794455960440_0.jpg",
@@ -1758,7 +1900,8 @@
     "precio": "Consultar",
     "descripcion": "Eco Cuero de acabado charol brillante en tono suela.\nBolsillo frontal con cierre, bolsillos laterales con solapa y logo en relieve.\nAsa superior para hombro y herrajes en metal dorado.",
     "categoria": "carteras",
-    "marca": "MIU MIU"
+    "marca": "MIU MIU",
+    "codigo": "CA-MM-PO-000098"
   },
   {
     "id": "miu_miu_pocket_shoulder_bag_plateado_metalizado_1794457385418_0.jpg",
@@ -1771,7 +1914,8 @@
     "precio": "Consultar",
     "descripcion": "Eco Cuero de acabado metalizado en color plateado.\nBolsillo frontal con cierre, bolsillos laterales con solapa y logo en relieve.\nAsa superior para hombro y herrajes en metal dorado.",
     "categoria": "carteras",
-    "marca": "MIU MIU"
+    "marca": "MIU MIU",
+    "codigo": "CA-MM-PO-000096"
   },
   {
     "id": "miu_miu_multi_pocket_shoulder_bag_borgona_1794457456878_0.jpg",
@@ -1784,7 +1928,8 @@
     "precio": "Consultar",
     "descripcion": "Eco Cuero de acabado liso en tono borgoña.\nDoble bolsillo frontal (uno con solapa y otro con cierre), bolsillos laterales y logo en relieve.\nAsa superior para hombro y herrajes en metal dorado.",
     "categoria": "carteras",
-    "marca": "MIU MIU"
+    "marca": "MIU MIU",
+    "codigo": "CA-MM-MU-000092"
   },
   {
     "id": "miu_miu_multi_pocket_shoulder_bag_blanco_1794457499037_0.jpg",
@@ -1797,7 +1942,8 @@
     "precio": "Consultar",
     "descripcion": "Eco Cuero de acabado liso en color blanco.\nDoble bolsillo frontal (uno con solapa y otro con cierre), bolsillos laterales y logo en relieve.\nAsa superior para hombro y herrajes en metal dorado.",
     "categoria": "carteras",
-    "marca": "MIU MIU"
+    "marca": "MIU MIU",
+    "codigo": "CA-MM-MU-000091"
   },
   {
     "id": "miu_miu_pocket_shoulder_bag_suela_camel_1794587153684_0.jpg",
@@ -1810,7 +1956,8 @@
     "precio": "Consultar",
     "descripcion": "Eco Cuero de acabado liso en tono suela.\nBolsillo frontal con cierre, bolsillos laterales con solapa y logo metálico en dorado.\nAsa superior para hombro y herrajes en metal dorado.",
     "categoria": "carteras",
-    "marca": "MIU MIU"
+    "marca": "MIU MIU",
+    "codigo": "CA-MM-PO-000097"
   },
   {
     "id": "louis_vuitton_neverfull_monogram_empreinte_floral_negro_1794588334964_0.jpg",
@@ -1822,7 +1969,8 @@
     "precio": "Consultar",
     "descripcion": "Eco Cuero con grabado Monogram en relieve en color negro y estampado floral multicolor al frente.\nDoble asa superior para hombro, cordones laterales de ajuste e incluye sobre/neceser desmontable a juego.",
     "categoria": "carteras",
-    "marca": "LOUIS VUITTON"
+    "marca": "LOUIS VUITTON",
+    "codigo": "CA-LV-NE-000060"
   },
   {
     "id": "saint_laurent_le_5_a_7_supple_croco_negro_1794589084847_0.jpg",
@@ -1834,7 +1982,8 @@
     "precio": "Consultar",
     "descripcion": "Eco Cuero con grabado efecto cocodrilo en color negro.\nCierre frontal con correa y monograma YSL en metal dorado.\nCorrea regulable para hombro con hebilla metálica a juego.",
     "categoria": "carteras",
-    "marca": "SAINT LAURENT"
+    "marca": "SAINT LAURENT",
+    "codigo": "CA-SL-LE-000121"
   },
   {
     "id": "louis_vuitton_keepall_bandouliere_monogram_cherry_1794589224239_0.jpg",
@@ -1846,7 +1995,8 @@
     "precio": "Consultar",
     "descripcion": "Lona sintética estampada Monogram clásica con diseño de cerezas rojas.\nDetalles, ribetes, asas de mano y correa ajustable en Eco Cuero color suela.\nHerrajes en metal dorado y etiqueta identificatoria colgante a juego.",
     "categoria": "carteras",
-    "marca": "LOUIS VUITTON"
+    "marca": "LOUIS VUITTON",
+    "codigo": "CA-LV-KE-000048"
   },
   {
     "id": "louis_vuitton_onthego_pm_monogram_cherry_blanco_1794590270984_0.jpg",
@@ -1858,7 +2008,8 @@
     "precio": "Consultar",
     "descripcion": "Lona sintética estampada Monogram en tono blanco con diseño de cerezas rojas y detalles en Eco Cuero claro.\nDoble asa superior de mano, herrajes en metal dorado e incluye monedero redondo y llavero de cerezas colgantes a juego.",
     "categoria": "carteras",
-    "marca": "LOUIS VUITTON"
+    "marca": "LOUIS VUITTON",
+    "codigo": "CA-LV-ON-000062"
   },
   {
     "id": "marc_jacobb_the_leather_tote_bag_1794599606880_0.jpg",
@@ -1871,7 +2022,8 @@
     "precio": "Consultar",
     "descripcion": "Piel sintética texturizada gris con la leyenda \"THE TOTE BAG\".\nAsas y correa de hombro ajustable.\nIncluye mini bolso con cadena dorada.",
     "categoria": "carteras",
-    "marca": "Marc Jacobb"
+    "marca": "Marc Jacobb",
+    "codigo": "CA-MJ-TH-000085"
   },
   {
     "id": "marc_jacobb_the_leather_tote_bag_1794599646197_0.jpg",
@@ -1884,7 +2036,8 @@
     "precio": "Consultar",
     "descripcion": "Piel sintética texturizada negra con la leyenda \"THE TOTE BAG\".\nAsas y correa de hombro ajustable.\nIncluye mini bolso con cadena dorada.",
     "categoria": "carteras",
-    "marca": "Marc Jacobb"
+    "marca": "Marc Jacobb",
+    "codigo": "CA-MJ-TH-000086"
   },
   {
     "id": "marc_jacobb_the_leather_tote_bag_1794599693892_0.jpg",
@@ -1897,6 +2050,7 @@
     "precio": "Consultar",
     "descripcion": "Piel sintética texturizada beige con la leyenda \"THE TOTE BAG\".\nAsas y correa de hombro ajustable.\nIncluye mini bolso con cadena dorada.",
     "categoria": "carteras",
-    "marca": "Marc Jacobb"
+    "marca": "Marc Jacobb",
+    "codigo": "CA-MJ-TH-000087"
   }
 ]
