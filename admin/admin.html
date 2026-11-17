@@ -307,6 +307,7 @@
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"></script>
 <script>
   // ⚠️ Pegá aquí la URL de tu Worker de Cloudflare (paso 5 de las instrucciones)
   const WORKER_URL = "https://wellsshop-api.relojesoscar-ok.workers.dev";
@@ -563,31 +564,94 @@
     el.style.color = tipo === "error" ? "#991b1b" : tipo === "ok" ? "#065f46" : "#334155";
   }
 
-  function descargarExcel() {
-    if (typeof XLSX === "undefined") { estadoMasivo("No se pudo cargar el módulo de Excel. Revisá la conexión y recargá la página.", "error"); return; }
+  // Carga la foto y la reduce (JPEG, máx. 240 px) para que el Excel no pese una barbaridad
+  async function fotoParaExcel(nombre) {
+    try {
+      const r = await fetch(IMG_BASE + nombre, { cache: "force-cache" });
+      if (!r.ok) return null;
+      const bmp = await createImageBitmap(await r.blob());
+      const k = Math.min(1, 240 / Math.max(bmp.width, bmp.height));
+      const w = Math.max(1, Math.round(bmp.width * k)), h = Math.max(1, Math.round(bmp.height * k));
+      const c = document.createElement("canvas"); c.width = w; c.height = h;
+      const g = c.getContext("2d"); g.fillStyle = "#fff"; g.fillRect(0, 0, w, h); g.drawImage(bmp, 0, 0, w, h);
+      return { base64: c.toDataURL("image/jpeg", 0.82), w: bmp.width, h: bmp.height };
+    } catch (_) { return null; }
+  }
+
+  async function descargarExcel() {
+    if (typeof ExcelJS === "undefined") { estadoMasivo("No se pudo cargar el módulo de Excel. Revisá la conexión y recargá la página.", "error"); return; }
     if (!productosActuales.length) { estadoMasivo("Todavía no hay productos para descargar.", "error"); return; }
     if (!marionOk) { estadoMasivo(AVISO_MARION, "error"); return; }
-    const etiquetas = new Map([...$("categoria").options].map((o) => [o.value, o.textContent.trim()]));
-    const filas = [...productosActuales].sort(porMarcaYModelo).map((p) => {
-      const { marca, modelo } = separarProducto(p);
-      const md = marionDatos[p.id || p.imagen] || {};
-      const precio = normPrecioM(md.precio);
-      return {
-        [COLS.codigo]: String(p.codigo ?? ""),
-        [COLS.marca]: marca,
-        [COLS.modelo]: modelo,
-        [COLS.desc]: String(p.descripcion || ""),
-        [COLS.precio]: /^\d+(\.\d+)?$/.test(precio) ? Number(precio) : precio,
-        [COLS.cat]: etiquetas.get(p.categoria) || p.categoria || "",
-        [COLS.id]: p.id || p.imagen,
+    $("btnDescargarExcel").disabled = true;
+    try {
+      const etiquetas = new Map([...$("categoria").options].map((o) => [o.value, o.textContent.trim()]));
+      const productos = [...productosActuales].sort(porMarcaYModelo);
+
+      // Fotos (de a 6 en paralelo)
+      const fotos = new Array(productos.length).fill(null);
+      let sig = 0, listas = 0;
+      const worker = async () => {
+        while (sig < productos.length) {
+          const i = sig++;
+          const f = fotosDe(productos[i])[0];
+          fotos[i] = f ? await fotoParaExcel(f) : null;
+          estadoMasivo(`Preparando el Excel con fotos... ${++listas} de ${productos.length}`, "");
+        }
       };
-    });
-    const ws = XLSX.utils.json_to_sheet(filas, { header: Object.values(COLS) });
-    ws["!cols"] = [{ wch: 14 }, { wch: 16 }, { wch: 30 }, { wch: 60 }, { wch: 14 }, { wch: 12 }, { wch: 36 }];
-    const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, "Catalogo");
-    XLSX.writeFile(wb, `catalogo_${new Date().toISOString().slice(0, 10)}.xlsx`);
-    estadoMasivo(`Se descargó el Excel con ${filas.length} productos. Editalo, guardalo y subilo con el botón de abajo.`, "ok");
+      await Promise.all(Array.from({ length: 6 }, worker));
+
+      const wb = new ExcelJS.Workbook();
+      const ws = wb.addWorksheet("Catalogo", { views: [{ state: "frozen", ySplit: 1 }] });
+      ws.columns = [
+        { header: "Foto", key: "foto", width: 16 },
+        { header: COLS.codigo, key: "codigo", width: 14 },
+        { header: COLS.marca, key: "marca", width: 16 },
+        { header: COLS.modelo, key: "modelo", width: 30 },
+        { header: COLS.desc, key: "desc", width: 60 },
+        { header: COLS.precio, key: "precio", width: 14 },
+        { header: COLS.cat, key: "cat", width: 12 },
+        { header: COLS.id, key: "id", width: 36 },
+      ];
+      ws.getRow(1).font = { bold: true };
+      ws.getRow(1).alignment = { vertical: "middle" };
+
+      const BOX = 88; // px del recuadro de la foto
+      productos.forEach((p, i) => {
+        const { marca, modelo } = separarProducto(p);
+        const md = marionDatos[p.id || p.imagen] || {};
+        const precio = normPrecioM(md.precio);
+        const row = ws.addRow({
+          codigo: String(p.codigo ?? ""),
+          marca, modelo,
+          desc: String(p.descripcion || ""),
+          precio: /^\d+(\.\d+)?$/.test(precio) ? Number(precio) : precio,
+          cat: etiquetas.get(p.categoria) || p.categoria || "",
+          id: p.id || p.imagen,
+        });
+        row.height = 72;
+        row.alignment = { vertical: "middle", wrapText: true };
+        const f = fotos[i];
+        if (f) {
+          const k = Math.min(BOX / f.w, BOX / f.h);
+          const w = Math.round(f.w * k), h = Math.round(f.h * k);
+          const imgId = wb.addImage({ base64: f.base64, extension: "jpeg" });
+          ws.addImage(imgId, { tl: { col: 0.05, row: i + 1 + 0.04 }, ext: { width: w, height: h }, editAs: "oneCell" });
+        }
+      });
+
+      const buf = await wb.xlsx.writeBuffer();
+      const url = URL.createObjectURL(new Blob([buf], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }));
+      const a = document.createElement("a");
+      a.href = url; a.download = `catalogo_${new Date().toISOString().slice(0, 10)}.xlsx`;
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 10000);
+      const conFoto = fotos.filter(Boolean).length;
+      estadoMasivo(`Se descargó el Excel con ${productos.length} productos (${conFoto} con foto incluida). Editalo, guardalo y subilo con el botón de abajo.`, "ok");
+    } catch (e) {
+      estadoMasivo("No se pudo generar el Excel: " + e.message, "error");
+    } finally {
+      $("btnDescargarExcel").disabled = false;
+    }
   }
 
   async function procesarExcel(file) {
