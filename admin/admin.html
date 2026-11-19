@@ -233,7 +233,7 @@
     </div>
     <div class="field">
       <label for="codigo">Código (opcional)</label>
-      <input type="text" id="codigo" placeholder="Ej: REL-001">
+      <input type="text" id="codigo" placeholder="Vacío = se genera solo. Ej: CACECL-00008">
     </div>
     <div class="field">
       <label for="precioM">Precio Marion (opcional)</label>
@@ -261,12 +261,12 @@
     <h2>📊 Edición masiva (Excel)</h2>
     <p style="font-size:0.9rem; color:var(--muted); margin:0 0 14px; line-height:1.5;">
       Descargá todos los productos en un Excel, editá lo que quieras (marca, modelo, descripción, categoría y, para MarionShop, el código y el precio) y volvé a subirlo. El código se muestra de forma discreta en Glam y en MarionShop; el precio, solo en MarionShop.
-      No borres la columna "ID" ni agregues filas nuevas. El PDF trae las fotos y casilleros para editar (se ve bien en el celular; abrilo con una app que permita completar formularios). Las fotos no se tocan: para borrar productos o cambiar fotos usá la lista de abajo.
+      No borres la columna "ID" ni agregues filas nuevas. Las fotos no se tocan: para borrar productos o cambiar fotos usá la lista de abajo.
     </p>
     <button class="btn-primary" id="btnDescargarExcel">⬇️ Descargar Excel</button>
-    <button id="btnDescargarPDF" style="margin-top:10px; background:var(--soft); color:var(--text);">📄 Descargar PDF editable (con fotos)</button>
-    <button id="btnSubirExcel" style="margin-top:10px; background:var(--soft); color:var(--text);">⬆️ Subir Excel o PDF editado</button>
-    <input type="file" id="archivoExcel" accept=".xlsx,.xls,.csv,.pdf" style="display:none">
+    <button id="btnSubirExcel" style="margin-top:10px; background:var(--soft); color:var(--text);">⬆️ Subir Excel editado</button>
+    <button id="btnGenCodigos" style="margin-top:10px; background:var(--soft); color:var(--text);">🔢 Generar códigos faltantes</button>
+    <input type="file" id="archivoExcel" accept=".xlsx,.xls,.csv" style="display:none">
     <div id="estadoMasivo" style="display:none; margin-top:12px; font-size:0.9rem; padding:10px 12px; border-radius:8px; white-space:pre-line;"></div>
   </section>
 
@@ -298,7 +298,7 @@
     <div class="field"><label for="e_marca">Marca</label><input type="text" id="e_marca" placeholder="Ej: Rolex"></div>
     <div class="field"><label for="e_nombre">Modelo</label><input type="text" id="e_nombre" placeholder="Ej: Submariner"></div>
     <div class="field"><label for="e_descripcion">Descripción</label><textarea id="e_descripcion" rows="5"></textarea></div>
-    <div class="field"><label for="e_codigo">Código (opcional)</label><input type="text" id="e_codigo" placeholder="Ej: REL-001"></div>
+    <div class="field"><label for="e_codigo">Código (opcional)</label><input type="text" id="e_codigo" placeholder="Vacío = se genera solo"></div>
     <div class="field"><label for="e_precioM">Precio Marion (opcional)</label><input type="text" id="e_precioM" placeholder="Ej: 300000 (solo se muestra en MarionShop)"></div>
     <div class="field"><label for="e_categoria">Categoría</label><select id="e_categoria"></select></div>
     <div class="field"><label>Fotos (la primera es la principal)</label><div id="e_fotos"></div></div>
@@ -308,8 +308,6 @@
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
 <script>
   // ⚠️ Pegá aquí la URL de tu Worker de Cloudflare (paso 5 de las instrucciones)
   const WORKER_URL = "https://wellsshop-api.relojesoscar-ok.workers.dev";
@@ -517,7 +515,7 @@
       const data = await resp.json();
       if (!resp.ok) throw new Error(data.error || "Error desconocido");
 
-      estado.textContent = "¡Producto agregado y publicado! Puede demorar 1 minuto en verse en la web." + (data.aviso ? " ⚠️ " + data.aviso : "");
+      estado.textContent = "¡Producto agregado y publicado!" + (data.codigo ? " Código: " + data.codigo + "." : "") + " Puede demorar 1 minuto en verse en la web." + (data.aviso ? " ⚠️ " + data.aviso : "");
       estado.className = "ok";
       $("nombre").value = ""; $("codigo").value = ""; $("precioM").value = ""; $("descripcion").value = ""; $("marca").value = "";
       gestorAgregar.set([]);
@@ -566,240 +564,41 @@
     el.style.color = tipo === "error" ? "#991b1b" : tipo === "ok" ? "#065f46" : "#334155";
   }
 
-  // Carga la foto y la reduce (JPEG, máx. 240 px) para que el Excel no pese una barbaridad
-  async function fotoParaExcel(nombre) {
-    try {
-      const r = await fetch(IMG_BASE + nombre, { cache: "force-cache" });
-      if (!r.ok) return null;
-      const bmp = await createImageBitmap(await r.blob());
-      const k = Math.min(1, 240 / Math.max(bmp.width, bmp.height));
-      const w = Math.max(1, Math.round(bmp.width * k)), h = Math.max(1, Math.round(bmp.height * k));
-      const c = document.createElement("canvas"); c.width = w; c.height = h;
-      const g = c.getContext("2d"); g.fillStyle = "#fff"; g.fillRect(0, 0, w, h); g.drawImage(bmp, 0, 0, w, h);
-      return { base64: c.toDataURL("image/jpeg", 0.82), w: bmp.width, h: bmp.height };
-    } catch (_) { return null; }
-  }
-
-  async function descargarExcel() {
-    if (typeof ExcelJS === "undefined") { estadoMasivo("No se pudo cargar el módulo de Excel. Revisá la conexión y recargá la página.", "error"); return; }
+  function descargarExcel() {
+    if (typeof XLSX === "undefined") { estadoMasivo("No se pudo cargar el módulo de Excel. Revisá la conexión y recargá la página.", "error"); return; }
     if (!productosActuales.length) { estadoMasivo("Todavía no hay productos para descargar.", "error"); return; }
     if (!marionOk) { estadoMasivo(AVISO_MARION, "error"); return; }
-    $("btnDescargarExcel").disabled = true;
-    try {
-      const etiquetas = new Map([...$("categoria").options].map((o) => [o.value, o.textContent.trim()]));
-      const productos = [...productosActuales].sort(porMarcaYModelo);
-
-      // Fotos (de a 6 en paralelo)
-      const fotos = new Array(productos.length).fill(null);
-      let sig = 0, listas = 0;
-      const worker = async () => {
-        while (sig < productos.length) {
-          const i = sig++;
-          const f = fotosDe(productos[i])[0];
-          fotos[i] = f ? await fotoParaExcel(f) : null;
-          estadoMasivo(`Preparando el Excel con fotos... ${++listas} de ${productos.length}`, "");
-        }
-      };
-      await Promise.all(Array.from({ length: 6 }, worker));
-
-      const wb = new ExcelJS.Workbook();
-      const ws = wb.addWorksheet("Catalogo", { views: [{ state: "frozen", ySplit: 1 }] });
-      ws.columns = [
-        { header: "Foto", key: "foto", width: 16 },
-        { header: COLS.codigo, key: "codigo", width: 14 },
-        { header: COLS.marca, key: "marca", width: 16 },
-        { header: COLS.modelo, key: "modelo", width: 30 },
-        { header: COLS.desc, key: "desc", width: 60 },
-        { header: COLS.precio, key: "precio", width: 14 },
-        { header: COLS.cat, key: "cat", width: 12 },
-        { header: COLS.id, key: "id", width: 36 },
-      ];
-      ws.getRow(1).font = { bold: true };
-      ws.getRow(1).alignment = { vertical: "middle" };
-
-      const BOX = 88; // px del recuadro de la foto
-      productos.forEach((p, i) => {
-        const { marca, modelo } = separarProducto(p);
-        const md = marionDatos[p.id || p.imagen] || {};
-        const precio = normPrecioM(md.precio);
-        const row = ws.addRow({
-          codigo: String(p.codigo ?? ""),
-          marca, modelo,
-          desc: String(p.descripcion || ""),
-          precio: /^\d+(\.\d+)?$/.test(precio) ? Number(precio) : precio,
-          cat: etiquetas.get(p.categoria) || p.categoria || "",
-          id: p.id || p.imagen,
-        });
-        row.height = 72;
-        row.alignment = { vertical: "middle", wrapText: true };
-        const f = fotos[i];
-        if (f) {
-          const k = Math.min(BOX / f.w, BOX / f.h);
-          const w = Math.round(f.w * k), h = Math.round(f.h * k);
-          const imgId = wb.addImage({ base64: f.base64, extension: "jpeg" });
-          ws.addImage(imgId, { tl: { col: 0.05, row: i + 1 + 0.04 }, ext: { width: w, height: h }, editAs: "oneCell" });
-        }
-      });
-
-      const buf = await wb.xlsx.writeBuffer();
-      const url = URL.createObjectURL(new Blob([buf], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }));
-      const a = document.createElement("a");
-      a.href = url; a.download = `catalogo_${new Date().toISOString().slice(0, 10)}.xlsx`;
-      document.body.appendChild(a); a.click(); a.remove();
-      setTimeout(() => URL.revokeObjectURL(url), 10000);
-      const conFoto = fotos.filter(Boolean).length;
-      estadoMasivo(`Se descargó el Excel con ${productos.length} productos (${conFoto} con foto incluida). Editalo, guardalo y subilo con el botón de abajo.`, "ok");
-    } catch (e) {
-      estadoMasivo("No se pudo generar el Excel: " + e.message, "error");
-    } finally {
-      $("btnDescargarExcel").disabled = false;
-    }
-  }
-
-  // ---------- PDF editable ----------
-  // El PDF solo admite caracteres Latin-1 básicos: lo demás (emojis, etc.) se omite al escribirlo
-  const sanear = (t) => String(t ?? "").replace(/\r\n?/g, "\n").replace(/[^\n\x20-\x7E\u00A0-\u00FF\u2018\u2019\u201C\u201D\u2013\u2014\u20AC\u2022]/g, "");
-
-  async function descargarPDF() {
-    if (typeof PDFLib === "undefined") { estadoMasivo("No se pudo cargar el módulo de PDF. Revisá la conexión y recargá la página.", "error"); return; }
-    if (!productosActuales.length) { estadoMasivo("Todavía no hay productos para descargar.", "error"); return; }
-    if (!marionOk) { estadoMasivo(AVISO_MARION, "error"); return; }
-    $("btnDescargarPDF").disabled = true; $("btnDescargarExcel").disabled = true;
-    try {
-      const { PDFDocument, StandardFonts, rgb } = PDFLib;
-      const etiquetas = new Map([...$("categoria").options].map((o) => [o.value, o.textContent.trim()]));
-      const productos = [...productosActuales].sort(porMarcaYModelo);
-
-      const fotos = new Array(productos.length).fill(null);
-      let sig = 0, listas = 0;
-      const worker = async () => {
-        while (sig < productos.length) {
-          const i = sig++;
-          const f = fotosDe(productos[i])[0];
-          fotos[i] = f ? await fotoParaExcel(f) : null;
-          estadoMasivo(`Preparando el PDF con fotos... ${++listas} de ${productos.length}`, "");
-        }
-      };
-      await Promise.all(Array.from({ length: 6 }, worker));
-
-      const pdf = await PDFDocument.create();
-      const font = await pdf.embedFont(StandardFonts.Helvetica);
-      const bold = await pdf.embedFont(StandardFonts.HelveticaBold);
-      const form = pdf.getForm();
-      const PW = 595, PH = 842, POR_PAG = 4, ALTO = 192;
-      const gris = rgb(0.45, 0.45, 0.45), borde = rgb(0.8, 0.8, 0.8);
-      const totalPag = Math.ceil(productos.length / POR_PAG);
-      let page;
-
-      const campo = (nombre, valor, x, y, w, h, opc = {}) => {
-        const tf = form.createTextField(nombre);
-        tf.addToPage(page, { x, y, width: w, height: h, font, borderWidth: opc.ro ? 0 : 0.7, borderColor: borde, backgroundColor: opc.ro ? undefined : rgb(0.97, 0.98, 1) });
-        if (opc.multi) tf.enableMultiline();
-        tf.setFontSize(opc.size || 9);
-        tf.setText(sanear(valor));
-        if (opc.ro) tf.enableReadOnly();
-        return tf;
-      };
-      const etiqueta = (txt, x, y) => page.drawText(txt, { x, y, size: 7, font: bold, color: gris });
-
-      for (let i = 0; i < productos.length; i++) {
-        const k = i % POR_PAG;
-        if (k === 0) {
-          page = pdf.addPage([PW, PH]);
-          page.drawText(`Catálogo editable  ·  página ${Math.floor(i / POR_PAG) + 1} de ${totalPag}`, { x: 30, y: 822, size: 8, font, color: gris });
-        }
-        const top = 810 - k * ALTO;
-        const prod = productos[i];
-        const { marca, modelo } = separarProducto(prod);
-        const md = marionDatos[prod.id || prod.imagen] || {};
-
-        page.drawRectangle({ x: 28, y: top - ALTO + 8, width: PW - 56, height: ALTO - 8, borderColor: borde, borderWidth: 0.6 });
-
-        // Foto
-        const f = fotos[i];
-        if (f) {
-          const img = await pdf.embedJpg(f.base64);
-          const kf = Math.min(130 / f.w, 130 / f.h);
-          const w = f.w * kf, h = f.h * kf;
-          page.drawImage(img, { x: 38 + (130 - w) / 2, y: top - 12 - h - (130 - h) / 2, width: w, height: h });
-        } else {
-          page.drawText("(sin foto)", { x: 78, y: top - 80, size: 8, font, color: gris });
-        }
-        etiqueta("ID (no modificar)", 38, top - 154);
-        campo(`id_${i}`, prod.id || prod.imagen, 38, top - 170, 130, 14, { ro: true, size: 5 });
-
-        // Datos
-        const X = 185;
-        etiqueta("CÓDIGO", X, top - 20);       campo(`cod_${i}`, prod.codigo, X, top - 38, 80, 16);
-        etiqueta("MARCA", X + 86, top - 20);   campo(`marca_${i}`, marca, X + 86, top - 38, 110, 16);
-        etiqueta("PRECIO MARION", X + 202, top - 20);
-        const precio = normPrecioM(md.precio);
-        campo(`precio_${i}`, precio, X + 202, top - 38, 80, 16);
-        etiqueta("CATEGORÍA", X + 288, top - 20);
-        campo(`cat_${i}`, etiquetas.get(prod.categoria) || prod.categoria || "", X + 288, top - 38, 92, 16);
-        etiqueta("MODELO", X, top - 54);       campo(`modelo_${i}`, modelo, X, top - 72, 380, 16);
-        etiqueta("DESCRIPCIÓN", X, top - 88);  campo(`desc_${i}`, prod.descripcion || "", X, top - 170, 380, 78, { multi: true, size: 8 });
-      }
-      form.updateFieldAppearances(font);
-
-      const bytes = await pdf.save();
-      const url = URL.createObjectURL(new Blob([bytes], { type: "application/pdf" }));
-      const a = document.createElement("a");
-      a.href = url; a.download = `catalogo_${new Date().toISOString().slice(0, 10)}.pdf`;
-      document.body.appendChild(a); a.click(); a.remove();
-      setTimeout(() => URL.revokeObjectURL(url), 10000);
-      estadoMasivo(`Se descargó el PDF con ${productos.length} productos. Completá los casilleros, guardalo y subilo con "Subir Excel o PDF editado". Si tu app de PDF no deja editar, abrilo con Adobe Acrobat Reader.`, "ok");
-    } catch (e) {
-      estadoMasivo("No se pudo generar el PDF: " + e.message, "error");
-    } finally {
-      $("btnDescargarPDF").disabled = false; $("btnDescargarExcel").disabled = false;
-    }
-  }
-
-  // Lee los casilleros del PDF y los devuelve con el mismo formato que las filas del Excel
-  async function filasDesdePDF(file) {
-    const pdf = await PDFLib.PDFDocument.load(await file.arrayBuffer(), { updateMetadata: false });
-    const form = pdf.getForm();
-    const leer = (n) => { try { return form.getTextField(n).getText() || ""; } catch (_) { return null; } };
     const etiquetas = new Map([...$("categoria").options].map((o) => [o.value, o.textContent.trim()]));
-    const porId = new Map(productosActuales.map((p) => [p.id || p.imagen, p]));
-    const filas = [];
-    for (let i = 0; ; i++) {
-      const id = leer(`id_${i}`);
-      if (id === null) break;
-      const p = porId.get(id.trim());
-      const v = (n) => String(leer(`${n}_${i}`) ?? "");
-      // Si lo único que cambió es lo que el PDF no podía escribir (emojis, etc.), se conserva el original
-      const conserva = (orig, nuevo) => (sanear(orig).trim() === nuevo.trim() ? String(orig ?? "") : nuevo);
-      const sep = p ? separarProducto(p) : { marca: "", modelo: "" };
-      filas.push({
-        [COLS.id]: id.trim(),
-        [COLS.codigo]: p ? conserva(p.codigo, v("cod")) : v("cod"),
-        [COLS.marca]: p ? conserva(sep.marca, v("marca")) : v("marca"),
-        [COLS.modelo]: p ? conserva(sep.modelo, v("modelo")) : v("modelo"),
-        [COLS.desc]: p ? conserva(p.descripcion, v("desc")) : v("desc"),
-        [COLS.precio]: v("precio"),
-        [COLS.cat]: p ? conserva(etiquetas.get(p.categoria) || p.categoria || "", v("cat")) : v("cat"),
-      });
-    }
-    return filas;
+    const filas = [...productosActuales].sort(porMarcaYModelo).map((p) => {
+      const { marca, modelo } = separarProducto(p);
+      const md = marionDatos[p.id || p.imagen] || {};
+      const precio = normPrecioM(md.precio);
+      return {
+        [COLS.codigo]: String(p.codigo ?? ""),
+        [COLS.marca]: marca,
+        [COLS.modelo]: modelo,
+        [COLS.desc]: String(p.descripcion || ""),
+        [COLS.precio]: /^\d+(\.\d+)?$/.test(precio) ? Number(precio) : precio,
+        [COLS.cat]: etiquetas.get(p.categoria) || p.categoria || "",
+        [COLS.id]: p.id || p.imagen,
+      };
+    });
+    const ws = XLSX.utils.json_to_sheet(filas, { header: Object.values(COLS) });
+    ws["!cols"] = [{ wch: 14 }, { wch: 16 }, { wch: 30 }, { wch: 60 }, { wch: 14 }, { wch: 12 }, { wch: 36 }];
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Catalogo");
+    XLSX.writeFile(wb, `catalogo_${new Date().toISOString().slice(0, 10)}.xlsx`);
+    estadoMasivo(`Se descargó el Excel con ${filas.length} productos. Editalo, guardalo y subilo con el botón de abajo.`, "ok");
   }
 
   async function procesarExcel(file) {
-    const esPdf = /\.pdf$/i.test(file.name);
-    if (!esPdf && typeof XLSX === "undefined") { estadoMasivo("No se pudo cargar el módulo de Excel. Revisá la conexión y recargá la página.", "error"); return; }
-    if (esPdf && typeof PDFLib === "undefined") { estadoMasivo("No se pudo cargar el módulo de PDF. Revisá la conexión y recargá la página.", "error"); return; }
+    if (typeof XLSX === "undefined") { estadoMasivo("No se pudo cargar el módulo de Excel. Revisá la conexión y recargá la página.", "error"); return; }
     let filas;
     try {
-      if (esPdf) {
-        filas = await filasDesdePDF(file);
-        if (!filas.length) { estadoMasivo("Ese PDF no tiene casilleros editables. Si lo guardaste o imprimiste como PDF \"plano\", se perdieron: descargá el PDF de nuevo desde acá y editalo con una app que permita completar formularios (por ejemplo Adobe Acrobat Reader).", "error"); return; }
-      } else {
-        const wb = XLSX.read(await file.arrayBuffer(), { type: "array" });
-        filas = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], { defval: "" });
-      }
+      const wb = XLSX.read(await file.arrayBuffer(), { type: "array" });
+      filas = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], { defval: "" });
     } catch (_) {
-      estadoMasivo("No pude leer ese archivo. Tiene que ser el Excel o el PDF descargado desde acá.", "error");
+      estadoMasivo("No pude leer ese archivo. Tiene que ser el Excel (.xlsx) descargado desde acá.", "error");
       return;
     }
     if (!marionOk) { estadoMasivo(AVISO_MARION, "error"); return; }
@@ -826,7 +625,7 @@
       const modelo = String(f[COLS.modelo] ?? "").trim();
       const descripcion = normDesc(f[COLS.desc]);
       const precio = normPrecioM(f[COLS.precio]);
-      const codigo = String(f[COLS.codigo] ?? "").trim();
+      const codigo = String(f[COLS.codigo] ?? "").trim() || String(p.codigo ?? "").trim(); // vacío = se mantiene el actual
       const catTxt = String(f[COLS.cat] ?? "").trim();
 
       if (!marca || !modelo) { errores.push(`Fila ${fila}: falta la marca o el modelo`); return; }
@@ -873,7 +672,7 @@
       return;
     }
 
-    $("btnSubirExcel").disabled = true; $("btnDescargarExcel").disabled = true; $("btnDescargarPDF").disabled = true;
+    $("btnSubirExcel").disabled = true; $("btnDescargarExcel").disabled = true;
     estadoMasivo("Subiendo cambios...", "");
     try {
       const resp = await fetch(WORKER_URL + "/importar", {
@@ -888,11 +687,28 @@
     } catch (e) {
       estadoMasivo("No se pudo subir: " + e.message, "error");
     } finally {
-      $("btnSubirExcel").disabled = false; $("btnDescargarExcel").disabled = false; $("btnDescargarPDF").disabled = false;
+      $("btnSubirExcel").disabled = false; $("btnDescargarExcel").disabled = false;
     }
   }
 
-  $("btnDescargarPDF").onclick = descargarPDF;
+  $("btnGenCodigos").onclick = async () => {
+    const faltan = productosActuales.filter((p) => !String(p.codigo ?? "").trim()).length;
+    if (!faltan) { estadoMasivo("Todos los productos ya tienen código.", "ok"); return; }
+    if (!confirm(`${faltan} productos no tienen código. ¿Generar los códigos automáticamente?`)) return;
+    $("btnGenCodigos").disabled = true;
+    estadoMasivo("Generando códigos...", "");
+    try {
+      const resp = await fetch(WORKER_URL + "/generar-codigos", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ password: clave }) });
+      const data = await resp.json();
+      if (!resp.ok) throw new Error(data.error || "Error desconocido");
+      estadoMasivo(`Listo: se generaron ${data.generados} códigos. Pueden tardar hasta 1 minuto en verse en la web.`, "ok");
+      cargarProductos();
+    } catch (e) {
+      estadoMasivo("No se pudieron generar: " + e.message, "error");
+    } finally {
+      $("btnGenCodigos").disabled = false;
+    }
+  };
   $("btnDescargarExcel").onclick = descargarExcel;
   $("btnSubirExcel").onclick = () => $("archivoExcel").click();
   $("archivoExcel").onchange = (e) => {
