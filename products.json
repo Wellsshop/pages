@@ -2078,5 +2078,18 @@
     "categoria": "carteras",
     "marca": "LOUIS VUITTON",
     "codigo": "CALVSP-00157"
+  },
+  {
+    "id": "chanel_quilted_bowling_bag_studs_negro_1795099376303_0.jpg",
+    "imagen": "chanel_quilted_bowling_bag_studs_negro_1795099376303_0.jpg",
+    "imagenes": [
+      "chanel_quilted_bowling_bag_studs_negro_1795099376303_0.jpg"
+    ],
+    "nombre": "CHANEL Quilted Bowling Bag Studs (Negro)",
+    "precio": "Consultar",
+    "descripcion": "Eco Cuero matelaseado color negro con tachas metálicas laterales y esquinas reforzadas en dorado.\nAsas superiores de mano, correa larga desmontable con detalle de cadena y logo CC frontal en metal dorado.\nIncluye pañuelo estampado en el asa",
+    "categoria": "carteras",
+    "marca": "CHANEL",
+    "codigo": "CACHQU-00158"
   }
 ]
